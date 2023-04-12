@@ -1,23 +1,35 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import Navigation from './components/Navigation/Navigation';
+import NavBar from "./components/Navigation/NavBar"
+import './App.scss';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+// import HomePage from './pages/Home';
+// import DetailsPage from './pages/Details';
+// import NestedComponent from './components/NestedComponent/NestedComponent';
+// import ProfilePage from './pages/Profile';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello React</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return ( <>
+    {/* <Navigation /> */}
+    <NavBar/>
+    <Routes>
+      <Route index element={<Navigate to={'/home'} />}></Route>
+      {/* <Route path="/cocktails" element={<NestedComponent/>}>
+        <Route path={'catalog'} element={<HomePage />}></Route>
+        <Route path={'details/:id'} element={<DetailsPage />}></Route>
+      </Route>       */}
+      {/* <Route path="/profile" element={<ProfilePage/>}/> */}
+      {/* <Route path={'/filters'} element={<div>Filters screen</div>}></Route> */}
+      <Route path={'*'} element={<div>NOT FOUND BRAT</div>}></Route>
+    </Routes>
+  </>
   );
 }
 
 export default App;
+
+
+
+
+
