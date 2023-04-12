@@ -8,8 +8,9 @@ const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     password: '',
-    userType: 'regular',
+    isClient: false,
   });
 
   const handleInputChange = (event) => {
@@ -17,15 +18,19 @@ const RegistrationForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleUserTypeChange = (event) => {
+  const handleisClientChange = (event) => {
     const { value } = event.target;
-    setFormData((prevData) => ({ ...prevData, userType: value }));
+
+
+    setFormData((prevData) => ({ ...prevData, isClient: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData); // Replace with form submission logic
   };
+
+//   console.log(formData)
 
   return (
     <Container className="my-5">
@@ -57,6 +62,18 @@ const RegistrationForm = () => {
               />
             </Form.Group>
 
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Телефонен номер</Form.Label>
+              <Form.Control
+                type="phone"
+                placeholder="Въведете, вашият телефонен номер"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="mb-3"
+              />
+            </Form.Group>
+
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Парола</Form.Label>
               <Form.Control
@@ -69,17 +86,17 @@ const RegistrationForm = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicUserType">
+            <Form.Group controlId="formBasicisClient">
               <Form.Label>Вид потребител</Form.Label>
               <Form.Control
                 as="select"
-                name="userType"
-                value={formData.userType}
-                onChange={handleUserTypeChange}
+                name="isClient"
+                value={formData.isClient}
+                onChange={handleisClientChange}
                 className="mb-3"
               >
-                <option value="regular">Потребител</option>
-                <option value="craftsmen">Майстор</option>
+                <option value='true'>Потребител</option>
+                <option value='false'>Майстор</option>
               </Form.Control>
             </Form.Group>
 
