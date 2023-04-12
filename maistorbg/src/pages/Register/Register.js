@@ -9,7 +9,9 @@ const RegistrationForm = () => {
     name: '',
     email: '',
     phone: '',
+    username: '',
     password: '',
+    confirmPassword: '',
     isClient: false,
   });
 
@@ -24,6 +26,8 @@ const RegistrationForm = () => {
 
     setFormData((prevData) => ({ ...prevData, isClient: value }));
   };
+
+  const isButtonDisabled = formData.password !== formData.confirmPassword;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,13 +66,25 @@ const RegistrationForm = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId="formPhone">
               <Form.Label>Телефонен номер</Form.Label>
               <Form.Control
                 type="phone"
                 placeholder="Въведете, вашият телефонен номер"
                 name="phone"
                 value={formData.phone}
+                onChange={handleInputChange}
+                className="mb-3"
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formUsername">
+            <Form.Label>Псевдоним</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Моля, въведете псевдоним"
+                name="name"
+                value={formData.name}
                 onChange={handleInputChange}
                 className="mb-3"
               />
@@ -81,6 +97,18 @@ const RegistrationForm = () => {
                 placeholder="Парола"
                 name="password"
                 value={formData.password}
+                onChange={handleInputChange}
+                className="mb-3"
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formConfirmPassword">
+              <Form.Label>Повторна парола</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Повторна парола"
+                name="confirmPassword"
+                value={formData.confirmPassword}
                 onChange={handleInputChange}
                 className="mb-3"
               />
@@ -100,7 +128,7 @@ const RegistrationForm = () => {
               </Form.Control>
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="btn btn-primary mb-3">
+            <Button variant="primary" type="submit" className="btn btn-primary mb-3" disabled={isButtonDisabled} >
               Регистрация
             </Button>
           </Form>
