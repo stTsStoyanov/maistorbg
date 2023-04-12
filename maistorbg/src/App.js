@@ -6,9 +6,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import HomePage from './pages/Home/Home';
 import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
+import RegistrationForm from './pages/Register/Register';
 import Offers from './pages/Offers/Offers';
 import CraftsMen from './pages/CraftsMen/CraftsMen';
+
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <Routes>
       <Route index element={<Navigate to={'/home'}/>}></Route>
       <Route path='/home' element={<HomePage/>}></Route>
-      <Route path='/register' element={<Register/>}></Route>
+      <Route path='/register' element={<RegistrationForm/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/home/offers' element={<Offers/>}></Route>
       <Route path='/home/craftsmen' element={<CraftsMen/>}></Route>
