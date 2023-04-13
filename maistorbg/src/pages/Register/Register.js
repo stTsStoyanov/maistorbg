@@ -45,7 +45,7 @@ const RegistrationForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     userManager.register(formData)
-    console.log(formData); // Replace with form submission logic
+    console.log(formData); 
     history('/login')
   };
 

@@ -53,24 +53,24 @@ function OffersComponent() {
     {
       image:
         "https://media.istockphoto.com/id/1182393363/photo/alexander-nevsky-cathedral-in-sofia-bulgaria-taken-in-may-2019-taken-in-hdr.jpg?s=612x612&w=0&k=20&c=pxdKXGCg5wnU1cpK-0em0FAISx0aV5o18l2FaU5u94M=",
-      author: 2343244,
-      id: 234324444444,
+      author: 23432445,
+      id: 2343244444445,
       offerName: "name",
       offerComment: "tuk ima tekst dobaven ot user-a",
     },
     {
       image:
         "https://media.istockphoto.com/id/1182393363/photo/alexander-nevsky-cathedral-in-sofia-bulgaria-taken-in-may-2019-taken-in-hdr.jpg?s=612x612&w=0&k=20&c=pxdKXGCg5wnU1cpK-0em0FAISx0aV5o18l2FaU5u94M=",
-      author: 2343244,
-      id: 234324444444,
+      author: 23432446,
+      id: 2343244444446,
       offerName: "name",
       offerComment: "tuk ima tekst dobaven ot user-a",
     },
     {
       image:
         "https://media.istockphoto.com/id/1182393363/photo/alexander-nevsky-cathedral-in-sofia-bulgaria-taken-in-may-2019-taken-in-hdr.jpg?s=612x612&w=0&k=20&c=pxdKXGCg5wnU1cpK-0em0FAISx0aV5o18l2FaU5u94M=",
-      author: 2343244,
-      id: 234324444444,
+      author: 23432447,
+      id: 2343244444447,
       offerName: "name",
       offerComment: "tuk ima tekst dobaven ot user-a",
     },
