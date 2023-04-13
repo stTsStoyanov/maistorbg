@@ -1,7 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
 .card {
-  height: 450px;
+  height: 350px;
+  width: 800px;
   border-radius: 0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -23,12 +24,12 @@
   }
 
   .card-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
   }
 
   .card-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-bottom: 0.5rem;
   }
 
