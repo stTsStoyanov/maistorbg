@@ -52,16 +52,14 @@ class UserManager {
             });
     }
 
-    async getAllUsers() {
-        return await delayFunction(localStorageManager.getItem, ["users"])
-        .then(data => {
-            return data;
-        })
-    }
+    // getAllUsers() {
+    //  JSON.parse(localStorage.getItem("users"))
+    // }
 
-    setUserId = () => {
-        return generateRandomId(this.getAllUsers());
-    }
+    // setUserId = () => {
+    //     const x =this.getAllUsers()
+    //     return generateRandomId(x);
+    // }
 
 }
 
