@@ -66,11 +66,11 @@ const ProfilePage = ({ userName, imageUrl }) => {
       <Row>
         <Col>
           <div className="d-flex justify-content-center">
-            <Link to="/route1" className="btn btn-secondary btn-lg mx-3">
+            <Link to="/home/myprofile/user/history" className="btn btn-secondary btn-lg mx-3">
               <span className="btn-text">Твоята история</span>
               <span className="btn-icon"></span>
             </Link>
-            <Link to="/route2" className="btn btn-secondary btn-lg mx-3">
+            <Link to="/home/myprofile/user/currentoffers" className="btn btn-secondary btn-lg mx-3">
               <span className="btn-text">Твоите обяви</span>
               <span className="btn-icon"></span>
             </Link>
@@ -80,7 +80,7 @@ const ProfilePage = ({ userName, imageUrl }) => {
             </Link>
           </div>
           <div className="d-flex justify-content-center mt-4">
-            <Link to="/route4" className="btn btn-secondary btn-lg">
+            <Link to="/home" className="btn btn-secondary btn-lg">
               <span className="btn-text" style={{ whiteSpace: "pre-wrap" }}>
                 Изход профил
               </span>

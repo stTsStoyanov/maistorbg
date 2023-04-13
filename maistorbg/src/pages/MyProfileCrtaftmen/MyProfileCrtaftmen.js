@@ -1,7 +1,7 @@
 import React from "react";
 import CraftManProfile from "../../components/CraftManProfile/CraftManProfile";
 
-export default function MyProfileCraftMan() {
+export default function MyProfileCrtaftmen() {
   return (
     <div>
       <CraftManProfile />

@@ -30,7 +30,7 @@ function OfferTable({ offers }) {
     </Table>
   );
 }
-function UserHistoryComponent() {
+function CraftsmanHistoryComponent() {
     const offers = [
       {
         image:
@@ -51,4 +51,4 @@ function UserHistoryComponent() {
     );
   }
   
-  export default UserHistoryComponent;
+  export default CraftsmanHistoryComponent;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom"; // Import Link from React Router
-import "./CraftManProfile.scss.scss"; // Import SCSS file
+import "./CraftManProfile.scss"; // Import SCSS file
 
 const CraftManProfile = ({ userName, imageUrl }) => {
   return (
@@ -28,21 +28,21 @@ const CraftManProfile = ({ userName, imageUrl }) => {
       <Row>
         <Col>
           <div className="d-flex justify-content-center">
-            <Link to="/route1" className="btn btn-secondary btn-lg mx-3">
+            <Link to="/home/myprofile/craftsmen/history" className="btn btn-secondary btn-lg mx-3">
               <span className="btn-text">Твоята история</span>
               <span className="btn-icon"></span>
             </Link>
-            <Link to="/route2" className="btn btn-secondary btn-lg mx-3">
-              <span className="btn-text">Твоите обяви</span>
+            <Link to="/home/myprofile/craftsmen/application" className="btn btn-secondary btn-lg mx-3">
+              <span className="btn-text">Твоите кандидаствания</span>
               <span className="btn-icon"></span>
             </Link>
-            <Link to="/route3" className="btn btn-secondary btn-lg mx-3">
+            <Link to="/home/myprofile/craftsmen/myinformation" className="btn btn-secondary btn-lg mx-3">
               <span className="btn-text">Твоята информация</span>
               <span className="btn-icon"></span>
             </Link>
           </div>
           <div className="d-flex justify-content-center mt-4">
-            <Link to="/route4" className="btn btn-secondary btn-lg">
+            <Link to="/home" className="btn btn-secondary btn-lg">
               <span className="btn-text" style={{ whiteSpace: "pre-wrap" }}>
                 Изход профил
               </span>
