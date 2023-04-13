@@ -27,7 +27,7 @@ function App() {
           <Route path="/myoffers" element={<MyProfileUserPhotos />} />
           <Route path="/information" element={<MyProfileUserSettings />} /> */}
         </Route>
-        <Route path={"*"} element={<div>NOT FOUND BRAT</div>}></Route>
+        <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
       </Routes>
     </>
   );

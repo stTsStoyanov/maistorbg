@@ -1,23 +1,33 @@
 
 // import React from 'react';
-import React, { useState } from 'react';
+import React, { useEffect ,useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import userManager from "../../model/managers/userManager"
 
 const RegistrationForm = () => {
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    phoneNumber: '',
     username: '',
     password: '',
-    confirmPassword: '',
     isClient: false,
   });
+
+  const [formDataConfirm , setFormDataConfirm] = useState({
+    confirmPassword: ''
+  })
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handlePasswordConfirm = (event) => {
+    const { name, value } = event.target;
+    setFormDataConfirm((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleisClientChange = (event) => {
@@ -27,13 +37,18 @@ const RegistrationForm = () => {
     setFormData((prevData) => ({ ...prevData, isClient: value }));
   };
 
-  const isButtonDisabled = formData.password !== formData.confirmPassword;
+  const isButtonDisabled = formData.password !== formDataConfirm.confirmPassword;
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    userManager.register(formData)
     console.log(formData); // Replace with form submission logic
   };
 
+
+  useEffect( () => {
+
+  },[])
 //   console.log(formData)
 
   return (
@@ -71,8 +86,8 @@ const RegistrationForm = () => {
               <Form.Control
                 type="phone"
                 placeholder="Въведете, вашият телефонен номер"
-                name="phone"
-                value={formData.phone}
+                name="phoneNumber"
+                value={formData.phoneNumber}
                 onChange={handleInputChange}
                 className="mb-3"
               />
@@ -108,8 +123,8 @@ const RegistrationForm = () => {
                 type="password"
                 placeholder="Повторна парола"
                 name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
+                value={formDataConfirm.confirmPassword}
+                onChange={handlePasswordConfirm}
                 className="mb-3"
               />
             </Form.Group>

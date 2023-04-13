@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import userManager from "../../model/managers/userManager"
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     password: ''
   });
 
@@ -18,6 +19,7 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    userManager.login(formData)
     console.log(formData); // Replace with form submission logic
   };
 
@@ -34,8 +36,8 @@ const LoginForm = () => {
               <Form.Control
                 type="text"
                 placeholder="Моля, въведете вашето потребителско име"
-                name="name"
-                value={formData.name}
+                name="username"
+                value={formData.username}
                 onChange={handleInputChange}
                 className="mb-3"
               />

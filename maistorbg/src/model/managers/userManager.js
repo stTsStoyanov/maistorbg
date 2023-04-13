@@ -5,7 +5,7 @@ import Craftsman from "../classes/craftsman";
 
 class UserManager {
 
-    login = (username, password) => {
+    login = ({username, password}) => {
         delayFunction(localStorageManager.getItem, ["users"])
             .then(users => {
                 let existingUser = users.find(user => user.username === username && user.password === password);
@@ -17,7 +17,7 @@ class UserManager {
             })
     }
 
-    register = (name, email, phoneNumber, username, password, id = null, skills = null, isClient) => {
+    register = ({name, email, phoneNumber, username, password, isClient}, id = null, skills = null) => {
         delayFunction(localStorageManager.getItem, ["users"])
             .then(users => {
                 let existingUser = users.findIndex(user => user.username === username || user.email === email);
@@ -26,13 +26,14 @@ class UserManager {
                 if (existingUser >= 0) {
                     alert("The username or email is already taken");
                 } else {
-                    if (isClient === true) {
+                    if (isClient === "true") {
                         newUser = new User(name, username, password, email, phoneNumber, id, skills);
-                    } else {
+                    } else if(isClient === "false"){
                         newUser = new Craftsman(name, username, password, email, phoneNumber, skills, isClient, id)
                     }
                     users.push(newUser);
                     localStorageManager.setItem("users", users);
+                    console.log(newUser)
                     return users;
                 }
             })
