@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "./components/Navigation/Navigation";
-import NavBar from "./components/Navigation/NavBar";
+import Navigation from "./Components/Navigation/Navigation";
+import NavBar from "./Components/Navigation/NavBar";
 import "./App.scss";
 import { Routes, Route, Navigate } from "react-router-dom";
 

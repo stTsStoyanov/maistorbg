@@ -38,6 +38,10 @@ class UserManager {
             })
     }
 
+    logout = () => {
+        localStorageManager.setItem("loggedUser", null); 
+    }
+
 
 }
 
