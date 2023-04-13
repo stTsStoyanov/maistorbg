@@ -36,6 +36,17 @@ class LocalStorageManager {
     deleteItem = (key) => {
         localStorage.removeItem(key);
     };
+
+    loggedUser = () =>{
+        const logged = JSON.parse(localStorage.getItem('loggedUser'));
+        let flag = null;
+        if(logged){
+            flag = true;
+        }else{
+            flag = false;
+        }
+        return flag;
+    }
 }
 
 let localStorageManager = new LocalStorageManager();

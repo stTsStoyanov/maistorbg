@@ -5,6 +5,7 @@ export default class User {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.isClient = isClient;
         this.id = id;
     }
 }
