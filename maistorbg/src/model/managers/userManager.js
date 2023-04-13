@@ -1,11 +1,11 @@
 import localStorageManager from "./localStorageManager";
-import delayFunction from "../../utilFunctions/utilFunctions";
+import { delayFunction, generateRandomId } from "../../utilFunctions/utilFunctions";
 import User from "../classes/user";
 import Craftsman from "../classes/craftsman";
 
 class UserManager {
 
-    login = ({username, password}) => {
+    login = ({ username, password }) => {
         delayFunction(localStorageManager.getItem, ["users"])
             .then(users => {
                 let existingUser = users.find(user => user.username === username && user.password === password);
@@ -17,28 +17,51 @@ class UserManager {
             })
     }
 
-    register = ({name, email, phoneNumber, username, password, isClient}, id = null, skills = null) => {
-        delayFunction(localStorageManager.getItem, ["users"])
-            .then(users => {
-                let existingUser = users.findIndex(user => user.username === username || user.email === email);
-                let newUser = null;
-                id = users.length;
-                if (existingUser >= 0) {
-                    alert("The username or email is already taken");
-                } else {
-                    if (isClient === "true") {
-                        newUser = new User(name, username, password, email, phoneNumber, id, skills);
-                    } else if(isClient === "false"){
-                        newUser = new Craftsman(name, username, password, email, phoneNumber, skills, isClient, id)
-                    }
-                    users.push(newUser);
-                    localStorageManager.setItem("users", users);
-                    console.log(newUser)
-                    return users;
-                }
-            })
+    register = async ({ name, email, phoneNumber, username, password, isClient }, id = null, skills = null) => {
+        try {
+          const users = await delayFunction(localStorageManager.getItem, ["users"]);
+      
+          const existingUser = users.find(user => user.username === username || user.email === email);
+          if (existingUser) {
+            alert("The username or email is already taken");
+            return null;
+          }
+      
+          const newUser = isClient === "true" ? new User(name, username, password, email, phoneNumber, id, skills) :
+                                                 new Craftsman(name, username, password, email, phoneNumber, skills, isClient, id);
+          newUser.id = users.length;
+          users.push(newUser);
+          localStorageManager.setItem("users", users);
+      
+          console.log(newUser);
+          return users;
+        } catch (error) {
+          console.error(error);
+          return null;
+        }
+      }
+
+    logout = () => {
+        localStorageManager.setItem("loggedUser", null);
     }
 
+    async getLoggedUser() {
+        return await delayFunction(localStorageManager.getItem, ["loggedUser"])
+            .then(data => {
+               return data;
+            });
+    }
+
+    async getAllUsers() {
+        return await delayFunction(localStorageManager.getItem, ["users"])
+        .then(data => {
+            return data;
+        })
+    }
+
+    setUserId = () => {
+        return generateRandomId(this.getAllUsers());
+    }
 
 }
 

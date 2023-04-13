@@ -8,9 +8,18 @@ let delayFunction = (func, args) => {
         return new Promise((res, rej) => {
             setTimeout(() => {
                 res(func(...args))
-            },2000)
+            }, 2000)
         })
     }
 }
 
-export default delayFunction;
+let generateRandomId = (arrayWithObjects) => {
+    let newId;
+    do {
+        newId = Math.floor(Math.random() * 1000000);
+    } while (arrayWithObjects.some(user => user.id === newId));
+    return newId;
+}
+
+
+export { delayFunction, generateRandomId };
