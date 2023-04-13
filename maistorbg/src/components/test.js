@@ -142,7 +142,7 @@
 import React, { useState } from "react";
 import userManager from "../model/managers/userManager";
 
-const RegisterForm = () => {
+const Test = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -209,4 +209,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default Test;

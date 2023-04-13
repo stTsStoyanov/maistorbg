@@ -83,8 +83,8 @@ const RegistrationForm = () => {
               <Form.Control
                 type="text"
                 placeholder="Моля, въведете псевдоним"
-                name="name"
-                value={formData.name}
+                name="username"
+                value={formData.username}
                 onChange={handleInputChange}
                 className="mb-3"
               />

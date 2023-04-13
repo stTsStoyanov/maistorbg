@@ -14,7 +14,7 @@ import CraftsMen from './pages/CraftsMen/CraftsMen';
 
 function App() {
   return ( <>
-  
+    
     <NavBar/>
     <Routes>
       <Route index element={<Navigate to={'/home'}/>}></Route>
