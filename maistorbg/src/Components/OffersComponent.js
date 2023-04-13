@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import "./logick.scss";
+import "./OffersComponent.scss";
 
 function OfferCard({ offer }) {
   return (
@@ -30,8 +30,9 @@ function OfferList({ offers }) {
     </div>
   );
 }
-function App() {
-  const obqva = [
+
+function OffersComponent() {
+  const offers = [
     {
       image:
         "https://www.purina.bg/sites/default/files/styles/nppe_article_listing_image_and_description/public/2022-10/7-%D0%BF%D0%BE%D1%80%D0%BE%D0%B4%D0%B8-%D1%81%D0%B8%D0%B2%D0%B8-%D0%BA%D0%BE%D1%82%D0%BA%D0%B8_3.jpg?itok=PCV0kCv6",
@@ -78,9 +79,9 @@ function App() {
   return (
     <div>
       <h1>Offer List</h1>
-      <OfferList offers={obqva} />
+      <OfferList offers={offers} />
     </div>
   );
 }
 
-export default App;
+export default OffersComponent;
