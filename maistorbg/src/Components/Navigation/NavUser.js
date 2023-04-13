@@ -40,8 +40,14 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom"; // Import Link from React Router
 import "./NavUser.scss"; // Import SCSS file
+import userManager from "../../model/managers/userManager";
 
 const ProfilePage = ({ userName, imageUrl }) => {
+
+  const handlerLogout = () =>{
+    userManager.logout();
+}
+
   return (
     <Container>
       <Row>
@@ -79,7 +85,7 @@ const ProfilePage = ({ userName, imageUrl }) => {
               <span className="btn-icon"></span>
             </Link>
           </div>
-          <div className="d-flex justify-content-center mt-4">
+          <div className="d-flex justify-content-center mt-4" onClick={handlerLogout}>
             <Link to="/home" className="btn btn-secondary btn-lg">
               <span className="btn-text" style={{ whiteSpace: "pre-wrap" }}>
                 Изход профил
