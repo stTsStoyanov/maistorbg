@@ -1,33 +1,50 @@
-import { useState } from 'react';
-import { Form, Button, InputGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import './UserMyInformationComponent.scss';
 
 function UserMyInformationComponent({ user }) {
   const [showPassword, setShowPassword] = useState(false);
-  const toggleShowPassword = () => setShowPassword(!showPassword);
+  const { name, email, password, number, username } = user;
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
-    <div>
-      <h1>User Information</h1>
+    <div className="user-info">
+      <h1>Твоята информация</h1>
       <Form>
-        <Form.Group>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" defaultValue={user.email} />
+        <Form.Group controlId="formBasicName">
+          <Form.Label>Име</Form.Label>
+          <Form.Control type="text" value={name} readOnly />
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <InputGroup>
-            <Form.Control type={showPassword ? "text" : "password"} placeholder="Password" defaultValue={user.password} />
-            <InputGroup.Append>
-              <Button variant="outline-secondary" onClick={toggleShowPassword}>
-                {showPassword ? "Hide" : "Show"}
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
+        <Form.Group controlId="formBasicPhone">
+          <Form.Label>Телефонен номер</Form.Label>
+          <Form.Control type="tel" value={number} readOnly />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Save
+        <Form.Group controlId="formBasicUsername">
+          <Form.Label>потребителско име</Form.Label>
+          <Form.Control type="text" value={username} readOnly />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Имейл</Form.Label>
+          <Form.Control type="email" value={email} readOnly />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Парола</Form.Label>
+          <Form.Control
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            readOnly
+          />
+        </Form.Group>
+
+        <Button variant="secondary" onClick={togglePasswordVisibility}>
+          {showPassword ? 'Скрий' : 'Покажи'} парола
         </Button>
       </Form>
     </div>
