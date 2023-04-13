@@ -12,21 +12,6 @@ import CraftsMen from "./pages/CraftsMen/CraftsMen";
 import MyProfileUser from "./pages/MyProfileUser/MyProfileUser";
 
 function App() {
-<<<<<<< HEAD
-  return ( <>
-    
-    <NavBar/>
-    <Routes>
-      <Route index element={<Navigate to={'/home'}/>}></Route>
-      <Route path='/home' element={<HomePage/>}></Route>
-      <Route path='/register' element={<RegistrationForm/>}></Route>
-      <Route path='/login' element={<Login/>}></Route>
-      <Route path='/home/offers' element={<Offers/>}></Route>
-      <Route path='/home/craftsmen' element={<CraftsMen/>}></Route>
-      <Route path={'*'} element={<div>NOT FOUND BRAT</div>}></Route>
-    </Routes>
-  </>
-=======
   return (
     <>
       <NavBar />
@@ -45,7 +30,6 @@ function App() {
         <Route path={"*"} element={<div>NOT FOUND BRAT</div>}></Route>
       </Routes>
     </>
->>>>>>> c41963a854bd52e1fad34c2faef8222ce517f803
   );
 }
 
