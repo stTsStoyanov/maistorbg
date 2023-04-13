@@ -7,7 +7,7 @@ class ClientManager {
     createOffer = (offerTittle, offerText, offerImage, category) => {
         const loggedUserId = userManager.getLoggedUser.id;
 
-        return new Offer(offerTittle, offerText, offerImage, category, loggedUserId, offerId)
+        return new Offer(offerTittle, offerText, offerImage, category, loggedUserId)
     }
 
 }
