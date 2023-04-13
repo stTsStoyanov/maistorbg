@@ -1,6 +1,7 @@
 
 // import React from 'react';
 import React, { useEffect ,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import userManager from "../../model/managers/userManager"
@@ -15,6 +16,8 @@ const RegistrationForm = () => {
     password: '',
     isClient: false,
   });
+
+  const history = useNavigate();
 
   const [formDataConfirm , setFormDataConfirm] = useState({
     confirmPassword: ''
@@ -43,6 +46,7 @@ const RegistrationForm = () => {
     event.preventDefault();
     userManager.register(formData)
     console.log(formData); // Replace with form submission logic
+    history('/login')
   };
 
 

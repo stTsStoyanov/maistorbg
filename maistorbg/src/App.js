@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import NavBar from "./components/Navigation/NavBar";
 import "./App.scss";
@@ -10,11 +10,28 @@ import RegistrationForm from "./pages/Register/Register";
 import Offers from "./pages/Offers/Offers";
 import CraftsMen from "./pages/CraftsMen/CraftsMen";
 import MyProfileUser from "./pages/MyProfileUser/MyProfileUser";
+import localStorageManager from "./model/managers/localStorageManager"
+import NavBarLogged from "./components/LoggedUserNavigation/LoggedUserNavigation"
 
 function App() {
+  const [user, setUser] = useState(false)
+  // const logged = localStorageManager.loggedUser();
+
+  useEffect( () => {
+    const intervalId = setInterval(() => {
+      const logged = localStorageManager.loggedUser();
+      // this.setState({currentCategory: randomCategory});
+      setUser(logged)
+    }, 100)
+  
+  },[])
+
   return (
     <>
-      <NavBar />
+      {/* <NavBar  /> */}
+      {user ? <NavBarLogged/> : <NavBar/>}
+      {/* <Comp logged={logged} />
+      {localStorageManager.loggedUser() ? <div>yes</div> : <div>no</div>} */}
       <Routes>
         <Route index element={<Navigate to={"/home"} />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
