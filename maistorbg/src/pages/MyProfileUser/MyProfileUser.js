@@ -1,5 +1,5 @@
 import React from "react";
-import ProfilePage from "../../Components/Navigation/NavUser";
+import ProfilePage from "../../components/Navigation/NavUser";
 
 export default function MyProfileUser() {
   return (
