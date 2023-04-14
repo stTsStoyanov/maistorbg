@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import './UserMyInformationComponent.scss';
 
@@ -8,6 +9,11 @@ function UserMyInformationComponent({ user }) {
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleChangePassword = () => {
+    // TODO: implement password change functionality
+    console.log('Password changed!');
   };
 
   return (
@@ -46,6 +52,12 @@ function UserMyInformationComponent({ user }) {
         <Button variant="secondary" onClick={togglePasswordVisibility}>
           {showPassword ? 'Скрий' : 'Покажи'} парола
         </Button>
+
+        <Link to="/home/myprofile/user/myinformation/changepass">
+          <Button variant="secondary">
+            Смени парола
+          </Button>
+        </Link>
       </Form>
     </div>
   );

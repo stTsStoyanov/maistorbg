@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function MyProfileCraftmenInformationComponent({ user }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,6 +46,11 @@ function MyProfileCraftmenInformationComponent({ user }) {
         <Button variant="secondary" onClick={togglePasswordVisibility}>
           {showPassword ? 'Скрий' : 'Покажи'} парола
         </Button>
+        <Link to="/home/myprofile/craftsmen/myinformation/changepass">
+          <Button variant="secondary">
+            Смени парола
+          </Button>
+        </Link>
       </Form>
     </div>
   );

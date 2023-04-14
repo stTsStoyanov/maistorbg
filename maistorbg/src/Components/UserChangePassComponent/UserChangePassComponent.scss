@@ -1,0 +1,35 @@
+$password-change-form-max-width: 400px;
+$password-change-form-margin: 0 auto;
+$password-change-form-padding: 24px;
+$password-change-form-input-margin: 16px;
+
+.password-change-form-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .password-change-form-header {
+    text-align: center;
+    margin-bottom: $password-change-form-input-margin;
+  }
+}
+
+.password-change-form {
+  max-width: $password-change-form-max-width;
+  margin: $password-change-form-margin;
+  padding: $password-change-form-padding;
+
+  .form-group {
+    margin-bottom: $password-change-form-input-margin;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+}
+
+
