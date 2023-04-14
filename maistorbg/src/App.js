@@ -14,7 +14,7 @@ import localStorageManager from "./model/managers/localStorageManager"
 import NavBarLogged from "./components/LoggedUserNavigation/LoggedUserNavigation"
 import UserHistory from "./pages/UserHistory/UserHistory";
 import UserMyInformation from "./pages/UserMyInformation/UserMyInformation"; 
-// import MyProfileCraftmenInformation from "./pages/MyProfileCraftmenInformation/MyProfileCraftmenInformation";it is sill in progress
+import MyProfileCraftmenInformation from "./pages/MyProfileCraftmenInformation/MyProfileCraftmenInformation";
 import MyProfileCrtaftmen from "./pages/MyProfileCrtaftmen/MyProfileCrtaftmen";
 import MyProfileCraftmanHistory from "./pages/MyProfileCraftmеnHistory/MyProfileCraftmеnHistory";
 import UserMyProfileOffers from "./pages/UserMyProfileOffers/UserMyProfileOffers";
@@ -57,7 +57,7 @@ function App() {
         <Route path="/home/myprofile/craftsmen" element={!isClient ? <MyProfileCrtaftmen /> : <div>PAGE NOT FOUND 404</div>}></Route>
         <Route path="/home/myprofile/craftsmen/history" element={<MyProfileCraftmanHistory />}></Route>
         <Route path="/home/myprofile/craftsmen/application" element={<MyProfileCraftmenApplicantion />}></Route>
-        {/* <Route path="/home/myprofile/craftsmen/myinformation" element={<MyProfileCraftmenApplicantion />}></Route> */}
+        <Route path="/home/myprofile/craftsmen/myinformation" element={<MyProfileCraftmenInformation />}></Route>
         <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
       </Routes>
     </>

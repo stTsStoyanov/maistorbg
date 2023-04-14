@@ -68,6 +68,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import "./CraftManProfile.scss";
 import userManager from "../../model/managers/userManager";
+import "./UserMyProfile.scss"
 
 const handlerLogoutCraftsmen = () => {
   userManager.logout();

@@ -1,12 +1,11 @@
-
-
-import MyProfileCraftmenInformationComponent from '../components/MyProfileCraftmenInformationComponent/MyProfileCraftmenInformationComponent';
+import MyProfileCraftmenInformationComponent from "../../components/MyProfileCraftmenInformationComponent/MyProfileCraftmenInformationComponent";
 import React from "react";
 
-export default function UserMyInfMyProfileCraftmenInformationormation () {
+export default function MyProfileCraftmenInformation () {
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   return (
     <div>
-      <MyProfileCraftmenInformationComponent />
+      <MyProfileCraftmenInformationComponent user={user}/>
     </div>
   );
 }
