@@ -1,6 +1,4 @@
-import offersManager from "../managers/offersManager";
-
-export default class Offer{
+export default class jobAdvertisement{
 
     constructor (offerTittle, offerText, offerImage, authorId, category) {
         this.offerTittle = offerTittle;
@@ -9,5 +7,6 @@ export default class Offer{
         this.authorId = authorId;
         this.category = category;
         this.offerId = JSON.parse(localStorage.getItem("allOffers")).length;
+        this.creationDate = new Date().toLocaleString()
     }
 }

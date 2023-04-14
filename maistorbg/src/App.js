@@ -37,6 +37,7 @@ function App() {
   localStorageManager.initializeAllUsers();
   localStorageManager.initializeArticles();
   localStorageManager.initializeReviews();
+  localStorageManager.initializeJobAdvertisements();
 
   const userObject = JSON.parse(localStorage.getItem("loggedUser"));
   const isClient = userObject ? userObject.isClient : false;

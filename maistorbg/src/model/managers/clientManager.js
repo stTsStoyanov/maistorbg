@@ -1,4 +1,4 @@
-import Offer from "../classes/offer"
+import Offer from "../classes/jobAdvertisement"
 import userManager from "./userManager"
 
 class ClientManager {
