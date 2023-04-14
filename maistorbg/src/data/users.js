@@ -1,6 +1,6 @@
 export default [
     {
-      name: 'Chloe Davis',
+      name: 'Мария Маринова',
       username: 'ChloeD12',
       password: 'ChloeD12@#',
       email: 'ChloeD12@gmail.com',
@@ -9,7 +9,7 @@ export default [
       isClient: true
     },
     {
-      name: 'Jasmine Patel',
+      name: 'Ивана Иванова',
       username: 'JPatel3',
       password: '9$BdP#o5',
       email: 'JPatel3@gmail.com',
@@ -18,7 +18,7 @@ export default [
       id: 973399
     },
     {
-      name: 'Mason Rodriguez',
+      name: 'Николай Иванов',
       username: 'MRodriguez7',
       password: '@Tf7G#Ei',
       email: 'MRodriguez7@hotmail.com',
@@ -27,7 +27,7 @@ export default [
       id: 33613
     },
     {
-      name: 'Avery Lee',
+      name: 'Петър Георгиев',
       username: 'ALee4',
       password: 'Nw7#Bq3J',
       email: 'ALee4@yahoo.com',
@@ -36,7 +36,7 @@ export default [
       id: 677094
     },
     {
-      name: 'Zachary Huang',
+      name: 'Мартин Николов',
       username: 'ZHuang8',
       password: 'r@D5Xp9W',
       email: 'ZHuang8@gmail.com',
@@ -45,7 +45,7 @@ export default [
       id: 584852
     },
     {
-      name: 'Adriana Khan',
+      name: 'София Георгиева',
       username: 'AKhan6',
       password: 's#Z9fT2Q',
       email: 'AKhan6@hotmail.com',
@@ -54,7 +54,7 @@ export default [
       id: 620760
     },
     {
-      name: 'Ethan Chen',
+      name: 'Александър Георгиев',
       username: 'EChen5',
       password: 'p7$RfM8A',
       email: 'EChen5@yahoo.com',
@@ -63,7 +63,7 @@ export default [
       id: 23615
     },
     {
-      name: 'Abigail Davis',
+      name: 'Марта Мартинова',
       username: 'ADavis2',
       password: 'B@9zN4mT',
       email: 'ADavis2@gmail.com',
@@ -72,7 +72,7 @@ export default [
       id: 55257
     },
     {
-      name: 'Alexander Kim',
+      name: 'Владимир Петров',
       username: 'AKim9',
       password: 'g#F6sQ8W',
       email: 'AKim9@hotmail.com',
@@ -81,7 +81,7 @@ export default [
       id: 919835
     },
     {
-      name: 'Natalie Nguyen',
+      name: 'Лилия Николова',
       username: 'NNguyen7',
       password: 'V3@qB5eP',
       email: 'NNguyen7@yahoo.com',
@@ -90,7 +90,7 @@ export default [
       id: 98981
     },
     {
-      name: 'Lucas Patel',
+      name: 'Симеон Симеонов',
       username: 'LPatel4',
       password: 's@M6X9hT',
       email: 'LPatel4@gmail.com',
@@ -99,7 +99,7 @@ export default [
       id: 348559
     },
     {
-      name: 'Nicholas Lee',
+      name: 'Виктор Димитров',
       username: 'NLee6',
       password: 'T#n6Gq7W',
       email: 'NLee6@hotmail.com',
@@ -108,7 +108,7 @@ export default [
       id: 995993
     },
     {
-      name: 'Isabella Kim',
+      name: 'Кристина Кръстева',
       username: 'IKim5',
       password: 'B8@sF4uP',
       email: 'IKim5@gmail.com',
@@ -117,7 +117,7 @@ export default [
       id: 974145
     },
     {
-      name: 'Ryan Chen',
+      name: 'Димитър Иванов',
       username: 'RChen7',
       password: 'X9@mB7tK',
       email: 'RChen7@yahoo.com',
@@ -126,7 +126,7 @@ export default [
       id: 11401
     },
     {
-      name: 'Sophie Nguyen',
+      name: 'Надежда Николова',
       username: 'SNguyen9',
       password: 'M#b5V7zE',
       email: 'SNguyen9@hotmail.com',
@@ -135,7 +135,7 @@ export default [
       id: 717519
     },
     {
-      name: 'Ethan Davis',
+      name: 'Иван Димитров',
       username: 'EDavis4',
       password: 'q@3Yp7Jw',
       email: 'EDavis4@gmail.com',
@@ -144,7 +144,7 @@ export default [
       id: 315656
     },
     {
-      name: 'Avery Brown',
+      name: 'Алексей Алексиев',
       username: 'ABrown6',
       password: 'D#m8Wq5G',
       email: 'ABrown6@hotmail.com',
@@ -153,7 +153,7 @@ export default [
       id: 172894
     },
     {
-      name: 'Brandon Garcia',
+      name: 'Любомир Николов',
       username: 'BGarcia2',
       password: 'C@5Pw6rL',
       email: 'BGarcia2@yahoo.com',
@@ -162,7 +162,7 @@ export default [
       id: 735564
     },
     {
-      name: 'Chloe Adams',
+      name: 'Елена Димитрова',
       username: 'CAdams3',
       password: 'J7#bE6xT',
       email: 'CAdams3@gmail.com',
@@ -171,7 +171,7 @@ export default [
       id: 889028
     },
     {
-      name: 'Jacob Hernandez',
+      name: 'Иван Киров',
       username: 'JHernandez7',
       password: 'X9@tH4bM',
       email: 'JHernandez7@hotmail.com',
@@ -180,7 +180,7 @@ export default [
       id: 548498
     },
     {
-      name: 'Ava Perez',
+      name: 'Дарина Иванова',
       username: 'APerez9',
       password: 'S8@jK3qZ',
       email: 'APerez9@yahoo.com',
@@ -189,7 +189,7 @@ export default [
       id: 277604
     },
     {
-      name: 'Samantha Mitchell',
+      name: 'Ангелина Ангелова',
       username: 'SMitchell4',
       password: 'W#p4Gj9X',
       email: 'SMitchell4@gmail.com',
@@ -198,7 +198,7 @@ export default [
       id: 193821
     },
     {
-      name: 'Daniel Campbell',
+      name: 'Владислав Владимиров',
       username: 'DCampbell8',
       password: 'F#h9Dq5N',
       email: 'DCampbell8@hotmail.com',
@@ -207,7 +207,7 @@ export default [
       id: 91940
     },
     {
-      name: 'Olivia Clark',
+      name: 'Виктория Василева',
       username: 'OClark1',
       password: 'L@5Cq3tR',
       email: 'OClark1@yahoo.com',
@@ -216,7 +216,7 @@ export default [
       id: 253639
     },
     {
-      name: 'Lucas Baker',
+      name: 'Георги Петров',
       username: 'LBaker6',
       password: 'V#p4Kj8W',
       email: 'LBaker6@hotmail.com',
@@ -225,7 +225,7 @@ export default [
       id: 895653
     },
     {
-      name: 'Madison Ward',
+      name: 'Десислава Десиславова',
       username: 'MWard3',
       password: 'R#n5Lq6X',
       email: 'MWard3@gmail.com',
@@ -234,7 +234,7 @@ export default [
       id: 24277
     },
     {
-      name: 'John Doe',
+      name: 'Александър Иванов',
       username: 'JohnDoe13',
       password: 'JohnDoe13@',
       email: 'JohnDoe@gmail.com',
@@ -246,10 +246,11 @@ export default [
         3, 2, 4, 5, 5
       ],
       averageRating: 3.4,
-      id: 558275
+      id: 558275,
+      photo : []
     },
     {
-      name: 'Adam Smith',
+      name: 'Димитър Петров',
       username: 'AdamSmith123',
       password: 'Passw0rd$',
       email: 'AdamSmith123@gmail.com',
@@ -264,7 +265,7 @@ export default [
       id: 987315
     },
     {
-      name: 'William Davis',
+      name: 'Георги Георгиев',
       username: 'WillDav25',
       password: 'wD$2passw0rd',
       email: 'WillDav25@hotmail.com',
@@ -279,7 +280,7 @@ export default [
       id: 443515
     },
     {
-      name: 'Michael Johnson',
+      name: 'Иван Иванов',
       username: 'MikeJohnson88',
       password: 'Joh$2passw0rd',
       email: 'MikeJohnson88@gmail.com',
@@ -294,7 +295,7 @@ export default [
       id: 854543
     },
     {
-      name: 'David Wilson',
+      name: 'Петър Николов',
       username: 'DavidWils0n',
       password: 'dW$2passw0rd',
       email: 'DavidWils0n@hotmail.com',
@@ -306,7 +307,7 @@ export default [
       id: 878434
     },
     {
-      name: 'Christopher Martin',
+      name: 'Стефан Стефанов',
       username: 'ChrisM_77',
       password: 'cM$2passw0rd',
       email: 'ChrisM_77@gmail.com',
@@ -321,7 +322,7 @@ export default [
       id: 481594
     },
     {
-      name: 'Matthew Garcia',
+      name: 'Виктор Василев',
       username: 'Matt_Garc1a',
       password: 'Garc$2passw0rd',
       email: 'Matt_Garc1a@hotmail.com',
@@ -336,7 +337,7 @@ export default [
       id: 875025
     },
     {
-      name: 'Ethan Martinez',
+      name: 'Николай Николов',
       username: 'EthanMartinez10',
       password: 'Mar10$2passw0rd',
       email: 'EthanMartinez10@gmail.com',
@@ -351,7 +352,7 @@ export default [
       id: 309734
     },
     {
-      name: 'Alexander Rodriguez',
+      name: 'Кристиян Димитров',
       username: 'AlexRodriguez28',
       password: 'Rod28$2passw0rd',
       email: 'AlexRodriguez28@hotmail.com',
@@ -366,7 +367,7 @@ export default [
       id: 461048
     },
     {
-      name: 'Ryan Anderson',
+      name: 'Мартин Иванов',
       username: 'RyanAnders0n',
       password: 'And$2passw0rd',
       email: 'RyanAnders0n@gmail.com',
@@ -381,7 +382,7 @@ export default [
       id: 522274
     },
     {
-      name: 'Matthew Wilson',
+      name: 'Калоян Калчев',
       username: 'MattWils0n',
       password: 'wM$2passw0rd',
       email: 'MattWils0n@hotmail.com',
@@ -396,7 +397,7 @@ export default [
       id: 74751
     },
     {
-      name: 'Jacob Lee',
+      name: 'Ивайло Георгиев',
       username: 'Jacob_Lee42',
       password: 'Lee42$2passw0rd',
       email: 'Jacob_Lee42@gmail.com',
@@ -408,7 +409,7 @@ export default [
       id: 68715
     },
     {
-      name: 'William Clark',
+      name: 'Радослав Радев',
       username: 'WillClark_33',
       password: 'C33$2passw0rd',
       email: 'WillClark_33@hotmail.com',
@@ -423,7 +424,7 @@ export default [
       id: 51954
     },
     {
-      name: 'Jacob Smith',
+      name: 'Ангел Ангелов',
       username: 'JacobS87',
       password: 'Smith87#',
       email: 'JacobS87@gmail.com',
@@ -438,7 +439,7 @@ export default [
       id: 205342
     },
     {
-      name: 'William Johnson',
+      name: 'Даниел Стоянов',
       username: 'WillJ1',
       password: 'WilliamJ1@',
       email: 'WilliamJ1@yahoo.com',
@@ -453,7 +454,7 @@ export default [
       id: 417807
     },
     {
-      name: 'Ethan Brown',
+      name: 'Васил Василев',
       username: 'EthanB87',
       password: 'Brown87!',
       email: 'EthanB87@hotmail.com',
@@ -465,7 +466,7 @@ export default [
       id: 273767
     },
     {
-      name: 'Michael Garcia',
+      name: 'Цветан Цветанов',
       username: 'MGarcia10',
       password: 'MG10@',
       email: 'MGarcia10@gmail.com',
@@ -477,7 +478,7 @@ export default [
       id: 51126
     },
     {
-      name: 'Alexander Martinez',
+      name: 'Борислав Борисов',
       username: 'AlexM86',
       password: 'Martinez86*',
       email: 'AlexM86@gmail.com',
@@ -489,7 +490,7 @@ export default [
       id: 508710
     },
     {
-      name: 'Daniel Robinson',
+      name: 'Любомир Любомиров',
       username: 'DRobinson23',
       password: 'Robinson23#',
       email: 'DRobinson23@hotmail.com',
@@ -501,7 +502,7 @@ export default [
       id: 548153
     },
     {
-      name: 'Alexander Martinez',
+      name: 'Росен Росенов',
       username: 'AlexM86',
       password: 'Martinez86*',
       email: 'AlexM86@gmail.com',
@@ -513,7 +514,7 @@ export default [
       id: 297218
     },
     {
-      name: 'Nicholas Wilson',
+      name: 'Георги Христов',
       username: 'NickW33',
       password: 'Wilson33$',
       email: 'NickW33@gmail.com',
@@ -529,7 +530,7 @@ export default [
       id: 938163
     },
     {
-      name: 'William Brown',
+      name: 'Иван Тодоров',
       username: 'WBrown1',
       password: 'Brown1@!',
       email: 'WBrown1@gmail.com',
@@ -544,7 +545,7 @@ export default [
       id: 390577
     },
     {
-      name: 'Michael Davis',
+      name: 'Димитър Георгиев',
       username: 'MikeD78',
       password: 'Davis78%',
       email: 'MikeD78@gmail.com',
@@ -559,7 +560,7 @@ export default [
       id: 803495
     },
     {
-      name: 'Daniel Garcia',
+      name: 'Христо Христов',
       username: 'DanGarcia5',
       password: 'Garcia5@#',
       email: 'DanGarcia5@gmail.com',
@@ -574,7 +575,7 @@ export default [
       id: 919568
     },
     {
-      name: 'Christopher Rodriguez',
+      name: 'Павел Павлов',
       username: 'CRodriguez17',
       password: 'Rodriguez17$',
       email: 'CRodriguez17@gmail.com',

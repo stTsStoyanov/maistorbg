@@ -32,7 +32,11 @@ function App() {
       setUser(logged)
     }, 100)
   
-  },[])
+  },[]);
+
+  localStorageManager.initializeAllUsers();
+  localStorageManager.initializeArticles();
+  localStorageManager.initializeReviews();
 
   const userObject = JSON.parse(localStorage.getItem("loggedUser"));
   const isClient = userObject ? userObject.isClient : false;

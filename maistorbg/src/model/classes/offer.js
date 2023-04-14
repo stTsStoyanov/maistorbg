@@ -8,6 +8,6 @@ export default class Offer{
         this.offerImage = offerImage;
         this.authorId = authorId;
         this.category = category;
-        this.offerId = offersManager.setOfferId();
+        this.offerId = JSON.parse(localStorage.getItem("allOffers")).length;
     }
 }
