@@ -20,15 +20,15 @@ import MyProfileCraftmanHistory from "./pages/MyProfileCraftmеnHistory/MyProfil
 import UserMyProfileOffers from "./pages/UserMyProfileOffers/UserMyProfileOffers";
 import MyProfileCraftmenApplicantion from "./pages/MyProfileCraftmenApplicantion/MyProfileCraftmenApplicantion";
 
+import TopCraftsmen from "./components/HomePage/TopCraftsmen";
+
 
 function App() {
   const [user, setUser] = useState(false)
-  // const logged = localStorageManager.loggedUser();
 
   useEffect( () => {
-    const intervalId = setInterval(() => {
+    setInterval(() => {
       const logged = localStorageManager.loggedUser();
-      // this.setState({currentCategory: randomCategory});
       setUser(logged)
     }, 100)
   
@@ -36,10 +36,9 @@ function App() {
 
   return (
     <>
-      {/* <NavBar  /> */}
+
       {user ? <NavBarLogged/> : <NavBar/>}
-      {/* <Comp logged={logged} />
-      {localStorageManager.loggedUser() ? <div>yes</div> : <div>no</div>} */}
+   
       <Routes>
         <Route index element={<Navigate to={"/home"} />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
