@@ -1,8 +1,11 @@
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import "./NavBar.scss"
+import localStorageManager from '../../model/managers/localStorageManager';
 
 function NavBar() {
+    const logged = localStorageManager.loggedUser();
+
     return (
         <Nav variant="pills" defaultActiveKey="/home" className='NavBar'>
             <Nav.Item>
@@ -21,12 +24,12 @@ function NavBar() {
                 </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-4" as={Link} to="/home/offers" className='NavLink'>
+                <Nav.Link eventKey="link-4" as={Link} to="/home/offers" className='NavLink' >
                     Всички обяви
                     </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-5" as={Link} to="/home/craftsmen" className='NavLink'>
+                <Nav.Link eventKey="link-5" as={Link} to="/home/craftsmen" className='NavLink' >
                     Майстори
                     </Nav.Link>
             </Nav.Item>
