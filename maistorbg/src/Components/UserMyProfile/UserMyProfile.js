@@ -1,14 +1,15 @@
 // import React from "react";
 // import { Container, Row, Col, Button } from "react-bootstrap";
 // import { Link } from "react-router-dom"; // Import Link from React Router
-// import "./CraftManProfile.scss"; // Import SCSS file
-// import userManager from '../../model/managers/userManager';
+// import "./NavUser.scss"; // Import SCSS file
+// import userManager from "../../model/managers/userManager";
 
-// const handlerLogoutCraftsmen = () =>{
-//   userManager.logout();
+// const ProfilePage = ({ userName, imageUrl }) => {
+
+//   const handlerLogout = () =>{
+//     userManager.logout();
 // }
 
-// const CraftManProfile = ({ userName, imageUrl }) => {
 //   return (
 //     <Container>
 //       <Row>
@@ -25,7 +26,7 @@
 //           </div>
 //           <div className="d-flex justify-content-center mt-4">
 //             <p className="display-4 text-center">
-//               Майстор {userName}, добре дошъл в твоя профил !
+//               Добре дошъл {userName} в твоя профил !
 //             </p>
 //           </div>
 //         </Col>
@@ -33,21 +34,21 @@
 //       <Row>
 //         <Col>
 //           <div className="d-flex justify-content-center">
-//             <Link to="/home/myprofile/craftsmen/history" className="btn btn-secondary btn-lg mx-3">
+//             <Link to="/home/myprofile/user/history" className="btn btn-secondary btn-lg mx-3">
 //               <span className="btn-text">Твоята история</span>
 //               <span className="btn-icon"></span>
 //             </Link>
-//             <Link to="/home/myprofile/craftsmen/application" className="btn btn-secondary btn-lg mx-3">
-//               <span className="btn-text">Твоите кандидаствания</span>
+//             <Link to="/home/myprofile/user/currentoffers" className="btn btn-secondary btn-lg mx-3">
+//               <span className="btn-text">Твоите обяви</span>
 //               <span className="btn-icon"></span>
 //             </Link>
-//             <Link to="/home/myprofile/craftsmen/myinformation" className="btn btn-secondary btn-lg mx-3">
+//             <Link to="/route3" className="btn btn-secondary btn-lg mx-3">
 //               <span className="btn-text">Твоята информация</span>
 //               <span className="btn-icon"></span>
 //             </Link>
 //           </div>
-//           <div className="d-flex justify-content-center mt-4">
-//             <Link to="/home" className="btn btn-secondary btn-lg" onClick={handlerLogoutCraftsmen} >
+//           <div className="d-flex justify-content-center mt-4" onClick={handlerLogout}>
+//             <Link to="/home" className="btn btn-secondary btn-lg">
 //               <span className="btn-text" style={{ whiteSpace: "pre-wrap" }}>
 //                 Изход профил
 //               </span>
@@ -60,13 +61,14 @@
 //   );
 // };
 
-// export default CraftManProfile;
+// export default ProfilePage;
 
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./CraftManProfile.scss";
+// import "./CraftManProfile.scss";
 import userManager from "../../model/managers/userManager";
+import "./UserMyProfile.scss"
 
 const handlerLogoutCraftsmen = () => {
   userManager.logout();
@@ -106,9 +108,9 @@ const CraftManProfile = ({ userName }) => {
   const handleClick = () => {
     document.getElementById("imageUpload").click();
   };
-
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   const logged = user.username
+  ;
 
   return (
     <Container>
@@ -128,7 +130,7 @@ const CraftManProfile = ({ userName }) => {
           </div>
           <div className="d-flex justify-content-center mt-4">
             <p className="display-4 text-center">
-              Майстор {logged}, добре дошъл в твоя профил !
+            Добре дошъл {logged} в твоя профил !
             </p>
           </div>
         </Col>
@@ -137,21 +139,21 @@ const CraftManProfile = ({ userName }) => {
         <Col>
           <div className="d-flex justify-content-center">
             <Link
-              to="/home/myprofile/craftsmen/history"
+              to="/home/myprofile/user/history"
               className="btn btn-secondary btn-lg mx-3"
             >
               <span className="btn-text">Твоята история</span>
               <span className="btn-icon"></span>
             </Link>
             <Link
-              to="/home/myprofile/craftsmen/application"
+              to="/home/myprofile/user/currentoffers"
               className="btn btn-secondary btn-lg mx-3"
             >
               <span className="btn-text">Твоите кандидаствания</span>
               <span className="btn-icon"></span>
             </Link>
             <Link
-              to="/home/myprofile/craftsmen/myinformation"
+              to="/home/myprofile/user/myinformation"
               className="btn btn-secondary btn-lg mx-3"
             >
               <span className="btn-text">Твоята информация</span>
@@ -177,3 +179,4 @@ const CraftManProfile = ({ userName }) => {
 };
 
 export default CraftManProfile;
+

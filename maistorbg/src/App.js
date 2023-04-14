@@ -13,8 +13,8 @@ import MyProfileUser from "./pages/MyProfileUser/MyProfileUser";
 import localStorageManager from "./model/managers/localStorageManager"
 import NavBarLogged from "./components/LoggedUserNavigation/LoggedUserNavigation"
 import UserHistory from "./pages/UserHistory/UserHistory";
-// import UserMyInformation from "./pages/UserMyInformation/UserMyInformation"; it is sill in progress
-// import MyProfileCraftmenInformation from "./pages/MyProfileCraftmenInformation/MyProfileCraftmenInformation";it is sill in progress
+import UserMyInformation from "./pages/UserMyInformation/UserMyInformation"; 
+import MyProfileCraftmenInformation from "./pages/MyProfileCraftmenInformation/MyProfileCraftmenInformation";
 import MyProfileCrtaftmen from "./pages/MyProfileCrtaftmen/MyProfileCrtaftmen";
 import MyProfileCraftmanHistory from "./pages/MyProfileCraftmеnHistory/MyProfileCraftmеnHistory";
 import UserMyProfileOffers from "./pages/UserMyProfileOffers/UserMyProfileOffers";
@@ -38,6 +38,9 @@ function App() {
   localStorageManager.initializeArticles();
   localStorageManager.initializeReviews();
 
+  const userObject = JSON.parse(localStorage.getItem("loggedUser"));
+  const isClient = userObject ? userObject.isClient : false;
+
   return (
     <>
       {/* <NavBar  /> */}
@@ -51,14 +54,14 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/home/offers" element={<Offers />}></Route>
         <Route path="/home/craftsmen" element={<CraftsMen />}></Route>
-        <Route path="/home/myprofile/user" element={<MyProfileUser />}></Route>
+        <Route path="/home/myprofile/user" element={isClient ?  <MyProfileUser /> : <div>PAGE NOT FOUND 404</div>}></Route>
         <Route path="/home/myprofile/user/history" element={<UserHistory />}></Route>
         <Route path="/home/myprofile/user/currentoffers" element={<UserMyProfileOffers />}></Route>
-        {/* <Route path="/home/myprofile/user/myinformation" element={<UserMyInformation />}></Route> */}
-        <Route path="/home/myprofile/craftsmen" element={<MyProfileCrtaftmen />}></Route>
+        <Route path="/home/myprofile/user/myinformation" element={<UserMyInformation />}></Route>
+        <Route path="/home/myprofile/craftsmen" element={!isClient ? <MyProfileCrtaftmen /> : <div>PAGE NOT FOUND 404</div>}></Route>
         <Route path="/home/myprofile/craftsmen/history" element={<MyProfileCraftmanHistory />}></Route>
         <Route path="/home/myprofile/craftsmen/application" element={<MyProfileCraftmenApplicantion />}></Route>
-        {/* <Route path="/home/myprofile/craftsmen/myinformation" element={<MyProfileCraftmenApplicantion />}></Route> */}
+        <Route path="/home/myprofile/craftsmen/myinformation" element={<MyProfileCraftmenInformation />}></Route>
         <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
       </Routes>
     </>
