@@ -32,7 +32,11 @@ function App() {
       setUser(logged)
     }, 100)
   
-  },[])
+  },[]);
+
+  localStorageManager.initializeAllUsers();
+  localStorageManager.initializeArticles();
+  localStorageManager.initializeReviews();
 
   return (
     <>

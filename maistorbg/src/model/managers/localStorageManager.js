@@ -1,11 +1,10 @@
 import users from "../../data/users";
 import articles from "../../data/articles";
+import dummyData from "../../data/dummyData";
 
 class LocalStorageManager {
     
     constructor() {
-        this.initializeAllUsers();
-        this.initializeArticles();
     }
 
     async initializeAllUsers() {
@@ -19,6 +18,13 @@ class LocalStorageManager {
         const data = await this.getItem("articles");
         if(!data) {
             this.setItem("articles", articles)
+        }
+    }
+
+    async initializeReviews() {
+        const data = await this.getItem("allReviews");
+        if(!data) {
+            this.setItem("allReviews", dummyData)
         }
     }
 
