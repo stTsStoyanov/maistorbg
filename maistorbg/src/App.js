@@ -19,6 +19,8 @@ import MyProfileCrtaftmen from "./pages/MyProfileCrtaftmen/MyProfileCrtaftmen";
 import MyProfileCraftmanHistory from "./pages/MyProfileCraftmеnHistory/MyProfileCraftmеnHistory";
 import UserMyProfileOffers from "./pages/UserMyProfileOffers/UserMyProfileOffers";
 import MyProfileCraftmenApplicantion from "./pages/MyProfileCraftmenApplicantion/MyProfileCraftmenApplicantion";
+import UserChangePass from "./pages/UserChangePass/UserChangePass";
+import CraftmenChangePass from "./pages/CraftmenChangePass/CraftmenChangePass";
 
 import TopCraftsmen from "./components/HomePage/TopCraftsmen";
 
@@ -58,10 +60,12 @@ function App() {
         <Route path="/home/myprofile/user/history" element={<UserHistory />}></Route>
         <Route path="/home/myprofile/user/currentoffers" element={<UserMyProfileOffers />}></Route>
         <Route path="/home/myprofile/user/myinformation" element={<UserMyInformation />}></Route>
+        <Route path="/home/myprofile/user/myinformation/changepass" element={<UserChangePass />}></Route>
         <Route path="/home/myprofile/craftsmen" element={!isClient ? <MyProfileCrtaftmen /> : <div>PAGE NOT FOUND 404</div>}></Route>
         <Route path="/home/myprofile/craftsmen/history" element={<MyProfileCraftmanHistory />}></Route>
         <Route path="/home/myprofile/craftsmen/application" element={<MyProfileCraftmenApplicantion />}></Route>
         <Route path="/home/myprofile/craftsmen/myinformation" element={<MyProfileCraftmenInformation />}></Route>
+        <Route path="/home/myprofile/craftsmen/myinformation/changepass" element={<CraftmenChangePass />}></Route>
         <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
       </Routes>
     </>
