@@ -1,44 +1,46 @@
-//SECOND OPTION
+//FIRST OPTION
 
 
-import React, { useEffect, useState } from 'react';
-import { Card, CardDeck } from 'react-bootstrap';
+import React from 'react';
+import { Card } from 'react-bootstrap';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+  // Get data from local storage
+  const allReviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+  const allJobAdvertisements = JSON.parse(localStorage.getItem('allJobAdvertisements')) || [];
+  const users = JSON.parse(localStorage.getItem('users')) || [];
 
-  useEffect(() => {
-    // get reviews from local storage and sort them by rating in descending order
-    const allReviews = JSON.parse(localStorage.getItem('allReviews')) || [];
-    const sortedReviews = allReviews.sort((a, b) => b.rating - a.rating);
+  // Sort reviews by rating
+  allReviews.sort((a, b) => b.rating - a.rating);
 
-    // get the first 6 reviews and update state
-    const topReviews = sortedReviews.slice(0, 6);
-    setReviews(topReviews);
-  }, []);
+  // Get first 6 reviews
+  const topSixReviews = allReviews.slice(0, 6);
 
   return (
-    <CardDeck>
-      {reviews.map((review) => {
-        // find the user and job advertisement associated with the review
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+    <div>
+      {topSixReviews.map((review) => {
+        // Find user and job advertisement for this review
         const user = users.find((user) => user.id === review.craftsmanId);
+        const jobAd = allJobAdvertisements.find((jobAd) => jobAd.id === review.jobAdvertisements);
 
-        const jobAdvertisements = JSON.parse(localStorage.getItem('allJobAdvertisements')) || [];
-        const jobAdvertisement = jobAdvertisements.find((jobAdvertisement) => jobAdvertisement.id === review.jobAdvertisements);
+        // Get category from job advertisement
+        const category = jobAd ? jobAd.category : '';
 
         return (
           <Card key={review.id}>
             <Card.Img variant="top" src={user.photo} />
             <Card.Body>
               <Card.Title>{review.reviewSummery}</Card.Title>
-              <Card.Subtitle>{review.craftsmanName}</Card.Subtitle>
-              <Card.Text>{jobAdvertisement.category}</Card.Text>
+              <Card.Text>
+                Craftsman: {review.craftsmanName}
+                <br />
+                Category: {category}
+              </Card.Text>
             </Card.Body>
           </Card>
         );
       })}
-    </CardDeck>
+    </div>
   );
 };
 
@@ -48,53 +50,56 @@ export default Reviews;
 
 
 
-//FIRST OPTION
+
+//SECOND OPTION
 
 
-// import React from 'react';
-// import { Card } from 'react-bootstrap';
+// import React, { useEffect, useState } from 'react';
+// import { Card, CardDeck } from 'react-bootstrap';
 
 // const Reviews = () => {
-//   // Get data from local storage
-//   const allReviews = JSON.parse(localStorage.getItem('allReviews')) || [];
-//   const allJobAdvertisements = JSON.parse(localStorage.getItem('allJobAdvertisements')) || [];
-//   const users = JSON.parse(localStorage.getItem('users')) || [];
+//   const [reviews, setReviews] = useState([]);
 
-//   // Sort reviews by rating
-//   allReviews.sort((a, b) => b.rating - a.rating);
+//   useEffect(() => {
+//     // get reviews from local storage and sort them by rating in descending order
+//     const allReviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+//     const sortedReviews = allReviews.sort((a, b) => b.rating - a.rating);
 
-//   // Get first 6 reviews
-//   const topSixReviews = allReviews.slice(0, 6);
+//     // get the first 6 reviews and update state
+//     const topReviews = sortedReviews.slice(0, 6);
+//     setReviews(topReviews);
+//   }, []);
 
 //   return (
-//     <div>
-//       {topSixReviews.map((review) => {
-//         // Find user and job advertisement for this review
+//     <CardDeck>
+//       {reviews.map((review) => {
+//         // find the user and job advertisement associated with the review
+//         const users = JSON.parse(localStorage.getItem('users')) || [];
 //         const user = users.find((user) => user.id === review.craftsmanId);
-//         const jobAd = allJobAdvertisements.find((jobAd) => jobAd.id === review.jobAdvertisements);
 
-//         // Get category from job advertisement
-//         const category = jobAd ? jobAd.category : '';
+//         const jobAdvertisements = JSON.parse(localStorage.getItem('allJobAdvertisements')) || [];
+//         const jobAdvertisement = jobAdvertisements.find((jobAdvertisement) => jobAdvertisement.id === review.jobAdvertisements);
 
 //         return (
 //           <Card key={review.id}>
 //             <Card.Img variant="top" src={user.photo} />
 //             <Card.Body>
 //               <Card.Title>{review.reviewSummery}</Card.Title>
-//               <Card.Text>
-//                 Craftsman: {review.craftsmanName}
-//                 <br />
-//                 Category: {category}
-//               </Card.Text>
+//               <Card.Subtitle>{review.craftsmanName}</Card.Subtitle>
+//               <Card.Text>{jobAdvertisement.category}</Card.Text>
 //             </Card.Body>
 //           </Card>
 //         );
 //       })}
-//     </div>
+//     </CardDeck>
 //   );
 // };
 
 // export default Reviews;
+
+
+
+
 
 
 
