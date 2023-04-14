@@ -1,6 +1,7 @@
 import users from "../../data/users";
 import articles from "../../data/articles";
-import dummyData from "../../data/dummyData";
+import reviews from "../../data/reviews";
+import jobAdvertisements from "../../data/jobAdvertisements";
 
 class LocalStorageManager {
     
@@ -24,7 +25,14 @@ class LocalStorageManager {
     async initializeReviews() {
         const data = await this.getItem("allReviews");
         if(!data) {
-            this.setItem("allReviews", dummyData)
+            this.setItem("allReviews", reviews)
+        }
+    }
+
+    async initializeJobAdvertisements() {
+        const data = await this.getItem("allJobAdvertisements");
+        if(!data) {
+            this.setItem("allJobAdvertisements", jobAdvertisements)
         }
     }
 
