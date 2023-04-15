@@ -40,6 +40,7 @@ function App() {
   localStorageManager.initializeArticles();
   localStorageManager.initializeReviews();
   localStorageManager.initializeJobAdvertisements();
+  localStorageManager.initializeCraftsmenCategories();
 
   const userObject = JSON.parse(localStorage.getItem("loggedUser"));
   const isClient = userObject ? userObject.isClient : false;

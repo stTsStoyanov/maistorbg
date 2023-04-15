@@ -2,6 +2,7 @@ import users from "../../data/users";
 import articles from "../../data/articles";
 import reviews from "../../data/reviews";
 import jobAdvertisements from "../../data/jobAdvertisements";
+import craftsmenCategories from "../../data/craftsmenCategories";
 
 class LocalStorageManager {
     
@@ -33,6 +34,13 @@ class LocalStorageManager {
         const data = await this.getItem("allJobAdvertisements");
         if(!data) {
             this.setItem("allJobAdvertisements", jobAdvertisements)
+        }
+    }
+
+    async initializeCraftsmenCategories() {
+        const data = await this.getItem("craftsmenCategories");
+        if(!data) {
+            this.setItem("craftsmenCategories", craftsmenCategories)
         }
     }
 

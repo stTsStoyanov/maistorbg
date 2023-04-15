@@ -139,74 +139,142 @@
 
 // export default RegisterForm;
 
+// import React, { useState } from "react";
+// import userManager from "../model/managers/userManager";
+
+// const Test = () => {
+//   const [name, setName] = useState("");
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [phoneNumber, setPhoneNumber] = useState("");
+//   const [isActive, setIsActive] = useState(false); // added isActive state
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     userManager.register(name, username, password, email, phoneNumber, isActive);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>
+//         Name:
+//         <input
+//           type="text"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+//       </label>
+//       <label>
+//         Username:
+//         <input
+//           type="text"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//         />
+//       </label>
+//       <label>
+//         Password:
+//         <input
+//           type="password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+//       </label>
+//       <label>
+//         Email:
+//         <input
+//           type="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//       </label>
+//       <label>
+//         Phone Number:
+//         <input
+//           type="tel"
+//           value={phoneNumber}
+//           onChange={(e) => setPhoneNumber(e.target.value)}
+//         />
+//       </label>
+//       <label>
+//         Is Active:
+//         <select value={isActive} onChange={(e) => setIsActive(e.target.value === 'true')}>
+//           <option value="true">True</option>
+//           <option value="false">False</option>
+//         </select>
+//       </label>
+//       <button type="submit">Register</button>
+//     </form>
+//   );
+// };
+
 import React, { useState } from "react";
 import userManager from "../model/managers/userManager";
+import jobAdvertisement from "../model/classes/jobAdvertisement";
 
 const Test = () => {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [isActive, setIsActive] = useState(false); // added isActive state
+  const [jobAdvertisementTittle, setJobAdvertisementTittle] = useState("");
+  const [jobAdvertisementText, setJobAdvertisementText] = useState("");
+  const [jobAdvertisementImage, setJobAdvertisementImage] = useState("");
+  const [authorId, setAuthorId] = useState("");
+  const [category, setCategory] = useState("");
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    userManager.register(name, username, password, email, phoneNumber, isActive);
-  };
+    setAuthorId(localStorage.getItem("loggedUser").id);
+    const newJobAdvertisement = new jobAdvertisement(
+      jobAdvertisementTittle,
+      jobAdvertisementText,
+      jobAdvertisementImage,
+      authorId,
+      category
+      );
+      let jobAdvertisements = JSON.parse(localStorage.getItem("allJobAdvertisements"));
+      jobAdvertisements.push(newJobAdvertisement);
+      localStorage.setItem("allJobAdvertisements", JSON.stringify(jobAdvertisements))
+    };
+
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Name:
+        Job Advertisement Tittle:
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={jobAdvertisementTittle}
+          onChange={(e) => setJobAdvertisementTittle(e.target.value)}
         />
       </label>
       <label>
-        Username:
+        Job Advertisement Text:
         <input
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={jobAdvertisementText}
+          onChange={(e) => setJobAdvertisementText(e.target.value)}
         />
       </label>
       <label>
-        Password:
+        Job Advertisement Image:
         <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          type="text"
+          value={jobAdvertisementImage}
+          onChange={(e) => setJobAdvertisementImage(e.target.value)}
         />
       </label>
       <label>
-        Email:
+        Category:
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         />
       </label>
-      <label>
-        Phone Number:
-        <input
-          type="tel"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-      </label>
-      <label>
-        Is Active:
-        <select value={isActive} onChange={(e) => setIsActive(e.target.value === 'true')}>
-          <option value="true">True</option>
-          <option value="false">False</option>
-        </select>
-      </label>
-      <button type="submit">Register</button>
+      <button type="submit">Create Job Advertisement</button>
     </form>
   );
 };
+
 
 export default Test;
