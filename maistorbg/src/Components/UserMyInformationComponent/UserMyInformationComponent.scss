@@ -1,28 +1,37 @@
 .user-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 80vh;
-  margin: 0;
-  padding: 0;
-
+  padding: 2rem;
+  
   h1 {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   form {
-    max-width: 40rem;
     width: 100%;
+    max-width: 40rem;
 
-    button {
-      margin-top: 1rem;
+    .form-group {
+      margin-bottom: 1rem;
     }
 
-    &:last-child {
-      button {
-        margin-bottom: 0;
-      }
+    .form-label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: #f2f2f2;
+      border: none;
+      border-radius: 0.25rem;
+      color: #333;
+      padding: 0.5rem;
+    }
+
+    button {
+      margin-left: 2rem;
+      margin-top: 1rem;
     }
   }
 }

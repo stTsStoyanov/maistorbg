@@ -21,6 +21,7 @@ import UserMyProfileOffers from "./pages/UserMyProfileOffers/UserMyProfileOffers
 import MyProfileCraftmenApplicantion from "./pages/MyProfileCraftmenApplicantion/MyProfileCraftmenApplicantion";
 import UserChangePass from "./pages/UserChangePass/UserChangePass";
 import CraftmenChangePass from "./pages/CraftmenChangePass/CraftmenChangePass";
+import CreateJobAdvertisementForm from "./components/createJobAdvertisementForm/createJobAdvertisementForm";
 
 import TopCraftsmen from "./components/HomePage/TopCraftsmen";
 
@@ -59,6 +60,7 @@ function App() {
         <Route path="/home/craftsmen" element={<CraftsMen />}></Route>
         <Route path="/home/myprofile/user" element={isClient ?  <MyProfileUser /> : <div>PAGE NOT FOUND 404</div>}></Route>
         <Route path="/home/myprofile/user/history" element={<UserHistory />}></Route>
+        <Route path="/home/myprofile/user/createoffer" element={<CreateJobAdvertisementForm />}></Route>
         <Route path="/home/myprofile/user/currentoffers" element={<UserMyProfileOffers />}></Route>
         <Route path="/home/myprofile/user/myinformation" element={<UserMyInformation />}></Route>
         <Route path="/home/myprofile/user/myinformation/changepass" element={<UserChangePass />}></Route>
