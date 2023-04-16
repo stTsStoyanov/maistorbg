@@ -40,7 +40,7 @@ const CreateJobAdvertisementForm = () => {
                 "allJobAdvertisements",
                 JSON.stringify(jobAdvertisements)
             );
-            alert("Job advertisement has been created!")
+            alert("Офертата Ви беше създадена!")
             setJobAdvertisementTitle("");
             setJobAdvertisementText("");
             setJobAdvertisementImage(null);
@@ -62,7 +62,7 @@ const CreateJobAdvertisementForm = () => {
                 onSubmit={handleSubmit}
                 style={{ width: "50%" }}>
                 <Form.Group controlId="formJobTitle">
-                    <Form.Label>Job Advertisement Title<span className="text-danger">*</span></Form.Label>
+                    <Form.Label>Заглавие на офертата<span className="text-danger">*</span></Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Enter Job Title"
@@ -71,7 +71,7 @@ const CreateJobAdvertisementForm = () => {
                     />
                 </Form.Group>
                 <Form.Group controlId="formJobText">
-                    <Form.Label>Job Advertisement Text<span className="text-danger">*</span></Form.Label>
+                    <Form.Label>Описание на самата работа<span className="text-danger">*</span></Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
@@ -81,7 +81,7 @@ const CreateJobAdvertisementForm = () => {
                     />
                 </Form.Group>
                 <Form.Group controlId="formJobImage">
-                    <Form.Label>Job Advertisement Image</Form.Label>
+                    <Form.Label>Снимка на офертата</Form.Label>
                     <Form.Control
                         id="custom-file"
                         label="Choose Image"
@@ -90,14 +90,14 @@ const CreateJobAdvertisementForm = () => {
                     />
                 </Form.Group>
                 <Form.Group controlId="formCategory">
-                    <Form.Label>Category<span className="text-danger">*</span></Form.Label>
+                    <Form.Label>Категории<span className="text-danger">*</span></Form.Label>
                     <Form.Control
                         as="select"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                     >
                         <option value="" disabled>
-                            Select a category
+                            Изберете категория
                         </option>
                         {allCategories.map((category, index) => (
                             <option key={index} value={category}>
@@ -107,7 +107,7 @@ const CreateJobAdvertisementForm = () => {
                     </Form.Control>
                 </Form.Group>
                 <Button variant="primary" type="submit" >
-                    Create Job Advertisement
+                    Създайте офертата
                 </Button>
             </Form>
         </div>

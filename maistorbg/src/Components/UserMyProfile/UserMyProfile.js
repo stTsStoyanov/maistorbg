@@ -97,7 +97,7 @@ const UserMyProfile = () => {
               to="/home/myprofile/user/currentoffers"
               className="btn btn-secondary btn-lg mx-3"
             >
-              <span className="btn-text">Твоите кандидаствания</span>
+              <span className="btn-text">Твоите обяви</span>
               <span className="btn-icon"></span>
             </Link>
             <Link
@@ -107,6 +107,13 @@ const UserMyProfile = () => {
               <span className="btn-text">Твоята информация</span>
               <span className="btn-icon"></span>
             </Link>
+            <Link
+              to="/home/myprofile/user/createoffer"
+              className="btn btn-secondary btn-lg mx-3">
+              <span className="btn-text">Създаване на обява</span>
+            <span className="btn-icon"></span>
+            </Link>
+
           </div>
           <div className="d-flex justify-content-center mt-4">
             <Link
