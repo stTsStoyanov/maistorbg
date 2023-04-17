@@ -6,10 +6,30 @@ import "./MyProfileCraftmenInformationComponent.scss";
 function MyProfileCraftmenInformationComponent({ user }) {
   const [showPassword, setShowPassword] = useState(false);
   const { name, email, password, number, username } = user;
+  const craftsmenCategories = JSON.parse(localStorage.getItem("craftsmenCategories"));
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const categoryRows = [];
+  for (let i = 0; i < craftsmenCategories.length; i += 5) {
+    const categories = craftsmenCategories.slice(i, i + 5);
+    const categoryCheckboxes = categories.map((category) => {
+      return (
+        <Form.Check
+          key={category.category}
+          type="checkbox"
+          label={category.category}
+        />
+      );
+    });
+    categoryRows.push(
+      <div key={i} className="row mb-3">
+        {categoryCheckboxes}
+      </div>
+    );
+  }
 
   return (
     <div className="user-info">
@@ -26,7 +46,7 @@ function MyProfileCraftmenInformationComponent({ user }) {
         </Form.Group>
 
         <Form.Group controlId="formBasicUsername">
-          <Form.Label>потребителско име</Form.Label>
+          <Form.Label>Потребителско име</Form.Label>
           <Form.Control type="text" value={username} readOnly />
         </Form.Group>
 
@@ -52,6 +72,8 @@ function MyProfileCraftmenInformationComponent({ user }) {
             Смени парола
           </Button>
         </Link>
+
+        {categoryRows}
       </Form>
     </div>
   );
