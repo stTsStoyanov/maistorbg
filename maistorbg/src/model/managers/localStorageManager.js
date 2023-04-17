@@ -44,6 +44,13 @@ class LocalStorageManager {
         }
     }
 
+    async initializeOffers() {
+        const data = await this.getItem("allOffers");
+        if(!data) {
+            this.setItem("allOffers", [])
+        }
+    }
+
     getItem = (key) => {
         return new Promise((res, rej) => {
             const data = JSON.parse(localStorage.getItem(key));

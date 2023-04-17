@@ -11,12 +11,3 @@ export default class Offer {
         this.creationDate = new Date().toLocaleString();
     }
 }
-
-// {
-//     authorId: random Number;
-//     jobAdvertisement: random Number;
-//     offerText: text explaining what the offer is;
-//     offeredSum: Number, which represents the sum for the job that will be done;
-//     offeredTerm: the number of days it would take for the job to be done;
-//     creationDate: new Date().toLocaleString()
-// }
