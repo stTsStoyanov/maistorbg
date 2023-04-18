@@ -5,6 +5,7 @@ import Review from '../../components/HomePage/Review'
 import Articles from '../../components/HomePage/Articles'
 import RegistrationPrompt from '../../components/HomePage/RegistrationPrompt'
 import localStorageManager from '../../model/managers/localStorageManager'
+import Advertisement from '../../components/HomePage/Advertisement'
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <TopCraftsmen/>
       <Review/>
+      <Advertisement/>
       <Articles/>
       {user ? null : <RegistrationPrompt/>}
     </>
