@@ -53,9 +53,10 @@ const UploadImage = ({ setImageUrl }) => {
 const CraftManProfile = () => {
   const user = JSON.parse(localStorage.getItem("loggedUser"));
   const logged = user.username
+  const skilled = user.skills
   const userPic = user.photo
   const [imageUrl, setImageUrl] = useState(
-    userPic // here i set the image from the database
+    userPic 
   );
 
   const handleClick = () => {
@@ -110,6 +111,15 @@ const CraftManProfile = () => {
               <span className="btn-text">Твоята информация</span>
               <span className="btn-icon"></span>
             </Link>
+            {skilled === null && (
+              <Link
+                to="/home/myprofile/craftsmen/addskills"
+                className="btn btn-secondary btn-lg mx-3"
+              >
+                <span className="btn-text">Изберета Вашите умения</span>
+                <span className="btn-icon"></span>
+              </Link>
+            )}
           </div>
           <div className="d-flex justify-content-center mt-4">
             <Link
