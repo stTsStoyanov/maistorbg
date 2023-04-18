@@ -8,7 +8,7 @@ let delayFunction = (func, args) => {
         return new Promise((res, rej) => {
             setTimeout(() => {
                 res(func(...args))
-            }, 2000)
+            }, 500)
         })
     }
 }
