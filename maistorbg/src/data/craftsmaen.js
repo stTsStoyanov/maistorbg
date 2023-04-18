@@ -170,7 +170,7 @@
         isClient: false,
         skills: [ 'Electrician', 'Plumber' ],
         allRatings: [ 5, 4, 5, 4, 5, 5 ],
-        averageRating: 4.67,
+        averageRating: 4.69,
         id: 68715
       },
       {
