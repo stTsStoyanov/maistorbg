@@ -54,6 +54,7 @@ const Craftsman = () => {
 
 
         console.log(searchValue)
+        console.log(searchValue)
         setSelectedInput(filteredOffers);
         console.log(filteredOffers)
 
