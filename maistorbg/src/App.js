@@ -23,6 +23,7 @@ import UserChangePass from "./pages/UserChangePass/UserChangePass";
 import CraftmenChangePass from "./pages/CraftmenChangePass/CraftmenChangePass";
 import CreateJobAdvertisementForm from "./components/createJobAdvertisementForm/createJobAdvertisementForm";
 import MyProfileCrafstmanCategories from "./pages/MyProfileCrafstmanCategories/MyProfileCrafstmanCategories";
+import Footer from "./components/Footer/Footer";
 
 import TopCraftsmen from "./components/HomePage/TopCraftsmen";
 
@@ -74,6 +75,7 @@ function App() {
         <Route path="/home/myprofile/craftsmen/myinformation/changepass" element={<CraftmenChangePass />}></Route>
         <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
       </Routes>
+      <Footer/>
     </>
   );
 }

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Card, ListGroup, Form, Button } from "react-bootstrap";
+import { Card, ListGroup, Form, Button, InputGroup } from "react-bootstrap";
 import debounce from "lodash/debounce";
 import "./AllOffers.scss";
 import OfferForm from "../CreateAnOffer/CreateAnOffer";
 import Offer from "../../model/classes/offer";
 
-function OffersList() {
+function AllOffers() {
   const allJobAdvertisements = JSON.parse(localStorage.getItem("allJobAdvertisements"));
   const [offers, setOffers] = useState(allJobAdvertisements);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
-  const [selectedOffer, setSelectedOffer] = useState('null'); 
+  const [selectedOffer, setSelectedOffer] = useState(null); // use null instead of 'null'
   const craftsmenCategories = JSON.parse(localStorage.getItem("craftsmenCategories"));
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
@@ -80,6 +80,7 @@ function OffersList() {
     </Card>
   ));
 
+
   const categoryItems = craftsmenCategories.map((category, index) => (
     <div key={index} className={`category mb-3 ${selectedCategory === category.category ? 'active' : ''}`} onClick={() => handleCategoryClick(category.category)}>
       <h4 className="text-center">{category.category}</h4>
@@ -89,14 +90,18 @@ function OffersList() {
 
   return (
     <div className="all-offers">
-      <Form.Group controlId="formSearch">
-        <Form.Control type="text" placeholder="Търсене по име" onChange={handleSearchInputChange} />
-      </Form.Group>
+      <div className="search-container">
+        <Form.Group controlId="formSearch">
+          <Form.Control type="text" placeholder="Търсене по име" onChange={handleSearchInputChange} size="lg" />
+        </Form.Group>
+        {isFiltered && <Button variant="secondary" onClick={handleCleanFilters}>Изчисти филтрите</Button>}
+      </div>
       <div className="categories">{categoryItems}</div>
-      {isFiltered && <Button variant="secondary" onClick={handleCleanFilters}>Изчисти всички филтри</Button>}
       <div className="offer-cards">{offerCards}</div>
     </div>
   );
+  
+    
 }
 
-export default OffersList;
+export default AllOffers;

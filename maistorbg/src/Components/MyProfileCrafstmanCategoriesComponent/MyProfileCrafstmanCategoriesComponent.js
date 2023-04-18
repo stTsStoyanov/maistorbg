@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import MyProfileCrafstmanCategoriesComponent from '../../components/MyProfileCrafstmanCategoriesComponent/MyProfileCrafstmanCategoriesComponent';
-
+import './MyProfileCrafstmanCategoriesComponent.scss';
 function CheckboxList() {
   const [checkboxes, setCheckboxes] = useState([]);
 
@@ -47,13 +46,14 @@ function CheckboxList() {
   };
 
   return (
+    <div className='container-checkbox'>
     <Container className="checkbox-list">
       <Row>
         <Col>
           <h1>Моля изберета категориите, които съответстват на уменията Ви</h1>
           <Form className="center">
             {checkboxes.map((checkbox) => (
-              <Form.Check
+              <Form.Check className='checkbox'
                 key={checkbox.id}
                 type="checkbox"
                 id={checkbox.id}
@@ -62,11 +62,12 @@ function CheckboxList() {
                 onChange={() => handleCheckboxChange(checkbox.id)}
               />
             ))}
-            <Button onClick={handleSaveClick}>Запазване на промените</Button>
+            <Button variant="secondary" className='button' onClick={handleSaveClick}>Запазване на промените</Button>
           </Form>
         </Col>
       </Row>
     </Container>
+    </div>
   );
 }
 
