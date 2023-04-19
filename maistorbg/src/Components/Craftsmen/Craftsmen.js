@@ -43,17 +43,15 @@ const Craftsman = () => {
     const handleSearch = debounce((event) => {
         const searchValue = event.target.value.toLowerCase();
         setSearchQuery(searchValue);
-
+        
         const filteredOffers = filteredUsers.filter(
             // (user) => user.skills.toLowerCase().includes(searchValue)
             (user) =>
-            ['name', 'skills', 'email', 'number'].some(
+            ['name', 'skills', 'email', 'phoneNumber'].some(
             (property) => user[property].includes(searchQuery))
            
             )
 
-
-        console.log(searchValue)
         console.log(searchValue)
         setSelectedInput(filteredOffers);
         console.log(filteredOffers)
@@ -77,17 +75,20 @@ const Craftsman = () => {
 
 
     const handleClearFilters = () => {
+        setSelectedInput(null)
         setSelectedCategory(null);
         setSearchQuery("");
         setFilteredUsers(users.filter(user => user.isClient === false));
     };
+
+
 
     return (
         <Container>
             <Row className="mt-3">
                 <Col>
                     <InputGroup>
-                        <FormControl placeholder="Search for a skill"  onChange={handleSearch} />
+                        <FormControl placeholder="Майстор с какви умения търсите? Например: заварчик, електричар, проектант..."  onChange={handleSearch} />
                     </InputGroup>
                 </Col>
             </Row>
@@ -165,36 +166,6 @@ const Craftsman = () => {
             </Row>
             </Container>
     );
-            {/* {searchQuery && (
-                <Col>
-                    <Button variant="secondary" onClick={handleClearFilters}>Clear Filters</Button>
-                    <h3 className="mt-3">Craftsmen for {selectedCategory.category}:</h3>
-                    <Row>
-                        {selectedCategory.map(user => (
-                            <Col key={user.id} md={4} className="mb-3">
-                                <Card>
-                                    <Card.Img variant="top" src={user.photo} />
-                                    <Card.Body>
-                                        <Card.Title>{user.name}</Card.Title>
-                                        <Card.Text>
-                                            Phone: {user.number}<br />
-                                            Email: {user.email}<br />
-                                            Rating: {user.averageRating}<br />
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>`
-                </Col>
-            )} */}
-        {/* </Row > */}
-
-
-
-
-        {/* </Container > */}
-    {/* ); */}
 };
 
 export default Craftsman;
