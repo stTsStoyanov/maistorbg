@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Row, Col, Button } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import './JobAdvertisements.css';
+import AcceptOfferButton from '../../CurrentJobAdvertisementsOffers/AcceptOfferButton/AcceptOfferButton';
 
 const JobAdvertisements = ({ jobAdvertisements, offers }) => {
   return (
@@ -57,7 +58,7 @@ const JobAdvertisements = ({ jobAdvertisements, offers }) => {
                   {`${offer.offeredSum} лева`}
                 </Col>
                 <Col className="text-center">
-                  <Button variant="primary">Accept</Button>
+                  <AcceptOfferButton offer={offer}>Accept</AcceptOfferButton>
                 </Col>
               </Row>
             ))}

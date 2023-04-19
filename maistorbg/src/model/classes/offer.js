@@ -1,5 +1,3 @@
-import jobAdvertisement from "./jobAdvertisement";
-
 export default class Offer {
     constructor(authorId, jobAdvertisementId, offerText, offeredSum, offeredTerm) {
         this.authorId = authorId;
@@ -9,5 +7,11 @@ export default class Offer {
         this.offeredTerm = offeredTerm;
         this.isAccepted = null;
         this.creationDate = new Date().toLocaleString();
+        const allOffers = JSON.parse(localStorage.getItem("allOffers"));
+        if (allOffers && allOffers.length) {
+          this.offerId = allOffers.length;
+        } else {
+          this.offerId = 0;
+        }
     }
 }
