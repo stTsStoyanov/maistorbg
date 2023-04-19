@@ -12,13 +12,13 @@ export default function Home() {
   const user = localStorageManager.loggedUser();
   return (
     // <div>Home</div>
-    <>
-      <TopCraftsmen/>
-      <Review/>
-      <Advertisement/>
-      <Articles/>
-      {user ? null : <RegistrationPrompt/>}
-    </>
+    <div className='home'>
+      <TopCraftsmen />
+      <Review />
+      <Advertisement />
+      <Articles />
+      {user ? null : <RegistrationPrompt />}
+    </div>
 
   )
 }
