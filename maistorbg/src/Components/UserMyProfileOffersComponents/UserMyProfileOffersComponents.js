@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import CurrentJobAdvertisement from '../SpecificJobAdvertisement/CurrentJobAdvertisement/CurrentJobAdvertisement';
-import CurrentJobAdvertisementsOffers from '../CurrentJobAdvertisementsOffers/CurrentJobAdvertisementsOffers';
+// import CurrentJobAdvertisementsOffers from '../CurrentJobAdvertisementsOffers/CurrentJobAdvertisementsOffers';
 
 const UserMyProfileOffersComponents = () => {
   const [offers, setOffers] = useState([]);
@@ -21,9 +21,9 @@ const UserMyProfileOffersComponents = () => {
         {offers.map((offer) => (
           <Link to={`/home/myprofile/user/currentoffers/${offer.jobAdvertisementId}`}>
             <CurrentJobAdvertisement jobAdvertisement={offer}></CurrentJobAdvertisement>
-            </Link>
+          </Link>
         ))}
-          </div>
+      </div>
     </div>
   );
 };
