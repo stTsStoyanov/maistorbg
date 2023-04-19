@@ -1,61 +1,76 @@
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import "./LoggedUserNavigation.scss"
 import userManager from '../../model/managers/userManager';
 import localStorageManager from '../../model/managers/localStorageManager';
 
 function NavBarLogged() {
 
-    const handlerLogout = () =>{
+    const handlerLogout = () => {
         userManager.logout();
     }
-    
+
     const user = JSON.parse(localStorage.getItem("loggedUser"));
     const logged = user.isClient;
-    
-    const profilePhoto = user.photo;
-    
+
+    const [profilePhoto, setProfilePhoto] = useState(user.photo);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const updatedUser = JSON.parse(localStorage.getItem("loggedUser"));
+            setProfilePhoto(updatedUser.photo);
+        }, 400);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
-        <Nav variant="pills" defaultActiveKey="/home" className='NavBar'>
-            <Nav.Item>
-                <Nav.Link eventKey="link-1" as={Link} to="/home" className='NavLink'>
-                    Начало
-                </Nav.Link>
-            </Nav.Item>
-    
-            <Nav.Item>
-                <Nav.Link eventKey="link-2" as={Link} to="/home/offers" className='NavLink'>
-                    Всички обяви
+        <div className='loggedNav'>
+            <Nav variant="pills" defaultActiveKey="/home" className='NavBar ml-auto'>
+                <Nav.Item>
+                    <Nav.Link eventKey="link-1" as={Link} to="/home" className='NavLink'>
+                        Начало
                     </Nav.Link>
-            </Nav.Item>
-    
-            <Nav.Item>
-                <Nav.Link eventKey="link-3" as={Link} to="/home/craftsmen" className='NavLink'>
-                    Майстори
+                </Nav.Item>
+
+                <Nav.Item>
+                    <Nav.Link eventKey="link-2" as={Link} to="/home/offers" className='NavLink'>
+                        Всички обяви
                     </Nav.Link>
-            </Nav.Item>
-    
-            <Nav.Item className="ml-auto">
-                <Nav.Link eventKey="link-4" as={Link} to={logged ? "/home/myprofile/user" :"/home/myprofile/craftsmen" } className='NavLink' >
-                    <span className="profile-photo-container">
-                        <img src={profilePhoto} alt="profile" className="profile-photo" style={{ width: "30px", height: "30px" }}/>
-                    </span>
-                    Профил   
-                </Nav.Link>
-            </Nav.Item>
-    
-            <Nav.Item className="ml-2">
-                <Nav.Link eventKey="link-5" as={Link} to="/home" className='NavLink' onClick={handlerLogout}>
-                    Изход   
-                </Nav.Link>
-            </Nav.Item>
-    
-        </Nav>
+                </Nav.Item>
+
+                <Nav.Item>
+                    <Nav.Link eventKey="link-3" as={Link} to="/home/craftsmen" className='NavLink'>
+                        Майстори
+                    </Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item className="ml-2">
+                    <Nav.Link eventKey="link-4" as={Link} to={logged ? "/home/myprofile/user" : "/home/myprofile/craftsmen"} className='NavLink' >
+                        <span className="profile-photo-container">
+                            <img src={profilePhoto} alt="profile" className="profile-photo rounded-circle" style={{ width: "30px", height: "30px" }} />
+                        </span>
+                        Профил
+                    </Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item className="ml-2">
+                    <Nav.Link eventKey="link-5" as={Link} to="/home" className='NavLink' onClick={handlerLogout}>
+                        Изход
+                    </Nav.Link>
+                </Nav.Item>
+
+            </Nav>
+        </div>
     );
-    
 }
 
 export default NavBarLogged;
+
+
+
+
 
 // import Nav from 'react-bootstrap/Nav';
 // import { Link } from 'react-router-dom';
@@ -94,12 +109,12 @@ export default NavBarLogged;
 
 //             <Nav.Item>
 //                 <Nav.Link eventKey="link-4" as={Link} to={logged ? "/home/myprofile/user" :"/home/myprofile/craftsmen" } className='NavLink' >
-//                     Профил   
+//                     Профил
 //                     </Nav.Link>
 //             </Nav.Item>
 //             <Nav.Item>
 //                 <Nav.Link eventKey="link-5" as={Link} to="/home" className='NavLink' onClick={handlerLogout}>
-//                     Изход   
+//                     Изход
 //                     </Nav.Link>
 //             </Nav.Item>
 
