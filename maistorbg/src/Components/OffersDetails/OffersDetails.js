@@ -11,7 +11,7 @@ function OffersDetails() {
   const isClient = loggedUser ? loggedUser.isClient : false;
 
   const handleOfferSubmit = (authorId, jobAdvertisementId, offerText, offeredSum, offeredTerm) => {
-    const newOffer = new Offer(authorId, jobAdvertisementId, offerText, offeredSum, offeredTerm);
+    let newOffer = new Offer(authorId, jobAdvertisementId, offerText, offeredSum, offeredTerm);
     console.log('New offer:', newOffer);
     let offers = JSON.parse(localStorage.getItem("allOffers"));
     offers.push(newOffer);
@@ -27,7 +27,7 @@ function OffersDetails() {
         <Card.Text>Категория: {offer.category}</Card.Text>
         <Card.Text>Дата на създаване: {offer.creationDate}</Card.Text>
         {loggedUser || !isClient ? (
-          <Button variant="secondary" onClick={() => handleOfferSubmit(offer.authorId, offer.jobAdvertisementId, "Offer text", 100, "Offered term")}>
+          <Button variant="secondary" onClick={() => handleOfferSubmit(loggedUser.id, offer.jobAdvertisementId, "Offer text", 100, "Offered term")}>
             Кандидаствай
           </Button>
         ): null}

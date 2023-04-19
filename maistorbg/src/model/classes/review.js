@@ -6,8 +6,8 @@ export default class Review {
         this.review = review;
         this.reviewSummary = reviewSummary;
         this.rating = rating;
-        this.clientName = JSON.parse(localStorage.getItem("users")).find(user => user.id === this.clientId).name;
-        this.craftsmanName = JSON.parse(localStorage.getItem("users")).find(user => user.id === this.craftsmanId).name;
+        // this.clientName = JSON.parse(localStorage.getItem("users")).find(user => user.id === this.clientId).name;
+        // this.craftsmanName = JSON.parse(localStorage.getItem("users")).find(user => user.id === this.craftsmanId).name;
     }
 }
 
