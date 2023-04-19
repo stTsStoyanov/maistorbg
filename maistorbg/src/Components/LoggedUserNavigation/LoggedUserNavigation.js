@@ -48,7 +48,7 @@ function NavBarLogged() {
 
                 <Nav.Item className="ml-2">
                     <Nav.Link eventKey="link-4" as={Link} to={logged ? "/home/myprofile/user" : "/home/myprofile/craftsmen"} className='NavLink' >
-                        <span className="profile-photo-container">
+                        <span className="profile-photo-container" style={{margin:"5px"}}>
                             <img src={profilePhoto} alt="profile" className="profile-photo rounded-circle" style={{ width: "30px", height: "30px" }} />
                         </span>
                         Профил
