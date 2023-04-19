@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import "./TopCraftsmen.scss";
+// import "./TopCraftsmen.scss";
+import "./Articles.scss"
 
 const Articles = () => {
     // Retrieve the array of objects from local storage
@@ -37,18 +38,20 @@ const Articles = () => {
     };
 
     return (
-        <Container style={{ border: "1px solid black", padding: "20px" }} className="mx-md-5 my-5">
-            <h2 className="text-center">Top 3 Items</h2>
-            <Row>
-                {data.slice(0, 3).map((item, index) => (
-                    <Col sm={12} md={6} lg={4} key={index}>
-                        <Card className="mb-3">
-                            <Card.Body>{renderCardContent(item.name, item)}</Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
-        </Container>
+        <div className="articles">
+            <Container style={{ border: "1px solid black", padding: "20px" }} className="mx-md-5 my-5">
+                <h2 className="text-center">Top 3 Items</h2>
+                <Row>
+                    {data.slice(0, 3).map((item, index) => (
+                        <Col sm={12} md={6} lg={4} key={index}>
+                            <Card className="mb-3">
+                                <Card.Body>{renderCardContent(item.name, item)}</Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
+        </div>
     );
 };
 

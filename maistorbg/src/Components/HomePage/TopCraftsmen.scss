@@ -1,11 +1,64 @@
+// .top-craftsmen {
+//   margin: 5%;
+
+//   display: flex;
+//   justify-content: center;
+
+
+//   .container-centered {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
+//   }
+// }
+
+
+
 .top-craftsmen {
-    margin: 5% 0;
-  
-    .container-centered {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+  margin: 5%;
+    display: flex;
+  justify-content: center;
+  .reviews-container{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .craftsman-card {
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-10px);
     }
   }
-  
+
+  .craftsman-image-container {
+    width: 350px;
+    height: 450px;
+    overflow: hidden;
+  }
+
+  .craftsman-image {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .craftsman-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .craftsman-reviewer {
+    font-size: 16px;
+    font-weight: 500;
+    color: #808080;
+  }
+}
