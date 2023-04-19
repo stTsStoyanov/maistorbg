@@ -8,7 +8,7 @@ function Footer() {
       <Container fluid>
         <Row className="justify-content-center align-items-center">
           <Col md={6} className="text-center">
-            <h4>&copy; 2023 MaistorBG. Всички права са запазени.</h4>
+            <h5>&copy; 2023 MaistorBG. Всички права са запазени.</h5>
           </Col>
         </Row>
         <Row className="justify-content-center align-items-center">

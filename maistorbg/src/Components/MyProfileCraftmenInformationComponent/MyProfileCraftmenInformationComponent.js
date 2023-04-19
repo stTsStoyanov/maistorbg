@@ -5,34 +5,15 @@ import "./MyProfileCraftmenInformationComponent.scss";
 
 function MyProfileCraftmenInformationComponent({ user }) {
   const [showPassword, setShowPassword] = useState(false);
-  const { name, email, password, number, username } = user;
-  const craftsmenCategories = JSON.parse(localStorage.getItem("craftsmenCategories"));
+  const { name, email, password, phoneNumber, username } = user;
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const categoryRows = [];
-  for (let i = 0; i < craftsmenCategories.length; i += 5) {
-    const categories = craftsmenCategories.slice(i, i + 5);
-    const categoryCheckboxes = categories.map((category) => {
-      return (
-        <Form.Check
-          key={category.category}
-          type="checkbox"
-          label={category.category}
-        />
-      );
-    });
-    categoryRows.push(
-      <div key={i} className="row mb-3">
-        {categoryCheckboxes}
-      </div>
-    );
-  }
 
   return (
-    <div className="user-info">
+    <div className="user-infoo">
       <h1>Твоята информация</h1>
       <Form>
         <Form.Group controlId="formBasicName">
@@ -42,7 +23,7 @@ function MyProfileCraftmenInformationComponent({ user }) {
 
         <Form.Group controlId="formBasicPhone">
           <Form.Label>Телефонен номер</Form.Label>
-          <Form.Control type="tel" value={number} readOnly />
+          <Form.Control type="tel" value={phoneNumber} readOnly />
         </Form.Group>
 
         <Form.Group controlId="formBasicUsername">
@@ -72,8 +53,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
             Смени парола
           </Button>
         </Link>
-
-        {categoryRows}
       </Form>
     </div>
   );
