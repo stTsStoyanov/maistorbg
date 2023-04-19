@@ -11,8 +11,10 @@ class UserManager {
                 let existingUser = users.find(user => user.username === username && user.password === password);
                 if (existingUser) {
                     localStorageManager.setItem("loggedUser", existingUser);
+                    return true;
                 } else {
                     alert("there is no such user!")
+                    return false;
                 }
             })
     }
