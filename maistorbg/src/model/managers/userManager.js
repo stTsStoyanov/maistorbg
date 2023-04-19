@@ -24,7 +24,7 @@ class UserManager {
           const existingUser = users.find(user => user.username === username || user.email === email);
           if (existingUser) {
             alert("The username or email is already taken");
-            return null;
+            return false;
           }
       
           const newUser = isClient === "true" ? new User(name, username, password, email, phoneNumber, id, skills) :
@@ -37,7 +37,7 @@ class UserManager {
           return users;
         } catch (error) {
           console.error(error);
-          return null;
+          return false;
         }
       }
 
