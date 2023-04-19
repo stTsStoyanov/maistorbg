@@ -1,6 +1,8 @@
 .userMyProfile{
 
-.display-4 {
+  margin-top: 50px;
+  margin-bottom: 260px;
+  .display-4 {
     margin-top: 10vh;
     transform: translateY(-50%);
   }
@@ -51,8 +53,8 @@
     background-color: grey;
   }
   .profile-image {
-    width: 150px; // Set the desired width
-    height: 150px; // Set the desired height
+    width: 200px; // Set the desired width
+    height: 200px; // Set the desired height
     object-fit: cover; // Scale the image while preserving aspect ratio
     border-radius: 50%; // Make the image round
   }

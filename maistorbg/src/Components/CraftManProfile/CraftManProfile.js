@@ -65,6 +65,7 @@ const CraftManProfile = () => {
 
 
   return (
+    <div className="CraftManProfileContainerAll">
     <Container className="ContainerCraftmenProfile">
       <Row className="ContainerCraftmenProfile">
         <Col>
@@ -82,7 +83,7 @@ const CraftManProfile = () => {
           </div>
           <div className="d-flex justify-content-center mt-4">
             <p className="display-4 text-center">
-              Майстор {logged}, добре дошъл в твоя профил !
+              Майстор {logged}, добре дошъл!
             </p>
           </div>
         </Col>
@@ -136,6 +137,7 @@ const CraftManProfile = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 
