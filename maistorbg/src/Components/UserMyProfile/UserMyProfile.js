@@ -61,7 +61,7 @@ const UserMyProfile = () => {
   };
 
   return (
-    <Container>
+    <Container className="userMyProfile">
       <Row>
         <Col>
           <div className="d-flex justify-content-center mt-4">

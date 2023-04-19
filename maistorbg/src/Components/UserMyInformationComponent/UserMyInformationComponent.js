@@ -17,7 +17,7 @@ function UserMyInformationComponent({ user }) {
   };
 
   return (
-    <div className="user-info">
+    <div className="user-inf">
       <h1>Твоята информация</h1>
       <Form>
         <Form.Group controlId="formBasicName">

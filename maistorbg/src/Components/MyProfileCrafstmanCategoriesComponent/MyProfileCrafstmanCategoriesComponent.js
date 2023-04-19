@@ -46,7 +46,7 @@ function CheckboxList() {
   };
 
   return (
-    <div className='container-checkbox'>
+    <div className='container-checkboxx'>
     <Container className="checkbox-list">
       <Row>
         <Col>

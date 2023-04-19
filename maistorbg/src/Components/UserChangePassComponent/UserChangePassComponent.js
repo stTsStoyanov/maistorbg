@@ -1,17 +1,13 @@
 import React, { useState} from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import './UserChangePassComponent.scss';
-
-
 
 function UserChangePassComponent() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
 
   const handleSubmit = (event) => {
-    
     event.preventDefault();
     if (newPassword !== confirmNewPassword) {
       setErrorMessage('Паролите не съвпадат! Моля опитайте отново!');
@@ -39,35 +35,38 @@ function UserChangePassComponent() {
     setConfirmNewPassword('');
     setErrorMessage('');
     alert('Паролата Ви беше успешно променена!');
-    };
+    window.location.href = '/home';
+  };
 
   return (
     <div className="password-change-form-container">
-    <h1 className="password-change-form-header">Смяна на паролата</h1>
-    <Form onSubmit={handleSubmit} className="password-change-form">
-      <Form.Group controlId="newPassword">
-        <Form.Label>Вашата нова парола:</Form.Label>
-        <Form.Control
-          type="password"
-          value={newPassword}
-          onChange={(event) => setNewPassword(event.target.value)}
-        />
-      </Form.Group>
+      <h1 className="password-change-form-header">Смяна на паролата</h1>
+      <Form onSubmit={handleSubmit} className="password-change-form">
+        <Form.Group controlId="newPassword">
+          <Form.Label>Вашата нова парола:</Form.Label>
+          <Form.Control
+            type="password"
+            value={newPassword}
+            onChange={(event) => setNewPassword(event.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="confirmNewPassword">
-        <Form.Label>Повторете новата Ви парола:</Form.Label>
-        <Form.Control
-          type="password"
-          value={confirmNewPassword}
-          onChange={(event) => setConfirmNewPassword(event.target.value)}
-        />
-      </Form.Group>
+        <Form.Group controlId="confirmNewPassword">
+          <Form.Label>Повторете новата Ви парола:</Form.Label>
+          <Form.Control
+            type="password"
+            value={confirmNewPassword}
+            onChange={(event) => setConfirmNewPassword(event.target.value)}
+          />
+        </Form.Group>
 
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 
-      <Button variant="secondary" type="submit">Запази промените</Button>
-    </Form>
-  </div>
+        <Button variant="secondary" type="submit" disabled={!newPassword || !confirmNewPassword}>
+          Запази промените
+        </Button>
+      </Form>
+    </div>
   );
 }
 

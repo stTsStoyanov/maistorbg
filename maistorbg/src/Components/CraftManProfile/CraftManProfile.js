@@ -11,7 +11,7 @@ const handlerLogoutCraftsmen = () => {
 const UploadImage = ({ setImageUrl }) => {
   const handleImageUpload = (event) => {
     const image = event.target.files[0];
-    const reader = new FileReader();
+    const reader = new FileReader(); 
 
     reader.onload = () => {
       setImageUrl(reader.result);
@@ -65,8 +65,8 @@ const CraftManProfile = () => {
 
 
   return (
-    <Container>
-      <Row>
+    <Container className="ContainerCraftmenProfile">
+      <Row className="ContainerCraftmenProfile">
         <Col>
           <div className="d-flex justify-content-center mt-4">
             <img
