@@ -18,7 +18,7 @@ const Advertisement = () => {
   }, []);
 
   return (
-    <div>
+    <div className='advertisement'>
       <Carousel activeIndex={index} onSelect={handleSelect} interval={null}  style={{ maxWidth: "700px", margin: "auto" }}>
         <Carousel.Item>
           <img
