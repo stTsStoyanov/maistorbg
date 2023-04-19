@@ -83,6 +83,7 @@ const RegistrationForm = () => {
                 onChange={handleInputChange}
                 className="mb-3"
                 required
+                title="Моля въведете валиден имйел адрес."
               />
             </Form.Group>
 
@@ -127,6 +128,7 @@ const RegistrationForm = () => {
                 onChange={handlePasswordConfirm}
                 className="mb-3"
                 required
+                title="Паролата трябва да съдържа поне 6 символа, включващи главна и малка буква, цифра и специален символ."
               />
             </Form.Group>
 
