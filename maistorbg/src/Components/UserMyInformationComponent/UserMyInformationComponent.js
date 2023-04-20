@@ -70,12 +70,8 @@ function MyProfileCraftmenInformationComponent({ user }) {
       <Form>
         <Form.Group controlId="formBasicName">
           <Form.Label>Име</Form.Label>
-          <Form.Control type="text" name="name" value={updatedUser.name}   onChange={(e) => {
-    const regex = /^[а-яА-Я]*$/;
-    if (e.target.value === '' || regex.test(e.target.value)) {
-      handleInputChange(e);
-    }
-  }} readOnly={isSaved} />
+          <Form.Control type="text" name="name" value={updatedUser.name} onChange={handleInputChange} readOnly={isSaved} />
+
         </Form.Group>
 
         <Form.Group controlId="formBasicPhone">
