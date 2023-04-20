@@ -1,0 +1,29 @@
+.user-offers-container {
+    margin: 0 5vw;
+    background-image: linear-gradient(to right top, #fec5bb, #fecbc0, #ffd1c5, #ffd7ca, #ffddd0, #fbe0d0, #f7e3d2, #f3e6d5, #eae6d5, #e2e5d7, #dce4da, #d8e2dc);
+  
+    .user-offers-row {
+      .job-advertisement-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 0px;
+        margin: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+  
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+  
+  .user-offers-title {
+    text-align: center;
+  }
+  
+  a {
+    color: black;
+  }
+  
