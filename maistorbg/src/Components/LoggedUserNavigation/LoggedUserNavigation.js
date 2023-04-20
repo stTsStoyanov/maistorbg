@@ -11,7 +11,7 @@ function NavBarLogged() {
         userManager.logout();
     }
 
-    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    const user = JSON.parse(localStorage.getItem("loggedUser")) || false;
     const logged = user.isClient;
 
     const [profilePhoto, setProfilePhoto] = useState(user.photo);
@@ -23,7 +23,7 @@ function NavBarLogged() {
         }, 400);
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [user]);
 
     return (
         // <div className='loggedNav'>
