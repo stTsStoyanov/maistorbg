@@ -16,7 +16,7 @@ function UserChangePassComponent() {
     }
     const users = JSON.parse(localStorage.getItem('users'));
     const user = JSON.parse(localStorage.getItem('loggedUser'));
-
+  
     const updatedUsers = users.map((u) => {
       if (u.id === user.id) {
         return {
@@ -36,9 +36,12 @@ function UserChangePassComponent() {
     setConfirmNewPassword('');
     setErrorMessage('');
     setShowSuccessAlert(true);
-    setTimeout(() => setShowSuccessAlert(false), 3000); // hide success alert after 3 seconds
-    window.location.href = '/home';
+    setTimeout(() => {
+      setShowSuccessAlert(false);
+      window.location.href = '/home';
+    }, 900); // hide success alert after 3 seconds and redirect to home page
   };
+  
 
   return (
     <div className="password-change-form-container">

@@ -119,15 +119,20 @@
 
 
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import userManager from "../../model/managers/userManager";
 import jobAdvertisement from "../../model/classes/jobAdvertisement";
+import { useNavigate } from "react-router-dom";
 
 const CreateJobAdvertisementForm = () => {
   const [jobAdvertisementTitle, setJobAdvertisementTitle] = useState("");
   const [jobAdvertisementText, setJobAdvertisementText] = useState("");
   const [jobAdvertisementImages, setJobAdvertisementImages] = useState([]);
   const [category, setCategory] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertVariant, setAlertVariant] = useState("");
+  const [alertText, setAlertText] = useState("");
+  const navigate = useNavigate();
 
   let categories = JSON.parse(localStorage.getItem("craftsmenCategories")).map(
     (item) => item.category
@@ -138,11 +143,15 @@ const CreateJobAdvertisementForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!jobAdvertisementTitle || !jobAdvertisementText || !category) {
-      alert("Please fill in all required fields.");
+      setShowAlert(true);
+      setAlertVariant("danger");
+      setAlertText("Моля, попълнете всички задължителни полета.");
       return;
     }
     if (jobAdvertisementText.length < 25) {
-      alert("Job Advertisement Text must be at least 25 characters long.");
+      setShowAlert(true);
+      setAlertVariant("danger");
+      setAlertText("Описанието на офертата трябва да бъде поне 25 символа.");
       return;
     }
     userManager.getLoggedUser().then((user) => {
@@ -162,11 +171,16 @@ const CreateJobAdvertisementForm = () => {
         "allJobAdvertisements",
         JSON.stringify(jobAdvertisements)
       );
-      alert("Офертата Ви беше създадена!");
+      setShowAlert(true);
+      setAlertVariant("success");
+      setAlertText("Офертата Ви беше създадена!");
       setJobAdvertisementTitle("");
       setJobAdvertisementText("");
       setJobAdvertisementImages([]);
       setCategory("");
+      setTimeout(() => {
+        navigate("/home/myprofile/user");
+      }, 900);
     });
   };
 
@@ -184,7 +198,6 @@ const CreateJobAdvertisementForm = () => {
       setJobAdvertisementImages((prevImages) => prevImages.concat(base64Images));
     });
   };
-  
 
   return (
     <div className="d-flex justify-content-center">
@@ -239,6 +252,7 @@ const CreateJobAdvertisementForm = () => {
                         ))}
                     </Form.Control>
                 </Form.Group>
+                {showAlert && <Alert variant={alertVariant}>{alertText}</Alert>}
                 <Button variant="primary" type="submit" >
                     Създайте офертата
                 </Button>

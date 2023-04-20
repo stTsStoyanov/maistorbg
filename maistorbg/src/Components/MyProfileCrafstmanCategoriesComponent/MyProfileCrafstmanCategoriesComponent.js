@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './MyProfileCrafstmanCategoriesComponent.scss';
+
 function CheckboxList() {
   const [checkboxes, setCheckboxes] = useState([]);
-
+  const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const categoriesData = JSON.parse(localStorage.getItem('craftsmenCategories')); 
+    const categoriesData = JSON.parse(localStorage.getItem('craftsmenCategories'));
     if (categoriesData) {
       const categories = Object.entries(categoriesData).map(([key, value]) => ({
         id: key,
@@ -14,7 +17,6 @@ function CheckboxList() {
         checked: false,
       }));
       setCheckboxes(categories);
-      
     }
   }, []);
 
@@ -38,35 +40,42 @@ function CheckboxList() {
       if (userToUpdate) {
         userToUpdate.skills = selectedCategories;
         localStorage.setItem('users', JSON.stringify(users));
-        alert('Благодарим Ви, Вашата информация беше запазена успешно!');
+        setShowAlert(true);
+        setTimeout(() => {
+          navigate('/home'); 
+        }, 800); 
       }
-    
     }
-
   };
+  
 
   return (
     <div className='container-checkboxx'>
-    <Container className="checkbox-list">
-      <Row>
-        <Col>
-          <h1>Моля изберета категориите, които съответстват на уменията Ви</h1>
-          <Form className="center">
-            {checkboxes.map((checkbox) => (
-              <Form.Check className='checkbox'
-                key={checkbox.id}
-                type="checkbox"
-                id={checkbox.id}
-                label={checkbox.label}
-                checked={checkbox.checked}
-                onChange={() => handleCheckboxChange(checkbox.id)}
-              />
-            ))}
-            <Button variant="secondary" className='button' onClick={handleSaveClick}>Запазване на промените</Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+      <Container className="checkbox-list">
+        <Row>
+          <Col>
+            <h1>Моля изберета категориите, които съответстват на уменията Ви</h1>
+            <Form className="center">
+              {checkboxes.map((checkbox) => (
+                <Form.Check className='checkbox'
+                  key={checkbox.id}
+                  type="checkbox"
+                  id={checkbox.id}
+                  label={checkbox.label}
+                  checked={checkbox.checked}
+                  onChange={() => handleCheckboxChange(checkbox.id)}
+                />
+              ))}
+              {showAlert && (
+              <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                Благодарим Ви, Вашата информация беше запазена успешно!
+              </Alert>
+            )}
+              <Button variant="secondary" className='button' onClick={handleSaveClick}>Запазване на промените</Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
