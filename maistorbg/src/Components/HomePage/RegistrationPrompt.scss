@@ -1,31 +1,43 @@
-.containerReminder{
+.registrationPrompt {
+    // margin: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
     display: flex;
+    justify-content: center;
 
-    .register{
+    .containerReminder {
         display: flex;
-        justify-content: center;
-        font-size: 22px;
-        width: 40%;
-        margin: 5%;
-        padding: 2%;
-        border: 1px solid grey;
-        border-radius: 15px;
-        .b{
+
+
+        .register {
+            display: flex;
+            justify-content: center;
             font-size: 22px;
+            width: 40%;
+            margin: 5%;
+            padding: 2%;
+            border: 1px solid grey;
+            border-radius: 15px;
+
+            .b {
+                font-size: 22px;
+            }
+        }
+
+        .login {
+            display: flex;
+            justify-content: center;
+            font-size: 22px;
+            width: 40%;
+            margin: 5%;
+            padding: 2%;
+            border: 1px solid grey;
+            border-radius: 15px;
+
+            .b {
+                font-size: 22px;
+            }
         }
     }
 
-    .login{
-        display: flex;
-        justify-content: center;
-        font-size: 22px;
-        width: 40%;
-        margin: 5%;
-        padding: 2%;
-        border: 1px solid grey;
-        border-radius: 15px;
-        .b{
-            font-size: 22px;
-        }
-    }
 }
