@@ -1,0 +1,25 @@
+.card-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 100px;
+}
+
+.carousel-image {
+    height: 400px; /* adjust this to your desired height */
+    width: auto;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 8px;
+    margin-top: 16px;
+}
+
+.grid-item {
+    text-align: left;
+    font-size: 20px;
+}

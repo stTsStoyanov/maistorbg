@@ -1,0 +1,12 @@
+.specific-job-advertisement {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5vw;
+    margin: 0 5vw;
+    &__left {
+        grid-column: 1 / 2;
+    }
+    &__right {
+        grid-column: 2 / 3;
+    }
+}

@@ -51,7 +51,7 @@ function AllOffers() {
       navigate(`/home/offers/${offer.jobAdvertisementId}`, { state: { id: offer.jobAdvertisementId, offer: offer } });
     }}>
     <Card key={index} className="my-3">
-      <Card.Img variant="top" src={offer.jobAdvertisementImage} className="card-img-top" />
+      <Card.Img variant="top" src={offer.jobAdvertisementImage[0]} className="card-img-top" />
       <Card.Body>
         <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
         <Card.Text>{offer.jobAdvertisementText}</Card.Text>
