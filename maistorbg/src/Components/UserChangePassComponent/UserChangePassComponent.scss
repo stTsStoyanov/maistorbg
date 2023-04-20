@@ -11,7 +11,9 @@
 
   }
 
-
+h1.password-change-form-header {
+  margin-bottom: 2rem;
+}
 .password-change-form {
   .btn {
     display: block;
@@ -25,5 +27,6 @@
   border-radius: 0.25rem;
   color: #333;
   padding: 0.5rem;
+  width: 650px;
 }
 }
