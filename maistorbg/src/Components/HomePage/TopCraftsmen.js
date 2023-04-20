@@ -28,13 +28,13 @@ const TopCraftsmen = () => {
                 <Card.Body>
                   <Card.Title className="craftsman-name">{craftsman.name}</Card.Title>
                   <Card.Text className="craftsman-reviewer">
-                    Rating: {craftsman.averageRating}
+                    Рейтинг: {craftsman.averageRating}
                     <br />
-                    Phone Number: {craftsman.phoneNumber}
+                    Телефонен номер: {craftsman.phoneNumber}
                     <br />
-                    Email: {craftsman.email}
+                    Имейл адрес: {craftsman.email}
                     <br />
-                    Skills: {craftsman.skills ? craftsman.skills.join(", ") : "No skills specified"}
+                    Умения: {craftsman.skills ? craftsman.skills.join(", ") : "No skills specified"}
                   </Card.Text>
                 </Card.Body>
               </Card>

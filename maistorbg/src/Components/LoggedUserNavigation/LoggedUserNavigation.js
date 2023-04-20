@@ -26,8 +26,8 @@ function NavBarLogged() {
     }, []);
 
     return (
-        <div className='loggedNav'>
-            <Nav variant="pills" defaultActiveKey="/home" className='NavBar ml-auto'>
+        // <div className='loggedNav'>
+            <Nav variant="pills" defaultActiveKey="/home" className='NavBar' sticky="top">
                 <Nav.Item>
                     <Nav.Link eventKey="link-1" as={Link} to="/home" className='NavLink'>
                         Начало
@@ -62,7 +62,7 @@ function NavBarLogged() {
                 </Nav.Item>
 
             </Nav>
-        </div>
+        // </div>
     );
 }
 
