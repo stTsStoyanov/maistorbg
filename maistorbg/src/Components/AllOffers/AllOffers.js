@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 function AllOffers() {
-  const allJobAdvertisements = JSON.parse(localStorage.getItem("allJobAdvertisements"));
+  const allJobAdvertisements = JSON.parse(localStorage.getItem("allJobAdvertisements")).reverse();
   const [offers, setOffers] = useState(allJobAdvertisements);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);

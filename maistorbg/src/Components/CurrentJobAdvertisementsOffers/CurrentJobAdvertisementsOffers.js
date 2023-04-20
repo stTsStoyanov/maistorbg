@@ -267,7 +267,7 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
                   )}
                   {offer.isAccepted === null && (
                     <div className="button-container">
-                      <button onClick={() => acceptOffer(offer.offerId)}>Accept</button>
+                      <Button onClick={() => acceptOffer(offer.offerId)}>Приеми офертата</Button>
                     </div>
                   )}
                 </Card.Body>

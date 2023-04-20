@@ -18,7 +18,7 @@ function OffersDetails() {
     const offerText = event.target.elements.offerText.value;
     const offeredSum = event.target.elements.offeredSum.value;
     const offeredTerm = event.target.elements.offeredTerm.value;
-    const newOffer = new Offer(authorId, jobAdvertisementId, offerText, offeredSum, offeredTerm);
+    const newOffer = new Offer(loggedUser.id, jobAdvertisementId, offerText, offeredSum, offeredTerm);
 
     console.log('New offer:', newOffer);
     let offers = JSON.parse(localStorage.getItem("allOffers")) || []; // initialize offers to empty array if it doesn't exist in local storage

@@ -9,4 +9,6 @@
     &__right {
         grid-column: 2 / 3;
     }
+    min-height: calc(100vh - 52.760px -98.948px -38px);
+    background-image: linear-gradient(to right top, #fec5bb, #fecbc0, #ffd1c5, #ffd7ca, #ffddd0, #fbe0d0, #f7e3d2, #f3e6d5, #eae6d5, #e2e5d7, #dce4da, #d8e2dc);
 }
