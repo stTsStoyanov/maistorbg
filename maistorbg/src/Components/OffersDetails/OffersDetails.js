@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Card, Button, Form, Alert } from 'react-bootstrap';
+import { Card, Button, Form, Alert, Carousel } from 'react-bootstrap';
 import './OffersDetails.scss';
 import Offer from "../../model/classes/offer";
 
@@ -24,7 +24,7 @@ function OffersDetails() {
     let offers = JSON.parse(localStorage.getItem("allOffers")) || [];
     offers.push(newOffer);
     localStorage.setItem("allOffers", JSON.stringify(offers));
-    setShowAlert(true); 
+    setShowAlert(true);
   };
 
   const offerForm = (
@@ -36,24 +36,30 @@ function OffersDetails() {
       <Form.Group controlId="offeredSum">
         <Form.Label>Предложете сума в лв</Form.Label>
         <Form.Control type="number" placeholder="Въведете сума" name="offeredSum" min="1" onInput={(e) => {
-      e.target.value = Math.max(0, parseInt(e.target.value) || 0) 
-    }} required />
+          e.target.value = Math.max(0, parseInt(e.target.value) || 0)
+        }} required />
       </Form.Group>
       <Form.Group controlId="offeredTerm">
         <Form.Label>Предложете време за изпълнение</Form.Label>
         <Form.Control type="number" placeholder="Въведете време в дни" name="offeredTerm" min="1" onInput={(e) => {
-      e.target.value = Math.max(0, parseInt(e.target.value) || 0) 
-    }} required />
+          e.target.value = Math.max(0, parseInt(e.target.value) || 0)
+        }} required />
         {showAlert ? <Alert variant="success">Предложението е изпратено!</Alert> : null}
       </Form.Group>
       <Button variant="secondary" type="submit">Изпрати</Button>
     </Form>
   );
-    
 
   return (
     <Card className="job-cardd">
-      <Card.Img variant="top" src={offer.jobAdvertisementImage} alt="Job Advertisement" />
+      {/* <Card.Img variant="top" src={offer.jobAdvertisementImage[0]} alt="Job Advertisement" /> */}
+      <Carousel>
+        {offer.jobAdvertisementImage.map((image, index) => (
+          <Carousel.Item key={index}>
+            <img className="d-block w-100 carousel-image" src={image} alt={`Job Advertisement ${index}`} />
+          </Carousel.Item>
+        ))}
+      </Carousel>
       <Card.Body>
         <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
         <Card.Text>{offer.jobAdvertisementText}</Card.Text>
@@ -62,11 +68,16 @@ function OffersDetails() {
 
         {loggedUser && !isClient ? (
           <div>
-            <Button variant="secondary" onClick={() => setShowOfferForm(true)}>Кандидаствай</Button>
-            {showOfferForm ? offerForm : null}
+            {offer.isOfferTaken ? (
+              <Card.Text>Обявата е вече взета от друг майстор!</Card.Text>
+            ) : (
+              <div>
+                <Button variant="secondary" onClick={() => setShowOfferForm(true)}>Кандидаствай</Button>
+                {showOfferForm ? offerForm : null}
+              </div>
+            )}
           </div>
         ) : null}
-        
       </Card.Body>
     </Card>
   );
