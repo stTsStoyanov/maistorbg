@@ -27,6 +27,7 @@ import Footer from "./components/Footer/Footer";
 import OffersDetails from "./components/OffersDetails/OffersDetails";
 import SpecificJobAdvertisement from "./components/SpecificJobAdvertisement/SpecificJobAdvertisement";
 import LeaveReviewComponent from "./pages/UserLeaveReview/UserLeaveReview";
+import CraftsmenDetails from "./components/Craftsmen/CrafrsmenDetails";
 
 import TopCraftsmen from "./components/HomePage/TopCraftsmen";
 
@@ -65,6 +66,7 @@ function App() {
         <Route path="/home/offers" element={<Offers />}></Route>
         <Route path="/home/offers/:id" element={<OffersDetails />}></Route>
         <Route path="/home/craftsmen" element={<CraftsMen />}></Route>
+        <Route path="/home/craftsmen/:id" element={<CraftsmenDetails />}></Route>
         <Route path="/home/myprofile/user" element={isClient ?  <MyProfileUser /> : <div>PAGE NOT FOUND 404</div>}></Route>
         <Route path="/home/myprofile/user/history" element={<UserHistory />}></Route>
         <Route path="/home/myprofile/user/createoffer" element={<CreateJobAdvertisementForm />}></Route>
