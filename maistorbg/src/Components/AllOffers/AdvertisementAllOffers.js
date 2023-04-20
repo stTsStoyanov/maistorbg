@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
-import './Advertisement.scss';
 
-const Advertisement = () => {
+
+const AdvertisementAllOffers = () => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -23,7 +23,7 @@ const Advertisement = () => {
         <Carousel.Item>
           <img
             className="carousel-image"
-            src="https://scontent.fsof8-1.fna.fbcdn.net/v/t39.30808-6/330390474_539003138103316_3819318509734896522_n.png?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=GD0w1KJEWm4AX8hZEUP&_nc_ht=scontent.fsof8-1.fna&oh=00_AfDTBAYY7hNgHrXjAPudWBtfNJzA-lJcF-20U8jgrJ92gQ&oe=644284E1"
+            src="https://www.promooferti.com/wp-content/uploads/2021/12/bricolage-700x366.jpg"
             alt="First slide"
             style={{ height: "400px", width: "700px" }}
           />
@@ -31,7 +31,7 @@ const Advertisement = () => {
         <Carousel.Item>
           <img
             className="carousel-image"
-            src="https://uchilishtezajeni.com/wp-content/uploads/2022/05/4678253761265664.jpg"
+            src="https://www.unicreditbulbank.bg/media/filer_public/24/da/24dae29c-7ef5-45d5-9911-e91be67e6f58/ucf-news-ikea-feb2022-2.jpg"
             alt="Second slide"
             style={{ height: "400px", width: "700px" }}
           />
@@ -39,7 +39,7 @@ const Advertisement = () => {
         <Carousel.Item>
           <img
             className="carousel-image"
-            src="https://ikeabg.azureedge.net/files/ImageGallery/Offers/GardenOffer/IKEA_15__Outdoor_Furniture_Banner_637x377.jpg"
+            src="https://profitshare.bg/files_shared/advertiser-page/61bc4f58e6905.jpg"
             alt="Third slide"
             style={{ height: "400px", width: "700px" }}
           />
@@ -49,5 +49,5 @@ const Advertisement = () => {
   );
 };
 
-export default Advertisement;
+export default AdvertisementAllOffers;
 
