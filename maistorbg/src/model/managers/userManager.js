@@ -6,16 +6,24 @@ import Craftsman from "../classes/craftsman";
 class UserManager {
 
   login = ({ username, password }) => {
-    delayFunction(localStorageManager.getItem, ["users"])
-      .then(users => {
-        let existingUser = users.find(user => user.username === username && user.password === password);
-        if (existingUser) {
-          localStorageManager.setItem("loggedUser", existingUser);
-        } else {
-          alert("there is no such user!")
-        }
-      })
-  }
+    return new Promise((resolve, reject) => {
+      delayFunction(localStorageManager.getItem, ["users"])
+        .then(users => {
+          let existingUser = users.find(user => user.username === username && user.password === password);
+          if (existingUser) {
+            localStorageManager.setItem("loggedUser", existingUser);
+            resolve(existingUser);
+          } else {
+            reject(new Error("There is no such user or wrong password!"));
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  };
+
+
 
   register = async ({ name, email, phoneNumber, username, password, isClient }, id = null, skills = null) => {
     try {
@@ -42,7 +50,7 @@ class UserManager {
   }
 
   acceptOffer = () => {
-    
+
   }
 
   logout = () => {
@@ -65,7 +73,7 @@ class UserManager {
   //     return generateRandomId(x);
   // }
 
-  
+
 
 }
 

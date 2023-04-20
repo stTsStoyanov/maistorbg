@@ -20,8 +20,13 @@ const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     userManager.login(formData)
-
-    history('/home'); // Redirect to home page after logging in
+    .then(response =>{
+      console.log("here is the reponse: ",response)
+        history('/home'); // Redirect to home page after logging in
+    })
+    .catch(error =>{
+      alert(error)
+    })
 
     console.log(formData); // Replace with form submission logic
 
