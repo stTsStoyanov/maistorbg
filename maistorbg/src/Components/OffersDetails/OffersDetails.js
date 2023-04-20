@@ -3,13 +3,15 @@ import { useLocation } from 'react-router-dom';
 import { Card, Button, Form, Alert, Carousel } from 'react-bootstrap';
 import './OffersDetails.scss';
 import Offer from "../../model/classes/offer";
+import { useNavigate } from 'react-router-dom';
+
 
 function OffersDetails() {
   const { state } = useLocation();
   const { offer } = state;
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   const isClient = loggedUser ? loggedUser.isClient : false;
-
+  const navigate = useNavigate();
   const [showOfferForm, setShowOfferForm] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -19,12 +21,16 @@ function OffersDetails() {
     const offeredSum = event.target.elements.offeredSum.value;
     const offeredTerm = event.target.elements.offeredTerm.value;
     const newOffer = new Offer(loggedUser.id, jobAdvertisementId, offerText, offeredSum, offeredTerm);
-
+  
     console.log('New offer:', newOffer);
     let offers = JSON.parse(localStorage.getItem("allOffers")) || [];
     offers.push(newOffer);
     localStorage.setItem("allOffers", JSON.stringify(offers));
     setShowAlert(true);
+    
+    setTimeout(() => {
+      window.location.href = "/home/offers"; // replace with your desired URL
+    }, 800); // wait for 2 seconds before navigating to the other page
   };
 
   const offerForm = (
@@ -60,6 +66,7 @@ function OffersDetails() {
           </Carousel.Item>
         ))}
       </Carousel>
+      {showAlert ? <Alert variant="success">Предложението е изпратено!</Alert> : null}
       <Card.Body>
         <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
         <Card.Text>{offer.jobAdvertisementText}</Card.Text>

@@ -41,7 +41,7 @@
 }
 .offer-cardsCont {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 3fr));
   gap: 1rem;
   padding: 1rem;
 
@@ -110,4 +110,12 @@
     height: 50px;
   }
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
 
+.pagination button {
+  margin: 0 0.5rem;
+}
