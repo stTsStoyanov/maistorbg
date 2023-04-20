@@ -19,10 +19,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
     }
   }, []);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUpdatedUser(prevState => ({
@@ -70,12 +66,7 @@ function MyProfileCraftmenInformationComponent({ user }) {
       <Form>
         <Form.Group controlId="formBasicName">
           <Form.Label>Име</Form.Label>
-          <Form.Control type="text" name="name" value={updatedUser.name}   onChange={(e) => {
-    const regex = /^[а-яА-Я]*$/;
-    if (e.target.value === '' || regex.test(e.target.value)) {
-      handleInputChange(e);
-    }
-  }} readOnly={isSaved} />
+          <Form.Control type="text" name="name" value={updatedUser.name} onChange={handleInputChange} readOnly={isSaved} />
         </Form.Group>
 
         <Form.Group controlId="formBasicPhone">
@@ -92,7 +83,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
           {!updatedUser.name && !updatedUser.phoneNumber &&  <div>
       <Alert variant="danger">Моля въведете Вашите данни по-горе!</Alert></div>}
         </Form.Group>
-  
     
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Потребителско име</Form.Label>
@@ -103,19 +93,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
           <Form.Label>Имейл</Form.Label>
           <Form.Control type="email" value={updatedUser.email} readOnly />
         </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Парола</Form.Label>
-          <Form.Control
-            type={showPassword ? 'text' : 'password'}
-            value={updatedUser.password}
-            readOnly
-          />
-        </Form.Group>
-
-        <Button variant="secondary" onClick={togglePasswordVisibility}>
-          {showPassword ? 'Скрий' : 'Покажи'} парола
-        </Button>
         <Link to="/home/myprofile/craftsmen/myinformation/changepass">
           <Button variant="secondary">
             Смени парола

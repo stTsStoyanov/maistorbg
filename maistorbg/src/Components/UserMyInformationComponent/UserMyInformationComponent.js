@@ -19,10 +19,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
     }
   }, []);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUpdatedUser(prevState => ({
@@ -99,19 +95,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
           <Form.Label>Имейл</Form.Label>
           <Form.Control type="email" value={updatedUser.email} readOnly />
         </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Парола</Form.Label>
-          <Form.Control
-            type={showPassword ? 'text' : 'password'}
-            value={updatedUser.password}
-            readOnly
-          />
-        </Form.Group>
-
-        <Button variant="secondary" onClick={togglePasswordVisibility}>
-          {showPassword ? 'Скрий' : 'Покажи'} парола
-        </Button>
         <Link to="/home/myprofile/user/myinformation/changepass">
           <Button variant="secondary">
             Смени парола
