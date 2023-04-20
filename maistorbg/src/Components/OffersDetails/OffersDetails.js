@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Card, Button, Form} from 'react-bootstrap';
+import { Card, Button, Form, Alert } from 'react-bootstrap';
 import './OffersDetails.scss';
 import Offer from "../../model/classes/offer";
 
@@ -10,39 +10,41 @@ function OffersDetails() {
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   const isClient = loggedUser ? loggedUser.isClient : false;
 
-
-  const [showOfferForm, setShowOfferForm] = useState(false); // initialize state variable to false
+  const [showOfferForm, setShowOfferForm] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleOfferSubmit = (event, authorId, jobAdvertisementId) => {
-    event.preventDefault(); // prevent default form submission behavior
+    event.preventDefault();
     const offerText = event.target.elements.offerText.value;
     const offeredSum = event.target.elements.offeredSum.value;
     const offeredTerm = event.target.elements.offeredTerm.value;
     const newOffer = new Offer(authorId, jobAdvertisementId, offerText, offeredSum, offeredTerm);
 
     console.log('New offer:', newOffer);
-    let offers = JSON.parse(localStorage.getItem("allOffers")) || []; // initialize offers to empty array if it doesn't exist in local storage
+    let offers = JSON.parse(localStorage.getItem("allOffers")) || [];
     offers.push(newOffer);
     localStorage.setItem("allOffers", JSON.stringify(offers));
+    setShowAlert(true); 
   };
 
   const offerForm = (
     <Form className="formOffe" onSubmit={(event) => handleOfferSubmit(event, offer.authorId, offer.jobAdvertisementId)}>
       <Form.Group controlId="offerText">
         <Form.Label>Вашето предложение за офертата</Form.Label>
-        <Form.Control type="text" placeholder="Въведете текст" name="offerText" pattern="[a-zA-Z]+" required />
+        <Form.Control type="text" placeholder="Въведете текст" name="offerText" required />
       </Form.Group>
       <Form.Group controlId="offeredSum">
-        <Form.Label>Предложете сума</Form.Label>
+        <Form.Label>Предложете сума в лв</Form.Label>
         <Form.Control type="number" placeholder="Въведете сума" name="offeredSum" min="1" onInput={(e) => {
       e.target.value = Math.max(0, parseInt(e.target.value) || 0) 
     }} required />
       </Form.Group>
       <Form.Group controlId="offeredTerm">
         <Form.Label>Предложете време за изпълнение</Form.Label>
-        <Form.Control type="number" placeholder="Въведете дни" name="offeredTerm" min="1" onInput={(e) => {
+        <Form.Control type="number" placeholder="Въведете време в дни" name="offeredTerm" min="1" onInput={(e) => {
       e.target.value = Math.max(0, parseInt(e.target.value) || 0) 
     }} required />
+        {showAlert ? <Alert variant="success">Предложението е изпратено!</Alert> : null}
       </Form.Group>
       <Button variant="secondary" type="submit">Изпрати</Button>
     </Form>

@@ -16,6 +16,12 @@
     background-color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
     
 
     .category-image {
@@ -43,6 +49,11 @@
     height: 100%;
     background-color: white;
     padding: 1rem;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
    
     .card-img-top {
       height: 200px;

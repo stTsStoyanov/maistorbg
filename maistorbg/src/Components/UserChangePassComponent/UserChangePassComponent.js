@@ -1,11 +1,12 @@
-import React, { useState} from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import './UserChangePassComponent.scss';
+import React, { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
+import "./UserChangePassComponent.scss";
 
 function UserChangePassComponent() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +35,8 @@ function UserChangePassComponent() {
     setNewPassword('');
     setConfirmNewPassword('');
     setErrorMessage('');
-    alert('Паролата Ви беше успешно променена!');
+    setShowSuccessAlert(true);
+    setTimeout(() => setShowSuccessAlert(false), 3000); // hide success alert after 3 seconds
     window.location.href = '/home';
   };
 
@@ -61,6 +63,7 @@ function UserChangePassComponent() {
         </Form.Group>
 
         {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+        {showSuccessAlert && <Alert variant="success">Паролата Ви беше успешно променена!</Alert>}
 
         <Button variant="secondary" type="submit" disabled={!newPassword || !confirmNewPassword}>
           Запази промените
@@ -69,5 +72,6 @@ function UserChangePassComponent() {
     </div>
   );
 }
+
 
 export default UserChangePassComponent;

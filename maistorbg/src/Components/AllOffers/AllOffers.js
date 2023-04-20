@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, ListGroup, Form, Button, InputGroup } from "react-bootstrap";
+import { Card, ListGroup, Form, Button } from "react-bootstrap";
 import debounce from "lodash/debounce";
 import "./AllOffers.scss";
-import OfferForm from "../CreateAnOffer/CreateAnOffer";
-import { Link } from 'react-router-dom';
 
 
 function AllOffers() {
@@ -16,6 +14,9 @@ function AllOffers() {
   const craftsmenCategories = JSON.parse(localStorage.getItem("craftsmenCategories"));
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   const navigate = useNavigate();
+  
+  // get a reference to the offer cards container element
+  const offerCardsContainerRef = useRef(null);
 
   const handleSearchInputChange = debounce((event) => {
     const searchValue = event.target.value.toLowerCase();
@@ -24,6 +25,9 @@ function AllOffers() {
     );
     setOffers(filteredOffers);
     setIsFiltered(true);
+
+    // scroll to the offer cards container element when the search is performed
+    offerCardsContainerRef.current.scrollIntoView({ behavior: 'smooth' });
   }, 500);
 
   const handleCategoryClick = (category) => {
@@ -33,6 +37,9 @@ function AllOffers() {
     );
     setOffers(filteredOffers);
     setIsFiltered(true);
+
+    // scroll to the offer cards container element when a category is clicked
+    offerCardsContainerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleCleanFilters = () => {
@@ -44,7 +51,6 @@ function AllOffers() {
   const handleButtonClick = (offer) => {
     setSelectedOffer(offer);
   }
-  
   
   const offerCards = offers.map((offer, index) => (
     <div className="offerCardsCont" onClick={() => {
@@ -64,7 +70,6 @@ function AllOffers() {
     </div>
   ));
 
-
   const categoryItems = craftsmenCategories.map((category, index) => (
     <div key={index} className={`category mb-3 ${selectedCategory === category.category ? 'active' : ''}`} onClick={() => handleCategoryClick(category.category)}>
       <h4 className="text-center">{category.category}</h4>
@@ -82,7 +87,8 @@ function AllOffers() {
         {isFiltered && <Button variant="secondary" onClick={handleCleanFilters}>Изчисти филтрите</Button>}
       </div>
       <div className="categoriesS">{categoryItems}</div>
-      <div className="offer-cardsCont">{offerCards}</div>
+      <div className="offer-cardsCont" ref={offerCardsContainerRef}>{offerCards}</div>
+  
     </div>
   );
   

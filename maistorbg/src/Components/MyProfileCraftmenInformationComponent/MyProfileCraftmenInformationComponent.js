@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./MyProfileCraftmenInformationComponent.scss";
 
 function MyProfileCraftmenInformationComponent({ user }) {
   const [showPassword, setShowPassword] = useState(false);
   const [updatedUser, setUpdatedUser] = useState(user);
+  const [isSaved, setIsSaved] = useState(false);
+  const [dateOfBirth, setDateOfBirth] = useState("");
+
+  useEffect(() => {
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+    if (loggedUser && loggedUser.name && loggedUser.phoneNumber) {
+      setIsSaved(true);
+    }
+    if (loggedUser && loggedUser.dateOfBirth) {
+      setDateOfBirth(loggedUser.dateOfBirth);
+    }
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -19,9 +31,38 @@ function MyProfileCraftmenInformationComponent({ user }) {
     }));
   };
 
+  const handleDateChange = (event) => {
+    const { value } = event.target;
+    setDateOfBirth(value);
+    setUpdatedUser(prevState => ({
+      ...prevState,
+      dateOfBirth: value,
+    }));
+  };
+
   const handleSaveClick = () => {
     localStorage.setItem('loggedUser', JSON.stringify(updatedUser));
-  }
+    setIsSaved(true);
+  
+    const allUsers = JSON.parse(localStorage.getItem('users'));
+    const userId = updatedUser.id;
+  
+    const updatedUsers = allUsers.map(user => {
+      if (user.id === userId) {
+        return {
+          ...user,
+          name: updatedUser.name,
+          phoneNumber: updatedUser.phoneNumber,
+          dateOfBirth: updatedUser.dateOfBirth
+        };
+      } else {
+        return user;
+      }
+    });
+  
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+  };
+  
 
   return (
     <div className="user-infoo">
@@ -29,14 +70,30 @@ function MyProfileCraftmenInformationComponent({ user }) {
       <Form>
         <Form.Group controlId="formBasicName">
           <Form.Label>Име</Form.Label>
-          <Form.Control type="text" name="name" value={updatedUser.name} onChange={handleInputChange} />
+          <Form.Control type="text" name="name" value={updatedUser.name}   onChange={(e) => {
+    const regex = /^[а-яА-Я]*$/;
+    if (e.target.value === '' || regex.test(e.target.value)) {
+      handleInputChange(e);
+    }
+  }} readOnly={isSaved} />
         </Form.Group>
 
         <Form.Group controlId="formBasicPhone">
           <Form.Label>Телефонен номер</Form.Label>
-          <Form.Control type="tel" name="phoneNumber" value={updatedUser.phoneNumber} onChange={handleInputChange} />
+          <Form.Control type="tel" name="phoneNumber" value={updatedUser.phoneNumber} pattern="[0-9]*"  inputMode="numeric" onKeyPress={(event) => {
+        if (!/[0-9]/.test(event.key)) {
+         event.preventDefault();}
+  }}  onChange={handleInputChange} readOnly={isSaved} />
         </Form.Group>
 
+        <Form.Group controlId="formBasicDateOfBirth">
+          <Form.Label>Дата на раждане</Form.Label>
+          <Form.Control type="date" name="dateOfBirth" value={dateOfBirth} onChange={handleDateChange} readOnly={isSaved} />
+          {!updatedUser.name && !updatedUser.phoneNumber &&  <div>
+      <Alert variant="danger">Моля въведете Вашите данни по-горе!</Alert></div>}
+        </Form.Group>
+  
+    
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Потребителско име</Form.Label>
           <Form.Control type="text" value={updatedUser.username} readOnly />
@@ -64,9 +121,9 @@ function MyProfileCraftmenInformationComponent({ user }) {
             Смени парола
           </Button>
         </Link>
-        <Button variant="primary" onClick={handleSaveClick}>
+        {!isSaved && <Button variant="secondary" onClick={handleSaveClick}>
           Запази
-        </Button>
+        </Button>}
       </Form>
     </div>
   );
