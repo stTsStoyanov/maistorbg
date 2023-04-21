@@ -38,24 +38,31 @@ const Craftsman = () => {
     setFilteredUsers(filtered);
   }, [searchQuery, users]);
 
+
+
   const handleSearch = debounce((event) => {
     const searchValue = event.target.value.toLowerCase();
     setSearchQuery(searchValue);
   
-    const filteredOffers = filteredUsers.filter(
-      (user) =>
-        ['name', 'skills', 'email', 'phoneNumber'].some(
-          (property) => user[property].includes(searchValue)
-        )
-    );
+    const filteredData = filteredUsers.filter(item => {
+      const skills = item.skills || [];
+      return (
+        item?.name?.toLowerCase().includes(searchValue) ||
+        item?.email?.toLowerCase().includes(searchValue) ||
+        item?.phoneNumber?.includes(searchValue) ||
+        skills.some(skill => skill.toLowerCase().includes(searchValue))
+      );
+    });
   
-    setSelectedInput(filteredOffers);
+    setSelectedInput(filteredData);
   
     if (searchRef.current) {
       searchRef.current.scrollIntoView({ behavior: "smooth" });
-    //   window.scrollTo(0, searchRef.current.offsetTop);
     }
   }, 500);
+  
+  
+
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -74,9 +81,7 @@ const Craftsman = () => {
     }
   };
 
-  const handleCraftsmanClick = (id) => {
-    history(`/home/craftsmen/${id}`);
-  };
+
 
   const handleClearFilters = () => {
     setSelectedInput(null)
@@ -114,7 +119,6 @@ const Craftsman = () => {
                         <Row>
                             {filteredUsers.map((user, index) => (
                                 <Col key={index} md={4} className="mb-3">
-                                    {/* <Button variant="outline-light" onClick={handleCraftsmanClick(user.id)} style={{}}> */}
                                     <Link to={`/home/craftsmen/${user.id}`}>
                                         <Card>
                                             <Card.Img variant="top" src={user.photo} style={{ width: "250px", height: "300px" }} />
@@ -127,7 +131,6 @@ const Craftsman = () => {
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
-                                        {/* </Button> */}
                                     </Link>
                                 </Col>
                             ))}
@@ -139,7 +142,7 @@ const Craftsman = () => {
 
             
 
-            <Row className="mt-3">
+            <Row className="mt-3" ref={searchRef}>
                 {selectedInput && (
                     <Col>
                         <Button variant="secondary" onClick={handleClearFilters}>
