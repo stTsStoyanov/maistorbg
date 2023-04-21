@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import "./CrafrsmenDetails.scss"
+
 
 function CraftsmenDetails() {
     const { id } = useParams();
@@ -21,17 +23,18 @@ function CraftsmenDetails() {
     const selectedCraftsmenReviews = allReviews.filter((r) => r.craftsmanId === parseInt(id));
 
     return (
-        <div className='crafrsmenDetails'>
-        <Container >
+        <Container className='crafrsmenDetails'>
             <Row>
                 <Col md={12}>
                     <Card>
+                        
                         <Card.Body>
                             <Row>
                                 <Col md={4}>
                                     <Card.Img variant="top" src={selectedCraftsmen.photo} alt={selectedCraftsmen.name}  style={{ width: "300px", height: "350px" }}/>
                                 </Col>
                                 <Col md={8}>
+                                    <br></br>
                                     <Card.Title>{selectedCraftsmen.name}</Card.Title>
                                     <Card.Text>
                                         Имайл адрес: {selectedCraftsmen.email}
@@ -62,7 +65,6 @@ function CraftsmenDetails() {
                 </Col>
             </Row>
         </Container>
-        </div>
     );
 }
 

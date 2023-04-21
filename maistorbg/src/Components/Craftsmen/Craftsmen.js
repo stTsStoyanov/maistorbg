@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, InputGroup, FormControl, Button, Card, Image, Form } from "react-bootstrap";
 import debounce from "lodash/debounce";
 import { useNavigate, Link } from 'react-router-dom';
+import "./Craftsmen.scss"
+import Advertisement from "./Advertisement";
 
 const Craftsman = () => {
   const [craftsmenCategories, setCraftsmenCategories] = useState([]);
@@ -120,14 +122,14 @@ const Craftsman = () => {
                             {filteredUsers.map((user, index) => (
                                 <Col key={index} md={4} className="mb-3">
                                     <Link to={`/home/craftsmen/${user.id}`}>
-                                        <Card>
-                                            <Card.Img variant="top" src={user.photo} style={{ width: "250px", height: "300px" }} />
+                                        <Card className="card-img">
+                                            <Card.Img variant="top" src={user.photo}  style={{ width: "250px", height: "300px" }} />
                                             <Card.Body>
                                                 <Card.Title>{user.name}</Card.Title>
                                                 <Card.Text>
-                                                    Phone: {user.number}<br />
-                                                    Email: {user.email}<br />
-                                                    Rating: {user.averageRating}<br />
+                                                    Телефонен номер: {user.phoneNumber}<br />
+                                                    Имейл адрес: {user.email}<br />
+                                                    Рейтинг: {user.averageRating}<br />
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
@@ -153,20 +155,22 @@ const Craftsman = () => {
                             <Row>
                                 {filteredUsers.map((user, index) => (
                                     <Col key={index} md={4} className="mb-3">
-                                        <Card>
-                                            <Card.Img variant="top" src={user.photo} style={{ width: "250px", height: "300px" }} />
-                                            <Card.Body>
-                                                <Card.Title>{user.name}</Card.Title>
-                                                <Card.Text>
-                                                    Phone: {user.number}
-                                                    <br />
-                                                    Email: {user.email}
-                                                    <br />
-                                                    Rating: {user.averageRating}
-                                                    <br />
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
+                                        <Link to={`/home/craftsmen/${user.id}`}>
+                                            <Card className="card-img">
+                                                <Card.Img variant="top" src={user.photo} style={{ width: "250px", height: "300px" }} />
+                                                <Card.Body>
+                                                    <Card.Title>{user.name}</Card.Title>
+                                                    <Card.Text>
+                                                    Телефонен номер: {user.number}
+                                                        <br />
+                                                        Имейл адрес: {user.email}
+                                                        <br />
+                                                        Рейтинг: {user.averageRating}
+                                                        <br />
+                                                    </Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        </Link>
                                     </Col>
                                 ))}
                             </Row>
@@ -175,6 +179,9 @@ const Craftsman = () => {
                         )}
                     </Col>
                 )}
+            </Row>
+            <Row>
+                <Advertisement></Advertisement>
             </Row>
         </Container>
         
