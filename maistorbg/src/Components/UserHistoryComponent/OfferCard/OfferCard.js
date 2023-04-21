@@ -17,23 +17,23 @@ export default function OfferCard({ offer, jobAdvertisementId }) {
     <Card className="OfferCard">
       <Card.Body>
         <Row>
-          <Col><b>Offer Text:</b></Col>
+          <Col><b>Обява:</b></Col>
           <Col>{offerText}</Col>
         </Row>
         <Row>
-          <Col><b>Offered Sum:</b></Col>
-          <Col>{offeredSum}</Col>
+          <Col><b>Предложена сума:</b></Col>
+          <Col>{offeredSum} лв</Col>
         </Row>
         <Row>
-          <Col><b>Offered Term:</b></Col>
-          <Col>{offeredTerm}</Col>
+          <Col><b>Период :</b></Col>
+          <Col>{offeredTerm} дни</Col>
         </Row>
         <Row>
-          <Col><b>Creation Date:</b></Col>
+          <Col><b>Дата на създаване:</b></Col>
           <Col>{creationDate}</Col>
         </Row>
         <Row>
-          <Col><b>Date of Acceptance:</b></Col>
+          <Col><b>Дата на приемане:</b></Col>
           <Col>{dateOfAcceptance}</Col>
         </Row>
         <Row>

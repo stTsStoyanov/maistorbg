@@ -30,9 +30,9 @@ export default function CraftsmanCardPresentingComponent ({ craftsman }) {
       <img className="craftsman-card-photo" src={photo} alt={name} />
       {/* <div className="craftsman-card-details"> */}
         {/* <Card.Body> */}
-          <div className="craftsman-card-rating">Average rating: {averageRating.toFixed(2)}</div>
-          <div className="craftsman-card-name">{name}</div>
-          <div className="craftsman-card-skills">{skills.map(skill => <div>{skill}</div>)}</div>
+          <strong><div className="craftsman-card-rating">Среден рейтинг: {averageRating.toFixed(2)}</div></strong>
+          <strong><div className="craftsman-card-name">Извършена от: {name}</div></strong>
+          <strong> <div className="craftsman-card-skills">{skills.map(skill => <div>{skill}</div>)}</div></strong>
         {/* </Card.Body> */}
       {/* </div> */}
     </div>

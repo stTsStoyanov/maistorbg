@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import userManager from "../../model/managers/userManager"
+import "./Register.scss"
 
 const RegistrationForm = () => {
 
@@ -68,6 +69,7 @@ const RegistrationForm = () => {
   };
 
   return (
+    <div className="background-linear-gradient">
     <Container className="my-5">
       <Row className="justify-content-md-center">
         <Col md="6">
@@ -158,6 +160,7 @@ const RegistrationForm = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 

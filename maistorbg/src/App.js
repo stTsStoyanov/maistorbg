@@ -55,9 +55,9 @@ function App() {
 
   return (
     <>
-
       {user ? <NavBarLogged/> : <NavBar/>}
    
+<div className="container-maistorBG">
       <Routes>
         <Route index element={<Navigate to={"/home"} />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
@@ -83,7 +83,10 @@ function App() {
         <Route path="/home/myprofile/craftsmen/myinformation/changepass" element={<CraftmenChangePass />}></Route>
         <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
       </Routes>
+      </div>
+      <div className="footer-maistorBG">
       <Footer/>
+      </div>
     </>
   );
 }
