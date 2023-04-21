@@ -103,15 +103,17 @@ const Craftsman = () => {
                 </Col>
             </Row>
             <Row className="mt-3">
+
                 {craftsmenCategories.map(category => (
                     <Col key={category.id} md={4} className="mb-3">
                         <Button variant="light" onClick={() => handleCategoryClick(category)}>
                             <Image src={category.picture} thumbnail fluid style={{ width: "250px", height: "250px" }} />
                             <h4 className="mt-3">{category.category}</h4>
-                            <p>{category.information}</p>
+                            <p className="">{category.information} </p>
                         </Button>
                     </Col>
                 ))}
+
             </Row>
             <Row className="mt-3" ref={categoryRef}>
                 {selectedCategory && (
