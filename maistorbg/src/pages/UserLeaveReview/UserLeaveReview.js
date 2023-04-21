@@ -5,6 +5,7 @@ import localStorageManager from "../../model/managers/localStorageManager";
 import CurrentJobAdvertisement from "../../components/SpecificJobAdvertisement/CurrentJobAdvertisement/CurrentJobAdvertisement";
 import LeaveReviewOfferComponent from "../../components/LeaveReviewComponent/LeaveReviewComponent";
 import "./UserLeaveReview.scss";
+import { Spinner } from "react-bootstrap";
 
 export default function LeaveReviewComponent() {
   const { jobAdvertisementId } = useParams();
@@ -24,7 +25,7 @@ export default function LeaveReviewComponent() {
             const acceptedOffer = offers.find(
               (offer) =>
                 offer.jobAdvertisementId ===
-                  currentJobAdvertisement.jobAdvertisementId &&
+                currentJobAdvertisement.jobAdvertisementId &&
                 offer.isAccepted
             );
             setOffer(acceptedOffer);
@@ -42,12 +43,22 @@ export default function LeaveReviewComponent() {
 
   return (
     <div className="container-for-leaving-a-review">
-      <CurrentJobAdvertisement jobAdvertisement={jobAdvertisement} />
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <LeaveReviewOfferComponent offer={offer} />
-      )}
+      <div className="background-color">
+        <div className="row">
+          <div className="col-4">
+            <CurrentJobAdvertisement jobAdvertisement={jobAdvertisement} />
+          </div>
+          <div className="col-8 d-flex justify-content-between gap-2">
+            {isLoading ? (
+              <div className="spinner-container">
+              <Spinner className="spinner" animation="border" role="status"/>
+              </div>
+            ) : (
+              <LeaveReviewOfferComponent offer={offer} jobAdvertisement={jobAdvertisement} />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
   const [acceptedOfferId, setAcceptedOfferId] = useState(null);
   // const [updatedAdvertisement, setUpdatedAdvertisement] = useState(null);
   // const [updatedAdvertisemntsList, setUpdatedAdvertisementsList] = useState(null)
+  const [users, setUsers] = useState(null)
 
   useEffect(() => {
     delayFunction(localStorageManager.getItem, ["allOffers"]).then((allOffers) => {
@@ -85,7 +86,7 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
       {offers.map((offer) => (
         <div className="outer-card" key={offer.offerId}>
           <Card className="inner-card">
-            {offer.offerAuthor && offer.offerAuthor.photo && (
+            {offer.authorId && offer.authorId.photo && (
               <Card.Img variant="top" src={offer.offerAuthor.photo} />
             )}
             <Card.Body>
@@ -107,17 +108,17 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
               {offer.isAccepted !== null && (
                 <div className="button-container">
                   {!offer.isAccepted ? (
-                    <div>Отказана оферта</div>
+                    <div className="button-left-align"><strong>Отказана оферта</strong></div>
                   ) : (
-                    <Link to={`/home/myprofile/user/currentoffers/review/${jobAdvertisement.jobAdvertisementId}`}>
-                      <Button>Остави ревю</Button>
+                    <Link className="button-left-align" to={`/home/myprofile/user/currentoffers/review/${jobAdvertisement.jobAdvertisementId}`}>
+                      <Button>{offer.isAccepted ? "Виж детайли" : "Остави ревю"}</Button>
                     </Link>
                   )}
                 </div>
               )}
               {offer.isAccepted === null && (
                 <div className="button-container">
-                  <Button onClick={() => acceptOffer(offer.offerId)}>Приеми офертата</Button>
+                  <Button className="button-left-align" onClick={() => acceptOffer(offer.offerId)}>Приеми офертата</Button>
                 </div>
               )}
             </Card.Body>

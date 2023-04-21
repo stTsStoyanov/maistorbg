@@ -41,7 +41,7 @@ const UserMyProfileOffersComponents = () => {
   useEffect(() => {
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     const allOffers = JSON.parse(localStorage.getItem('allJobAdvertisements'));
-    const userOffers = allOffers.filter((offer) => offer.authorId === loggedUser.id);
+    const userOffers = allOffers.filter((offer) => offer.authorId === loggedUser.id).reverse();
     setOffers(userOffers);
   }, []);
   return (

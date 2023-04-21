@@ -1,0 +1,44 @@
+.CurrentReviewComponentHistory {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    width: 320px;
+    margin: 0 60 0 30;
+    border-radius: 10px;
+    border: 1px solid gray;
+    
+    
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+      overflow: scroll;
+      background-image: linear-gradient(to right top, #ade8f4, #ade8f4, #ade8f4, #ade8f4, #ade8f4, #abe7f4, #a8e7f3, #a6e6f3, #a1e5f2, #9be3f1, #96e2f0, #90e0ef);
+      
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      
+      .card-subtitle {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      
+      .card-text {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    .card::-webkit-scrollbar{
+      display: none;
+    }
+  }
+  
