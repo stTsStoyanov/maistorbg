@@ -3,6 +3,7 @@ import { Container, Row, Col, InputGroup, FormControl, Button, Card, Image, Form
 import debounce from "lodash/debounce";
 import { useNavigate, Link } from 'react-router-dom';
 import "./Craftsmen.scss"
+import Advertisement from "./Advertisement";
 
 const Craftsman = () => {
   const [craftsmenCategories, setCraftsmenCategories] = useState([]);
@@ -178,6 +179,9 @@ const Craftsman = () => {
                         )}
                     </Col>
                 )}
+            </Row>
+            <Row>
+                <Advertisement></Advertisement>
             </Row>
         </Container>
         
