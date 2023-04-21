@@ -85,46 +85,49 @@ export default function UserHistoryComponent() {
   }, []);
 
   return (
-    <div className="outer-container-history">
-      {isLoading ? (
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      ) : (
-        jobAdvertisements.map((jobAdvertisement) => {
-          const offer = offers.find((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && offer.isAccepted);
-          const craftsman = offer ? users.find(user => user.id === offer.authorId) : null;
-          console.log(craftsman)
-          const currentReview = offer ? allReviews.find(review => review.jobAdvertisementId === offer.jobAdvertisementId) : null
-          console.log(currentReview)
-          return (
-            <div className="card-container-history-user" key={jobAdvertisement.id}>
-              <Card className="outer-card">
-                <Card.Body className="history-card-body">
-                  <div className="advertisement-card-history">
-                    <CardAdvertisementComponent jobAdvertisement={jobAdvertisement}/>
-                  </div>
-                  <div>
-                    <div>
-                      {offer ? (
-                        <OfferCard offer={offer} jobAdvertisementId={jobAdvertisement.jobAdvertisementId} />
-                      ) : (
-                        null
-                      )}
+    <div>
+      <div>История</div>
+      <div className="outer-container-history">
+        {isLoading ? (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          jobAdvertisements.map((jobAdvertisement) => {
+            const offer = offers.find((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && offer.isAccepted);
+            const craftsman = offer ? users.find(user => user.id === offer.authorId) : null;
+            console.log(craftsman)
+            const currentReview = offer ? allReviews.find(review => review.jobAdvertisementId === offer.jobAdvertisementId) : null
+            console.log(currentReview)
+            return (
+              <div className="card-container-history-user" key={jobAdvertisement.id}>
+                <Card className="outer-card">
+                  <Card.Body className="history-card-body">
+                    <div className="advertisement-card-history">
+                      <CardAdvertisementComponent jobAdvertisement={jobAdvertisement} />
                     </div>
                     <div>
-                      {craftsman && <CraftsmanCardPresentingComponent craftsman={craftsman} />}
+                      <div>
+                        {offer ? (
+                          <OfferCard offer={offer} jobAdvertisementId={jobAdvertisement.jobAdvertisementId} />
+                        ) : (
+                          null
+                        )}
+                      </div>
+                      <div>
+                        {craftsman && <CraftsmanCardPresentingComponent craftsman={craftsman} />}
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    {currentReview && <CurrentReviewComponentHistory currentReview={currentReview} craftsmanName={craftsman.name} />}
-                  </div>
-                </Card.Body>
-              </Card>
-            </div>
-          );
-        })
-      )}
+                    <div>
+                      {currentReview && <CurrentReviewComponentHistory currentReview={currentReview} craftsmanName={craftsman.name} />}
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
   );
   // return (

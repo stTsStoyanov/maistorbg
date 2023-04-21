@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.container-maistorBG {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(to right top, #dee2e6, #d5d9de, #cbd1d6, #c2c8cf, #b9c0c7, #acb3bb, #9fa7ae, #939aa2, #80878f, #6d747b, #5b6269, #495057);
+}
+
+.footer-maistorBG {
+  margin-top: auto;
+}
