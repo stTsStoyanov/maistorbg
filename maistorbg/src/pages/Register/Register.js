@@ -24,12 +24,12 @@ const RegistrationForm = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prevData) => ({ ...prevData, [name]: value.trim() }));
   };
 
   const handlePasswordConfirm = (event) => {
     const { name, value } = event.target;
-    setFormDataConfirm((prevData) => ({ ...prevData, [name]: value }));
+    setFormDataConfirm((prevData) => ({ ...prevData, [name]: value.trim() }));
   };
 
   const handleisClientChange = (event) => {
