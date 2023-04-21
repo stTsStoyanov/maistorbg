@@ -1,3 +1,37 @@
 .container-for-leaving-a-review {
-    display: flex;
+  overflow-x: hidden;
+    .row {
+     
+    // .col-4 {
+      //   // First column
+      // }
+      
+      .col-8 {
+
+      // Second and third columns merged
+      display: flex;
+      justify-content: space-between;
+      gap: 5vw;
+    }
+
+    >div:nth-child(2) {
+      margin: 100px 0;
+    }
+  }
+}
+
+.background-color {
+  background-image: linear-gradient(to right top, #fec5bb, #fecbc0, #ffd1c5, #ffd7ca, #ffddd0, #fbe0d0, #f7e3d2, #f3e6d5, #eae6d5, #e2e5d7, #dce4da, #d8e2dc);
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* set the height of the container */
+}
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
 }

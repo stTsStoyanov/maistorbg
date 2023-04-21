@@ -1,0 +1,30 @@
+.card-container-history {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    // position: sticky;
+    // top: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    background-image: linear-gradient(to right top, #ade8f4, #ade8f4, #ade8f4, #ade8f4, #ade8f4, #abe7f4, #a8e7f3, #a6e6f3, #a1e5f2, #9be3f1, #96e2f0, #90e0ef);
+}
+
+.carousel-image-history {
+    height: 300px; /* adjust this to your desired height */
+    width: auto;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+.grid-container-history {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 8px;
+    margin-top: 16px;
+}
+
+.grid-item-history {
+    text-align: left;
+    font-size: 18px;
+}
