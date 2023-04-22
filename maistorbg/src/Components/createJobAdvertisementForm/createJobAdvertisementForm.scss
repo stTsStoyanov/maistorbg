@@ -1,0 +1,28 @@
+.containerJob{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+.text-center{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 45px;
+}
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .form-content {
+    width: 50%;
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}

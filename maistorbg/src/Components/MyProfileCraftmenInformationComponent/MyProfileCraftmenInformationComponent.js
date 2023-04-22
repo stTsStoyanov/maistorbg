@@ -71,10 +71,27 @@ function MyProfileCraftmenInformationComponent({ user }) {
 
         <Form.Group controlId="formBasicPhone">
           <Form.Label>Телефонен номер</Form.Label>
-          <Form.Control type="tel" name="phoneNumber" value={updatedUser.phoneNumber} pattern="[0-9]*"  inputMode="numeric" onKeyPress={(event) => {
-        if (!/[0-9]/.test(event.key)) {
-         event.preventDefault();}
-  }}  onChange={handleInputChange} readOnly={isSaved} />
+          <Form.Control 
+  type="tel" 
+  name="phoneNumber" 
+  value={updatedUser.phoneNumber} 
+  pattern="[0-9]*"  
+  inputMode="numeric" 
+  onKeyPress={(event) => {
+    if (!/[0-9]/.test(event.key)) {
+      event.preventDefault();
+    }
+  }} 
+  onPaste={(event) => {
+    const clipboardData = event.clipboardData || window.clipboardData;
+    const pastedData = clipboardData.getData('text');
+    if (!/^\d*$/.test(pastedData)) {
+      event.preventDefault();
+    }
+  }}
+  onChange={handleInputChange} 
+  readOnly={isSaved} 
+/>
         </Form.Group>
 
         <Form.Group controlId="formBasicDateOfBirth">
@@ -94,11 +111,11 @@ function MyProfileCraftmenInformationComponent({ user }) {
           <Form.Control type="email" value={updatedUser.email} readOnly />
         </Form.Group>
         <Link to="/home/myprofile/craftsmen/myinformation/changepass">
-          <Button variant="secondary">
+          <Button  className='but' variant="secondary">
             Смени парола
           </Button>
         </Link>
-        {!isSaved && <Button variant="secondary" onClick={handleSaveClick}>
+        {!isSaved && <Button className='but' variant="secondary" onClick={handleSaveClick}>
           Запази
         </Button>}
       </Form>

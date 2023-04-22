@@ -36,17 +36,17 @@ function OffersDetails() {
   const offerForm = (
     <Form className="formOffe" onSubmit={(event) => handleOfferSubmit(event, offer.authorId, offer.jobAdvertisementId)}>
       <Form.Group controlId="offerText">
-        <Form.Label>Вашето предложение за офертата</Form.Label>
-        <Form.Control type="text" placeholder="Въведете текст" name="offerText" required />
-      </Form.Group>
+  <Form.Label>Вашето предложение за офертата</Form.Label>
+  <Form.Control as="textarea" rows={3} placeholder="Въведете текст" name="offerText" required />
+</Form.Group>
       <Form.Group controlId="offeredSum">
-        <Form.Label>Предложете сума в лв</Form.Label>
+        <Form.Label>Въведета цена в лв</Form.Label>
         <Form.Control type="number" placeholder="Въведете сума" name="offeredSum" min="1" onInput={(e) => {
           e.target.value = Math.max(0, parseInt(e.target.value) || 0)
         }} required />
       </Form.Group>
       <Form.Group controlId="offeredTerm">
-        <Form.Label>Предложете време за изпълнение</Form.Label>
+        <Form.Label>Предложете време за изпълнение в дни</Form.Label>
         <Form.Control type="number" placeholder="Въведете време в дни" name="offeredTerm" min="1" onInput={(e) => {
           e.target.value = Math.max(0, parseInt(e.target.value) || 0)
         }} required />
@@ -66,7 +66,6 @@ function OffersDetails() {
           </Carousel.Item>
         ))}
       </Carousel>
-      {showAlert ? <Alert variant="success">Предложението е изпратено!</Alert> : null}
       <Card.Body>
         <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
         <Card.Text>{offer.jobAdvertisementText}</Card.Text>

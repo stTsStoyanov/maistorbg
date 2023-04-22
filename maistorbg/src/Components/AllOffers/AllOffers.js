@@ -39,10 +39,15 @@ function AllOffers() {
     offerCardsContainerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const searchInputRef = useRef(null);
+
   const handleCleanFilters = () => {
     setOffers(allJobAdvertisements);
     setSelectedCategory(null);
     setIsFiltered(false);
+    if (searchInputRef.current) {
+      searchInputRef.current.value = "";
+    }
   };
   
   const handleButtonClick = (offer) => {
@@ -81,10 +86,6 @@ function AllOffers() {
       </Button>
     );
   }
-  
-
-
-  
   const categoryItems = craftsmenCategories.map((category, index) => (
     <div key={index} className={`category mb-3 ${selectedCategory === category.category ? 'active' : ''}`} onClick={() => handleCategoryClick(category.category)}>
       <h4 className="text-center">{category.category}</h4>
@@ -96,7 +97,7 @@ function AllOffers() {
       <h1 className="header">Всички текущи обяви</h1>
       <div className="search-containerInput">
         <Form.Group controlId="formSearch">
-          <Form.Control type="text" placeholder="Търсене по име" onChange={handleSearchInputChange} size="lg" />
+        <Form.Control type="text" placeholder="Търсене по име" onChange={handleSearchInputChange} size="lg" ref={searchInputRef} />
         </Form.Group>
         {isFiltered && <Button variant="secondary" onClick={handleCleanFilters}>Изчисти филтрите</Button>}
       </div>

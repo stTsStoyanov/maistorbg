@@ -19,9 +19,13 @@ function NavBarLogged() {
     useEffect(() => {
         const intervalId = setInterval(() => {
             const updatedUser = JSON.parse(localStorage.getItem("loggedUser"));
-            setProfilePhoto(updatedUser.photo);
+            if (updatedUser) {
+                setProfilePhoto(updatedUser.photo);
+            } else {
+                setProfilePhoto(null);
+            }
         }, 400);
-
+    
         return () => clearInterval(intervalId);
     }, [user]);
 
