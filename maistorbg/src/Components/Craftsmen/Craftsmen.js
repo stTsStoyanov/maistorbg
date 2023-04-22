@@ -107,7 +107,7 @@ const Craftsman = () => {
                 {craftsmenCategories.map(category => (
                     <Col key={category.id} md={4} className="mb-3">
                         <Button variant="light" onClick={() => handleCategoryClick(category)}>
-                            <Image src={category.picture} thumbnail fluid style={{ width: "250px", height: "250px" }} />
+                            <Image src={category.picture} thumbnail fluid style={{ width: "250px", height: "250px", borderRadius:"10%" }} />
                             <h4 className="mt-3">{category.category}</h4>
                             <p className="">{category.information} </p>
                         </Button>
