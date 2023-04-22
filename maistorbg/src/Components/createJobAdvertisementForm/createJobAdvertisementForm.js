@@ -134,6 +134,7 @@ const CreateJobAdvertisementForm = () => {
   const [alertVariant, setAlertVariant] = useState("");
   const [alertText, setAlertText] = useState("");
   const navigate = useNavigate();
+  const [disableSubmitButton, setDisableSubmitButton] = useState(false);
 
   let categories = JSON.parse(localStorage.getItem("craftsmenCategories")).map(
     (item) => item.category
@@ -187,6 +188,22 @@ const CreateJobAdvertisementForm = () => {
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files); // Get an array of files
+  
+    // Check if all files are images
+    const allFilesAreImages = files.every((file) =>
+      file.type.startsWith("image/")
+    );
+  
+    if (!allFilesAreImages) {
+      setShowAlert(true);
+      setAlertVariant("danger");
+      setAlertText("Моля, качете само снимки.");
+      setDisableSubmitButton(true);
+      return;
+    } else {
+      setDisableSubmitButton(false);
+    }
+  
     const imagePromises = files.map((file) => {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -198,6 +215,9 @@ const CreateJobAdvertisementForm = () => {
     Promise.all(imagePromises).then((base64Images) => {
       setJobAdvertisementImages((prevImages) => prevImages.concat(base64Images));
     });
+  };
+  const removeImage = (index) => {
+    setJobAdvertisementImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
   return (
@@ -227,16 +247,35 @@ const CreateJobAdvertisementForm = () => {
             onChange={(e) => setJobAdvertisementText(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formJobImages">
-          <Form.Label>Снимки на офертата</Form.Label>
-          <Form.Control
-            id="custom-file"
-            label="Choose Images"
-            type="file"
-            multiple
-            onChange={handleImageUpload}
-                    />
-                </Form.Group>
+                <Form.Group controlId="formJobImages">
+  <Form.Label>Снимки на офертата</Form.Label>
+  <Form.Control
+    id="custom-file"
+    label="Choose Images"
+    type="file"
+    multiple
+    onChange={handleImageUpload}
+  />
+  <div className="uploaded-images mt-3">
+    {jobAdvertisementImages.map((image, index) => (
+      <div key={index} className="uploaded-image-container mr-2 mb-2">
+        <img
+          src={image}
+          alt="uploaded"
+          className="uploaded-image"
+          style={{ width: "100px", height: "100px", objectFit: "cover" }}
+        />
+        <button
+          type="button"
+          className="btn btn-danger btn-sm remove-image-btn"
+          onClick={() => removeImage(index)}
+        >
+          X
+        </button>
+      </div>
+    ))}
+  </div>
+</Form.Group>
                 <Form.Label>Категории<span className="text-danger">*</span></Form.Label>
               <Form.Control
                as="select"
@@ -260,9 +299,9 @@ const CreateJobAdvertisementForm = () => {
     ))}
               </Form.Control>
                 {showAlert && <Alert variant={alertVariant}>{alertText}</Alert>}
-                <Button variant="primary" type="submit" >
-                    Създайте офертата
-                </Button>
+                <Button variant="primary" type="submit" disabled={disableSubmitButton}>
+  Създайте офертата
+</Button>
             </Form>
         </div>
     );
