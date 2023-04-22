@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import "./UserChangePassComponent.scss";
+import userManager from "../../model/managers/userManager";
+
 
 function UserChangePassComponent() {
   const [newPassword, setNewPassword] = useState('');
@@ -10,72 +12,93 @@ function UserChangePassComponent() {
   const [oldPassword, setOldPassword] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users'));
-    const user = JSON.parse(localStorage.getItem('loggedUser'));
+const handlerLogoutCraftsmen = () => {
+  userManager.logout();
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const users = JSON.parse(localStorage.getItem('users'));
+  const user = JSON.parse(localStorage.getItem('loggedUser'));
   
-    if (user.password !== oldPassword) {
-      setErrorMessage('Грешна стара парола! Моля опитайте отново!');
-      return;
-    }
-    if (newPassword !== confirmNewPassword) {
-      setErrorMessage('Паролите не съвпадат! Моля опитайте отново!');
-      return;
-    }
+  if (user.password !== oldPassword) {
+    setErrorMessage('Грешна стара парола! Моля опитайте отново!');
+    return;
+  }
+  if (newPassword === oldPassword) { // added check for new password being the same as old one
+    setErrorMessage('Новата парола не може да бъде същата като старата! Моля опитайте отново!');
+    return;
+  }
+  if (newPassword !== confirmNewPassword) {
+    setErrorMessage('Паролите не съвпадат! Моля опитайте отново!');
+    return;
+  }
 
-    const updatedUsers = users.map((u) => {
-      if (u.id === user.id) {
-        return {
-          ...u,
-          password: newPassword,
-        };
-      } else {
-        return u;
-      }
-    });
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-    localStorage.setItem('loggedUser', JSON.stringify({
-      ...user,
-      password: newPassword,
-    }));
-    setNewPassword('');
-    setConfirmNewPassword('');
-    setErrorMessage('');
-    setShowSuccessAlert(true);
-    setTimeout(() => {
-      setShowSuccessAlert(false);
-      window.location.href = '/home';
-    }, 900); 
-  };
-
-  const handleNewPasswordChange = (event) => {
-    const password = event.target.value;
-    setNewPassword(password);
-    setButtonDisabled(password !== confirmNewPassword || oldPassword === '');
-    const newPasswordInput = event.target;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    if (!passwordRegex.test(password)) {
-      newPasswordInput.classList.add("is-invalid");
-      setErrorMessage("Паролата трябва да има поне 8 знака, да съдържа главна и малка буква и цифра!");
+  const updatedUsers = users.map((u) => {
+    if (u.id === user.id) {
+      return {
+        ...u,
+        password: newPassword,
+      };
     } else {
-      newPasswordInput.classList.remove("is-invalid");
-      setErrorMessage("");
+      return u;
     }
-  };
+  });
+  localStorage.setItem('users', JSON.stringify(updatedUsers));
+  localStorage.setItem('loggedUser', JSON.stringify({
+    ...user,
+    password: newPassword,
+  }));
+  setNewPassword('');
+  setConfirmNewPassword('');
+  setErrorMessage('');
+  setShowSuccessAlert(true);
+  setTimeout(() => {
+    setShowSuccessAlert(false);
+    userManager.logout();
+    window.location.href = '/home';
+  }, 1000); 
+};
 
-  const handleConfirmNewPasswordChange = (event) => {
-    setConfirmNewPassword(event.target.value);
-    setButtonDisabled(event.target.value !== newPassword || oldPassword === '');
-    const confirmNewPasswordInput = event.target;
-    if (!confirmNewPasswordInput.checkValidity()) {
-      confirmNewPasswordInput.classList.add("is-invalid");
-      setErrorMessage("Паролата трябва да има 8 знака,главна и малка буква и цифра!");
-    } else {
-      confirmNewPasswordInput.classList.remove("is-invalid");
-      setErrorMessage("");
-    }
-  };
+const handleNewPasswordChange = (event) => {
+  const password = event.target.value;
+  setNewPassword(password);
+  const newPasswordInput = event.target;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  const isValid = newPasswordInput.checkValidity();
+
+  if (!passwordRegex.test(password)) {
+    newPasswordInput.classList.add("is-invalid");
+    setErrorMessage("Паролата трябва да има поне 8 знака, да съдържа главна и малка буква и цифра!");
+  } else {
+    newPasswordInput.classList.remove("is-invalid");
+    setErrorMessage("");
+  }
+
+  setButtonDisabled(!passwordRegex.test(password) || password !== confirmNewPassword || oldPassword === '');
+};
+
+
+const handleConfirmNewPasswordChange = (event) => {
+  const confirmPassword = event.target.value;
+  setConfirmNewPassword(confirmPassword);
+  const confirmNewPasswordInput = event.target;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+  if (confirmPassword !== newPassword) {
+    confirmNewPasswordInput.classList.add("is-invalid");
+    setErrorMessage("Паролите не съвпадат! Моля опитайте отново!");
+  } else if (!passwordRegex.test(newPassword)) {
+    confirmNewPasswordInput.classList.add("is-invalid");
+    setErrorMessage("Паролата трябва да има поне 8 знака, да съдържа главна и малка буква и цифра!");
+  } else {
+    confirmNewPasswordInput.classList.remove("is-invalid");
+    setErrorMessage("");
+  }
+
+  setButtonDisabled(!passwordRegex.test(newPassword) || confirmPassword !== newPassword || oldPassword === '');
+};
+  
 
   const handleOldPasswordChange = (event) => {
     setOldPassword(event.target.value);
@@ -109,13 +132,13 @@ function UserChangePassComponent() {
           <Form.Control
             type="password"
             value={confirmNewPassword}
-            onChange={(event) => setConfirmNewPassword(event.target.value)}
+            onChange={handleConfirmNewPasswordChange}
 
           />
         </Form.Group>
         {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
         {showSuccessAlert && <Alert variant="success">Паролата Ви беше успешно променена!</Alert>}
-        <Button variant="secondary" type="submit" disabled={!newPassword || !confirmNewPassword || !oldPassword}>
+        <Button variant="secondary" type="submit" disabled={buttonDisabled}>
           Запази промените
         </Button>
       </Form>

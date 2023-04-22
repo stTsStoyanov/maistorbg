@@ -123,6 +123,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import userManager from "../../model/managers/userManager";
 import jobAdvertisement from "../../model/classes/jobAdvertisement";
 import { useNavigate } from "react-router-dom";
+import "./createJobAdvertisementForm.scss";
 
 const CreateJobAdvertisementForm = () => {
   const [jobAdvertisementTitle, setJobAdvertisementTitle] = useState("");
@@ -200,8 +201,9 @@ const CreateJobAdvertisementForm = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
-      <Form onSubmit={handleSubmit} style={{ width: "50%" }}>
+    <div className="d-flex justify-content-center, containerJob">
+      <Form onSubmit={handleSubmit} style={{ width: "30%" }}>
+      <h1 className="text-center">Създайте оферта</h1>
         <Form.Group controlId="formJobTitle">
           <Form.Label>
             Заглавие на офертата<span className="text-danger">*</span>
@@ -235,23 +237,28 @@ const CreateJobAdvertisementForm = () => {
             onChange={handleImageUpload}
                     />
                 </Form.Group>
-                <Form.Group controlId="formCategory">
-                    <Form.Label>Категории<span className="text-danger">*</span></Form.Label>
-                    <Form.Control
-                        as="select"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    >
-                        <option value="" disabled>
-                            Изберете категория
-                        </option>
-                        {allCategories.map((category, index) => (
-                            <option key={index} value={category}>
-                                {category}
-                            </option>
-                        ))}
-                    </Form.Control>
-                </Form.Group>
+                <Form.Label>Категории<span className="text-danger">*</span></Form.Label>
+              <Form.Control
+               as="select"
+               value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="mr-3"
+              style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath d='M0 2.531l3 3 3-3h-6zm0-2.531h6v2h-6v-2z'/%3E%3C/svg%3E")`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'right center',
+              backgroundSize: '16px 16px',
+            }}
+            > 
+    <option value="" disabled>
+        Изберете категория
+    </option>
+    {allCategories.map((category, index) => (
+        <option key={index} value={category}>
+            {category}
+        </option>
+    ))}
+              </Form.Control>
                 {showAlert && <Alert variant={alertVariant}>{alertText}</Alert>}
                 <Button variant="primary" type="submit" >
                     Създайте офертата

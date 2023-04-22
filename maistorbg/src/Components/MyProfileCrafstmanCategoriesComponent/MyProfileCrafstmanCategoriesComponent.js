@@ -71,7 +71,7 @@ function CheckboxList() {
                 Благодарим Ви, Вашата информация беше запазена успешно!
               </Alert>
             )}
-              <Button variant="secondary" className='button' onClick={handleSaveClick}>Запазване на промените</Button>
+              <Button variant="secondary" className='button, bnt' onClick={handleSaveClick}>Запазване на промените</Button>
             </Form>
           </Col>
         </Row>
