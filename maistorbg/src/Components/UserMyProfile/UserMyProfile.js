@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import userManager from "../../model/managers/userManager";
+import localStorageManager from "../../model/managers/localStorageManager";
 import "./UserMyProfile.scss";
 
 const handlerLogoutCraftsmen = () => {
@@ -29,26 +30,29 @@ const UploadImage = ({ setImageUrl }) => {
 
     reader.onload = () => {
       setImageUrl(reader.result);
-      const users = JSON.parse(localStorage.getItem("users"));
-      const user = JSON.parse(localStorage.getItem("loggedUser"));
-      const updatedUsers = users.map((u) => {
-        if (u.id === user.id) {
-          return {
-            ...u,
+      localStorageManager
+        .getItem("users")
+        .then((users) => {
+          const user = JSON.parse(localStorage.getItem("loggedUser"));
+          const updatedUsers = users.map((u) => {
+            if (u.id === user.id) {
+              return {
+                ...u,
+                photo: reader.result,
+              };
+            } else {
+              return u;
+            }
+          });
+          localStorageManager.setItem("users", updatedUsers);
+          localStorageManager.setItem("loggedUser", {
+            ...user,
             photo: reader.result,
-          };
-        } else {
-          return u;
-        }
-      });
-      localStorage.setItem("users", JSON.stringify(updatedUsers));
-      localStorage.setItem(
-        "loggedUser",
-        JSON.stringify({
-          ...user,
-          photo: reader.result,
+          });
         })
-      );
+        .catch((error) => {
+          console.error(error);
+        });
     };
 
     if (image) {
@@ -130,11 +134,11 @@ const UserMyProfile = () => {
             </Link>
             <Link
               to="/home/myprofile/user/createoffer"
-              className="btn btn-secondary btn-lg mx-3">
+              className="btn btn-secondary btn-lg mx-3"
+            >
               <span className="btn-text">Създаване на обява</span>
-            <span className="btn-icon"></span>
+              <span className="btn-icon"></span>
             </Link>
-
           </div>
           <div className="d-flex justify-content-center mt-4">
             <Link
@@ -155,4 +159,3 @@ const UserMyProfile = () => {
 };
 
 export default UserMyProfile;
-
