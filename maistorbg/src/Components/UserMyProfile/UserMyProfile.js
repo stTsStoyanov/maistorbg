@@ -9,9 +9,23 @@ const handlerLogoutCraftsmen = () => {
 };
 
 const UploadImage = ({ setImageUrl }) => {
+  const [error, setError] = useState("");
+
   const handleImageUpload = (event) => {
     const image = event.target.files[0];
     const reader = new FileReader();
+
+    const types = ["image/jpeg", "image/png", "image/gif"];
+    if (!types.includes(image.type)) {
+      setError("Невалиден формат на изображението.");
+      return;
+    }
+
+    const sizeLimit = 1024 * 1024; // 1MB
+    if (image.size > sizeLimit) {
+      setError("Изображението е твърде голямо.");
+      return;
+    }
 
     reader.onload = () => {
       setImageUrl(reader.result);
@@ -28,25 +42,32 @@ const UploadImage = ({ setImageUrl }) => {
         }
       });
       localStorage.setItem("users", JSON.stringify(updatedUsers));
-      localStorage.setItem("loggedUser", JSON.stringify({
-        ...user,
-        photo: reader.result,
-      }));
+      localStorage.setItem(
+        "loggedUser",
+        JSON.stringify({
+          ...user,
+          photo: reader.result,
+        })
+      );
     };
 
     if (image) {
       reader.readAsDataURL(image);
+      setError("");
     }
   };
 
   return (
-    <input
-      type="file"
-      accept="image/*"
-      onChange={handleImageUpload}
-      style={{ display: "none" }}
-      id="imageUpload"
-    />
+    <div>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        style={{ display: "none" }}
+        id="imageUpload"
+      />
+      <div>{error && <p>{error}</p>}</div>
+    </div>
   );
 };
 
