@@ -12,61 +12,55 @@ function NavBarLogged() {
     }
 
     const user = JSON.parse(localStorage.getItem("loggedUser")) || false;
-    const logged = user.isClient;
+    const logged = user?.isClient;
 
-    const [profilePhoto, setProfilePhoto] = useState(user.photo);
+    const [profilePhoto, setProfilePhoto] = useState(user?.photo);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
             const updatedUser = JSON.parse(localStorage.getItem("loggedUser"));
-            if (updatedUser) {
-                setProfilePhoto(updatedUser.photo);
-            } else {
-                setProfilePhoto(null);
-            }
+            setProfilePhoto(updatedUser?.photo);
         }, 400);
     
         return () => clearInterval(intervalId);
     }, [user]);
 
     return (
-        // <div className='loggedNav'>
-            <Nav variant="pills" defaultActiveKey="/home" className='NavBar' sticky="top">
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1" as={Link} to="/home" className='NavLink'>
-                        Начало
-                    </Nav.Link>
-                </Nav.Item>
+        <Nav variant="pills" defaultActiveKey="/home" className='NavBar' sticky="top">
+            <Nav.Item>
+                <Nav.Link eventKey="link-1" as={Link} to="/home" className='NavLink'>
+                    Начало
+                </Nav.Link>
+            </Nav.Item>
 
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2" as={Link} to="/home/offers" className='NavLink'>
-                        Всички обяви
-                    </Nav.Link>
-                </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="link-2" as={Link} to="/home/offers" className='NavLink'>
+                    Всички обяви
+                </Nav.Link>
+            </Nav.Item>
 
-                <Nav.Item>
-                    <Nav.Link eventKey="link-3" as={Link} to="/home/craftsmen" className='NavLink'>
-                        Майстори
-                    </Nav.Link>
-                </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="link-3" as={Link} to="/home/craftsmen" className='NavLink'>
+                    Майстори
+                </Nav.Link>
+            </Nav.Item>
 
-                <Nav.Item className="ml-2">
-                    <Nav.Link eventKey="link-4" as={Link} to={logged ? "/home/myprofile/user" : "/home/myprofile/craftsmen"} className='NavLink' >
-                        {user.photo ? <span className="profile-photo-container" style={{margin:"5px"}}>
-                            <img src={profilePhoto} alt="profile" className="profile-photo rounded-circle" style={{ width: "30px", height: "30px" }} />
-                        </span> : null}
-                        Профил
-                    </Nav.Link>
-                </Nav.Item>
+            <Nav.Item className="ml-2">
+                <Nav.Link eventKey="link-4" as={Link} to={logged ? "/home/myprofile/user" : "/home/myprofile/craftsmen"} className='NavLink' >
+                    {user?.photo ? <span className="profile-photo-container" style={{margin:"5px"}}>
+                        <img src={profilePhoto} alt="profile" className="profile-photo rounded-circle" style={{ width: "30px", height: "30px" }} />
+                    </span> : null}
+                    Профил
+                </Nav.Link>
+            </Nav.Item>
 
-                <Nav.Item className="ml-2">
-                    <Nav.Link eventKey="link-5" as={Link} to="/home" className='NavLink' onClick={handlerLogout}>
-                        Изход
-                    </Nav.Link>
-                </Nav.Item>
+            <Nav.Item className="ml-2">
+                <Nav.Link eventKey="link-5" as={Link} to="/home" className='NavLink' onClick={handlerLogout}>
+                    Изход
+                </Nav.Link>
+            </Nav.Item>
 
-            </Nav>
-        // </div>
+        </Nav>
     );
 }
 

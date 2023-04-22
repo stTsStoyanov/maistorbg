@@ -1,14 +1,17 @@
-
 .CraftManProfileContainerAll{
   .ContainerCraftmenProfile{
     padding-bottom: 20px;
   }
   margin-top: 50px;
   margin-bottom: 270px;
+  display: flex;
+  flex-direction: column;
+  
   .display-4 {
     margin-top: 10vh;
     transform: translateY(-50%);
   }
+  
   .btn {
     position: relative;
     overflow: hidden;
@@ -16,6 +19,7 @@
     text-align: center;
     text-decoration: none ;
   }
+  
   
   .btn-text {
     display: flow-root;
@@ -60,6 +64,11 @@
     width: 200px; 
     height: 200px; 
     object-fit: cover; 
-    border-radius: 50%; 
+    border-radius: 50%;
+     
+  }
+
+  p {
+    align-self: center;
   }
 }
