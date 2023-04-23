@@ -1,58 +1,100 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Card, Button, Form, Alert, Carousel } from 'react-bootstrap';
-import './OffersDetails.scss';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Card, Button, Form, Alert, Carousel } from "react-bootstrap";
+import "./OffersDetails.scss";
 import Offer from "../../model/classes/offer";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import localStorageManager from "../../model/managers/localStorageManager";
 
 function OffersDetails() {
   const { state } = useLocation();
   const { offer } = state;
-  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-  const isClient = loggedUser ? loggedUser.isClient : false;
+  const [loggedUser, setLoggedUser] = useState({});
+  const [isClient, setIsClient] = useState(false);
   const navigate = useNavigate();
   const [showOfferForm, setShowOfferForm] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  const handleOfferSubmit = (event, authorId, jobAdvertisementId) => {
+  useEffect(() => {
+    localStorageManager.getItem("loggedUser").then((user) => {
+      setLoggedUser(user);
+      setIsClient(user ? user.isClient : false);
+    });
+  }, []);
+
+  const handleOfferSubmit = async (event, authorId, jobAdvertisementId) => {
     event.preventDefault();
     const offerText = event.target.elements.offerText.value;
     const offeredSum = event.target.elements.offeredSum.value;
     const offeredTerm = event.target.elements.offeredTerm.value;
-    const newOffer = new Offer(loggedUser.id, jobAdvertisementId, offerText, offeredSum, offeredTerm);
-  
-    console.log('New offer:', newOffer);
-    let offers = JSON.parse(localStorage.getItem("allOffers")) || [];
+    const newOffer = new Offer(
+      loggedUser.id,
+      jobAdvertisementId,
+      offerText,
+      offeredSum,
+      offeredTerm
+    );
+
+    console.log("New offer:", newOffer);
+    const offers = (await localStorageManager.getItem("allOffers")) || [];
     offers.push(newOffer);
-    localStorage.setItem("allOffers", JSON.stringify(offers));
+    await localStorageManager.setItem("allOffers", offers);
     setShowAlert(true);
-    
+
     setTimeout(() => {
-      window.location.href = "/home/offers"; // replace with your desired URL
+      navigate("/home/offers"); // use navigate from react-router-dom instead of window.location.href
     }, 800); // wait for 2 seconds before navigating to the other page
   };
 
   const offerForm = (
-    <Form className="formOffe" onSubmit={(event) => handleOfferSubmit(event, offer.authorId, offer.jobAdvertisementId)}>
+    <Form
+      className="formOffe"
+      onSubmit={(event) =>
+        handleOfferSubmit(event, offer.authorId, offer.jobAdvertisementId)
+      }
+    >
       <Form.Group controlId="offerText">
         <Form.Label>Вашето предложение за офертата</Form.Label>
-        <Form.Control type="text" placeholder="Въведете текст" name="offerText" required />
+        <Form.Control
+          as="textarea"
+          rows={3}
+          placeholder="Въведете текст"
+          name="offerText"
+          required
+        />
       </Form.Group>
       <Form.Group controlId="offeredSum">
-        <Form.Label>Предложете сума в лв</Form.Label>
-        <Form.Control type="number" placeholder="Въведете сума" name="offeredSum" min="1" onInput={(e) => {
-          e.target.value = Math.max(0, parseInt(e.target.value) || 0)
-        }} required />
+        <Form.Label>Въведета цена в лв</Form.Label>
+        <Form.Control
+          type="number"
+          placeholder="Въведете сума"
+          name="offeredSum"
+          min="1"
+          onInput={(e) => {
+            e.target.value = Math.max(0, parseInt(e.target.value) || 0);
+          }}
+          required
+        />
       </Form.Group>
       <Form.Group controlId="offeredTerm">
-        <Form.Label>Предложете време за изпълнение</Form.Label>
-        <Form.Control type="number" placeholder="Въведете време в дни" name="offeredTerm" min="1" onInput={(e) => {
-          e.target.value = Math.max(0, parseInt(e.target.value) || 0)
-        }} required />
-        {showAlert ? <Alert variant="success">Предложението е изпратено!</Alert> : null}
+        <Form.Label>Предложете време за изпълнение в дни</Form.Label>
+        <Form.Control
+          type="number"
+          placeholder="Въведете време в дни"
+          name="offeredTerm"
+          min="1"
+          onInput={(e) => {
+            e.target.value = Math.max(0, parseInt(e.target.value) || 0);
+          }}
+          required
+        />
+        {showAlert ? (
+          <Alert variant="success">Предложението е изпратено!</Alert>
+        ) : null}
       </Form.Group>
-      <Button variant="secondary" type="submit">Изпрати</Button>
+      <Button variant="secondary" type="submit">
+        Изпрати
+      </Button>
     </Form>
   );
 
@@ -62,11 +104,14 @@ function OffersDetails() {
       <Carousel>
         {offer.jobAdvertisementImage.map((image, index) => (
           <Carousel.Item key={index}>
-            <img className="d-block w-100 carousel-image" src={image} alt={`Job Advertisement ${index}`} />
+            <img
+              className="d-block w-100 carousel-image"
+              src={image}
+              alt={`Job Advertisement ${index}`}
+            />
           </Carousel.Item>
         ))}
       </Carousel>
-      {showAlert ? <Alert variant="success">Предложението е изпратено!</Alert> : null}
       <Card.Body>
         <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
         <Card.Text>{offer.jobAdvertisementText}</Card.Text>
@@ -81,7 +126,12 @@ function OffersDetails() {
               </div>
             ) : (
               <div>
-                <Button variant="secondary" onClick={() => setShowOfferForm(true)}>Кандидаствай</Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowOfferForm(true)}
+                >
+                  Кандидаствай
+                </Button>
                 {showOfferForm ? offerForm : null}
               </div>
             )}
