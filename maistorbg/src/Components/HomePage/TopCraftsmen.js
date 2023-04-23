@@ -16,9 +16,9 @@ const TopCraftsmen = () => {
 
   return (
     <div className="top-craftsmen">
-      <Container style={{ border: "1px solid black", padding: "20px" }} className="mx-md-5 my-5 reviews-container">
+      <Container  className="mx-md-5 my-5 reviews-container">
         <h2 className="text-center">Топ 6 майстора!</h2>
-        <Row>
+        <Row style={{ padding: "20px" }}>
           {topCraftsmen.map((craftsman, index) => (
             <Col sm={12} md={6} lg={4} key={index}>
               <Card className="craftsman-card mb-3">
