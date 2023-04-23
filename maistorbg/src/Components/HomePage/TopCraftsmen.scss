@@ -18,7 +18,7 @@
     border: none;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
-    
+    width: 350px;
 
     &:hover {
       transform: translateY(-10px);
@@ -26,7 +26,7 @@
   }
 
   .craftsman-image-container {
-    width: 350px;
+    width: 400px;
     height: 450px;
     overflow: hidden;
   }
@@ -49,4 +49,3 @@
     color: #808080;
   }
 }
-
