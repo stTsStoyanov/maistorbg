@@ -1,116 +1,71 @@
-// .craftsman-card-grid {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: auto auto auto;
-//     grid-gap: 20px;
-//     align-items: center;
-//     justify-items: center;
-//   }
-  
-//   .craftsman-card-photo {
-//     grid-row: 1 / span 3;
-//     justify-self: start;
-//     width: auto;
-//     height: 200px;
-//     object-fit: cover;
-//   }
-  
-//   .craftsman-card-details {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     align-items: flex-start;
-//     width: 100%;
-//     height: 100%;
-//   }
-  
-//   .craftsman-card-name {
-//     grid-row: 1;
-//     grid-column: 2;
-//     font-weight: bold;
-//     font-size: 1.2rem;
-//     margin-bottom: 10px;
-//   }
-  
-//   .craftsman-card-rating {
-//     grid-row: 2;
-//     grid-column: 2;
-//     font-size: 1rem;
-//     color: gray;
-//     margin-bottom: 10px;
-//   }
-  
-//   .craftsman-card-skills {
-//     grid-row: 3;
-//     grid-column: 2;
-//     font-size: 1rem;
-//     color: #007bff;
-//     margin-bottom: 10px;
-//   }
+.craftsman-card-grid {
 
+  display: grid;
+  grid-template-columns: auto 350px;
+  grid-template-rows: auto auto auto;
+  grid-gap: 20px;
+  align-items: center;
+  justify-items: start;
+  max-width: 500px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: white;
+  // border-radius: 27px;
 
-
-
-  .craftsman-card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    grid-gap: 20px;
-    align-items: center;
-    justify-items: center;
-    max-width: 500px;
+  .craftsman-card-photo {
+    grid-row: 1 / span 3;
+    justify-self: start;
+    width: auto;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
-    border: 1px solid gray;
-    background-image: linear-gradient(to left bottom, #dee2e6, #d5d9de, #cbd1d6, #c2c8cf, #b9c0c7, #acb3bb, #9fa7ae, #939aa2, #80878f, #6d747b, #5b6269, #495057);
-    
-    .craftsman-card-photo {
-      grid-row: 1 / span 3;
-      justify-self: start;
-      width: auto;
-      height: 200px;
-      object-fit: cover;
+  }
+
+  .craftsman-card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    // height: 100%;
+    overflow-wrap: break-word;
+    /* Add this line */
+    word-wrap: break-word;
+    /* Add this line */
+    word-break: break-word;
+    /* Add this line */
+
+    .craftsman-card-name {
+      grid-row: 1;
+      grid-column: 2;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
     }
-  
-    .craftsman-card-details {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-end;
-      width: 100%;
-      height: 100%;
-  
-      .craftsman-card-name {
-        grid-row: 1;
-        grid-column: 2;
-        font-weight: bold;
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-      }
-  
-      .craftsman-card-rating {
-        grid-row: 2;
-        grid-column: 2;
-        font-size: 1rem;
-        color: gray;
-        margin-bottom: 10px;
-      }
-  
-      .craftsman-card-skills {
-        grid-row: 3;
-        grid-column: 2;
-        font-size: 1rem;
-        color: #007bff;
-        margin-bottom: 10px;
-      }
+
+    .craftsman-card-rating {
+      grid-row: 2;
+      grid-column: 2;
+      font-size: 1rem;
+      color: gray;
+      margin-bottom: 10px;
     }
-  
-    @media (max-width: 400px) {
-      width: 100%;
-      height: auto;
-  
-      .craftsman-card-photo {
-        height: 100%;
-      }
+
+    .craftsman-card-skills {
+      grid-row: 3;
+      grid-column: 2;
+      font-size: 1rem;
+      color: #007bff;
+      margin-bottom: 10px;
     }
   }
-  
+
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+
+    .craftsman-card-photo {
+      height: 100%;
+    }
+  }
+}
