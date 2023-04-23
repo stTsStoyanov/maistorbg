@@ -22,15 +22,15 @@ const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     userManager.login(formData)
-    .then(response =>{
-      console.log("here is the reponse: ",response)
-      setLoginError('')
-        history('/home'); 
-    })
-    .catch(error =>{
-      setLoginError('Грешно потребителско име и/или парола')
+      .then(response => {
+        console.log("here is the reponse: ", response)
+        setLoginError('')
+        history('/home');
+      })
+      .catch(error => {
+        setLoginError('Грешно потребителско име и/или парола')
 
-    })
+      })
 
     console.log(formData);
 
@@ -41,7 +41,7 @@ const LoginForm = () => {
       <Row className="justify-content-md-center">
         <Col md="6">
           <h1 className="text-center mb-4">Вход</h1>
-          <Form className="border p-4" onSubmit={handleSubmit}>
+          <Form  onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Име</Form.Label>
               <Form.Control
@@ -66,16 +66,24 @@ const LoginForm = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="btn btn-primary mb-3">
-              Вход
-            </Button>
+            <div className="text-center">
+              <Button variant="primary" type="submit" className="btn btn-primary mb-3">
+                Вход
+              </Button>
+            </div>
+
           </Form>
-          {loginError ? 
-          <Alert variant="danger">{loginError}</Alert>
-          : null}
+          {loginError ?
+            <div style={{ position: "absolute", bottom: "22", left: "48%", transform: "translateX(-40%)" }}>
+              <Alert variant="danger">{loginError}</Alert>
+            </div>
+            : null
+          }
+
         </Col>
       </Row>
     </Container>
+
   );
 };
 
