@@ -17,9 +17,9 @@ const Reviews = () => {
 
   return (
     <div className="reviews-container">
-      <Container style={{ border: "1px solid black", padding: "20px" }}>
+      <Container >
       <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
-        <Row>
+        <Row style={{ padding: "20px" }}>
           {topCraftsmen.map((craftsman) => (
             <Col key={craftsman.id} sm={12} md={6} lg={4}>
               <Card className="craftsman-card" style={{ width: "350px"}}>

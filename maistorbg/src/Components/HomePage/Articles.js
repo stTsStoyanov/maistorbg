@@ -39,9 +39,9 @@ const Articles = () => {
 
     return (
         <div className="articles">
-            <Container style={{ border: "1px solid black", padding: "20px" }} className="mx-md-5 my-5">
+            <Container  className="mx-md-5 my-5">
                 <h2 className="text-center">Идеи за вашия дом.</h2>
-                <Row>
+                <Row style={{ padding: "20px" }}>
                     {data.slice(0, 3).map((item, index) => (
                         <Col sm={12} md={6} lg={4} key={index}>
                             <Card className="mb-3">
