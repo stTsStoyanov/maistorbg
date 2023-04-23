@@ -72,24 +72,24 @@ export default function CurrentJobAdvertisement({ jobAdvertisement }) {
                 <Card.Body>
                     <div className="grid-container">
                         <div className="grid-item">
-                            Заглавие: {jobAdvertisement.jobAdvertisementTittle}<br/>
+                            <strong>Заглавие: </strong> {jobAdvertisement.jobAdvertisementTittle}<br/>
                             {/* {jobAdvertisement.jobAdvertisementTittle} */}
                         </div>
                         <div className="grid-item">
                             
-                            Обява: {jobAdvertisement.jobAdvertisementText}
+                        <strong>Обява: </strong>{jobAdvertisement.jobAdvertisementText}
                             <br/>
                         </div>
                         <div className="grid-item">
-                            Категория: {jobAdvertisement.category}<br/>
+                        <strong>Категория: </strong>{jobAdvertisement.category}<br/>
                             
                         </div>
                         <div className="grid-item">
-                            Дата на създаване: {jobAdvertisement.creationDate}<br/>
+                        <strong>Дата на създаване: </strong>{jobAdvertisement.creationDate}<br/>
                             
                         </div>
                         <div className="grid-item">
-                            Статус: {jobAdvertisement.isOfferTaken ? "Обявата е извършена" : "търси се майстор"}<br/>
+                        <strong>Статус: </strong> {jobAdvertisement.isOfferTaken ? "Обявата е извършена" : "търси се майстор"}<br/>
                             
                         </div>
                         

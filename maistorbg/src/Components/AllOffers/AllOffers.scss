@@ -18,7 +18,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
-
+    border-radius: 2%;
     &:hover {
       transform: translateY(-10px);
     }
@@ -29,6 +29,7 @@
       width: 150px;
       height: 150px;
       object-fit: cover;
+      border-radius: 10%;
     }
     
     h2 {
@@ -51,6 +52,7 @@
     background-color: white;
     padding: 1rem;
     transition: all 0.3s ease-in-out;
+    border-radius: 2%;
 
     &:hover {
       transform: translateY(-10px);
@@ -60,6 +62,7 @@
       height: 200px;
       width: 100%;
       object-fit: cover;
+      border-radius: 10%;
     }
 
     h3 {

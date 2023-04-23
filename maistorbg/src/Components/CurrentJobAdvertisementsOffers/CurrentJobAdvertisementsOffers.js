@@ -5,24 +5,68 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./CurrentJobAdvertisementsOffers.scss";
 import CurrentOfferAuthorComponent from "./CurrentOfferAuthorComponent/CurrentOfferAuthorComponent";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
+import CraftsmanPresentingCard from "./craftsmanPresentingCard.js";
 
 export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [allUsers, setAllUsers] = useState(null)
   const [acceptedOfferId, setAcceptedOfferId] = useState(null);
   // const [updatedAdvertisement, setUpdatedAdvertisement] = useState(null);
   // const [updatedAdvertisemntsList, setUpdatedAdvertisementsList] = useState(null)
   const [users, setUsers] = useState(null)
 
-  useEffect(() => {
-    delayFunction(localStorageManager.getItem, ["allOffers"]).then((allOffers) => {
-      const jobOffers = allOffers.filter(
-        (offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId
-      );
+  //  useEffect (() => {
+  //    delayFunction(localStorageManager.getItem, ["allOffers"]).then((allOffers) => {
+  //     const jobOffers = allOffers.filter(
+  //       (offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId
+  //     );
+  //     setOffers(jobOffers);
+  //     delayFunction(localStorageManager.getItem, ["users"]).then((users) => {
+  //       setAllUsers(users)
+  //       console.log(allUsers)
+  //     })
+  //     setLoading(false);
+  //   });
+  // }, [jobAdvertisement.jobAdvertisementId]);
+
+  const fetchData = async () => {
+    try {
+      const allOffers = await delayFunction(localStorageManager.getItem, ["allOffers"]);
+      const jobOffers = allOffers.filter((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId);
       setOffers(jobOffers);
+
+      const users = await delayFunction(localStorageManager.getItem, ["users"]);
+      setAllUsers(users);
+
       setLoading(false);
-    });
-  }, [jobAdvertisement.jobAdvertisementId]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData()
+  }, [jobAdvertisement.jobAdvertisementId])
+
+  // useEffect(async () => {
+  //   try {
+  //     const allOffers = await delayFunction(localStorageManager.getItem, ["allOffers"]);
+  //     const jobOffers = allOffers.filter((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId);
+  //     setOffers(jobOffers);
+
+  //     const users = await delayFunction(localStorageManager.getItem, ["users"]);
+  //     setAllUsers(users);
+
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+
+  //   // return undefined;
+  // }, [jobAdvertisement.jobAdvertisementId]);
+
 
   const acceptOffer = (offerId) => {
     setAcceptedOfferId(offerId);
@@ -45,6 +89,13 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
           }
           return jobOffer;
         });
+        // const acceptedOfferIndex = updatedOffers.findIndex(offer => offer.isAccepted);
+        // if (acceptedOfferIndex >= 0) {
+        //   const acceptedOffer = updatedOffers[acceptedOfferIndex];
+        //   updatedOffers.splice(acceptedOfferIndex, 1);
+        //   updatedOffers.unshift(acceptedOffer);
+        // }
+
         localStorageManager.setItem("allOffers", updatedOffers);
         setOffers(updatedOffers.filter((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId));
       });
@@ -64,6 +115,15 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
       });
   };
 
+  const findCurrentUser = (offer) => {
+    const craftsman = allUsers.find(user => user.id === offer.authorId);
+    if (offer) {
+      return <CraftsmanPresentingCard craftsman={craftsman} />
+    } else {
+      return null;
+    }
+  }
+
   useEffect(() => {
     console.log(jobAdvertisement)
   }, [])
@@ -77,7 +137,7 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <SpinnerLoader />;
   }
 
 
@@ -92,19 +152,25 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
             <Card.Body>
               <div className="name">{offer.offerAuthor && offer.offerAuthor.name}</div>
               <div className="offer-details-container">
-                <div className="offer-text">Оферта: {offer.offerText}</div>
-                <div className="offer-details">Предложена сума: {offer.offeredSum}лв</div>
-                <div className="offer-details">Време за изпълнение:{offer.offeredTerm} дни</div>
-                <div className="offer-details">Дата на създаване: {offer.creationDate}</div>
+                <div className="offer-text"><strong>Оферта:</strong> {offer.offerText}</div>
+                <div className="offer-details"><strong>Предложена сума: </strong>{offer.offeredSum}лв</div>
+                <div className="offer-details"><strong>Време за изпълнение: </strong>{offer.offeredTerm} дни</div>
+                <div className="offer-details"><strong>Дата на създаване:</strong> {offer.creationDate}</div>
                 {offer.isAccepted === null ? null : (
                   <div className="offer-details">
                     {offer.isAccepted
-                      ? `Офертата е приета на ${offer.dateOfAcceptance}`
-                      : `Офертата е отказана на ${offer.dateOfRejection}`
+                      ? <><strong>{'Офертата е приета на '}</strong>
+                        {offer.dateOfAcceptance}
+                      </>
+                      : <><strong>{'Офертата е отказана на '}</strong>
+                        {offer.dateOfRejection}
+                      </>
                     }
                   </div>
+
                 )}
               </div>
+              {findCurrentUser(offer)}
               {offer.isAccepted !== null && (
                 <div className="button-container">
                   {!offer.isAccepted ? (

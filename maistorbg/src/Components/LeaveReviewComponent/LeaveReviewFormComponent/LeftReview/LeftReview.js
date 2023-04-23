@@ -3,6 +3,7 @@ import localStorageManager from "../../../../model/managers/localStorageManager"
 import { Card, Spinner } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import "./LeftReview.scss"
+import SpinnerLoader from "../../../SpinnerLoader/SpinnerLoader";
 
 export default function LeftReview({ craftsman, client, offer, jobAdvertisement }) {
     const [review, setReview] = useState(null);
@@ -27,79 +28,47 @@ export default function LeftReview({ craftsman, client, offer, jobAdvertisement 
     const craftsmanName = craftsman?.name;
     const creationDate = review?.creationDate;
 
-    //     return (
-    //             <Card>
-    //                 {isLoading ? (
-    //                     <Spinner animation="border" />
-    //                 ) : (
-    //                     <>
-    //                         <div className="row">
-    //                             <div className="col">{reviewSummary}</div>
-    //                         </div>
-    //                         <div className="row">
-    //                             <div className="col">{reviewText}</div>
-    //                         </div>
-    //                         <div className="row">
-    //                             <div className="col">
-    //                                 Your rating: {rating} / 5.0
-    //                             </div>
-    //                         </div>
-    //                         <div className="row">
-    //                             <div className="col">
-    //                                 Average rating: {averageRating}
-    //                             </div>
-    //                         </div>
-    //                         <div className="row">
-    //                             <div className="col">
-    //                                 {craftsmanName}
-    //                             </div>
-    //                         </div>
-    //                         <div className="row">
-    //                             <div className="col">
-    //                                 {creationDate}
-    //                             </div>
-    //                         </div>
-    //                     </>
-    //                 )}
-    //             </Card>
-    //     );
-    // }
+    const starReview = () => {
+        const points = Math.round(averageRating);
+        let stars = "";
+        for(let i = 0 ; i < points; i++) {
+            stars += "✭"
+        }
+
+        return stars;
+    }
     return (
         <div className="card-wrapper">
             <Card className="card">
                 {isLoading ? (
-                    <div className="spinner-wrapper">
-                        <Spinner className="spinner" animation="border" />
-                    </div>
+                    <SpinnerLoader/>
                 ) : (
                     <>
-                        <div className="row">
-                            <div className="col">Резюме: {reviewSummary}</div>
-                        </div>
-                        <div className="row">
-                            <div className="col">Ревю: {reviewText}</div>
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                Вашата оценка: {rating} / 5
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                Средна оценка за майсторът: {averageRating}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                Име на майсторът: {craftsmanName}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                Дата и час на ревю: {creationDate}
-                            </div>
-                        </div>
-                    </>
+                    <div className="row">
+                      <div className="col"><span className="bolded-span">Резюме:</span> {reviewSummary}</div>
+                    </div>
+                    <div className="row">
+                      <div className="col"><span className="bolded-span">Ревю:</span> {reviewText}</div>
+                    </div>
+                    <div className="row">
+                      <div className="col">
+                        <span className="bolded-span">Вашата оценка:</span> {Math.round(Number(rating))} / 5
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col">
+                        <span className="bolded-span">Средна оценка за майсторът:</span>{" "}
+                        <span className="star-symbol">{starReview()}</span>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col"><span className="bolded-span">Име на майсторът:</span> {craftsmanName}</div>
+                    </div>
+                    <div className="row">
+                      <div className="col"><span className="bolded-span">Дата и час на ревю:</span> {creationDate}</div>
+                    </div>
+                  </>
+                  
                 )}
             </Card>
         </div>
