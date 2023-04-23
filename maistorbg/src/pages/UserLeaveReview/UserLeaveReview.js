@@ -5,7 +5,7 @@ import localStorageManager from "../../model/managers/localStorageManager";
 import CurrentJobAdvertisement from "../../components/SpecificJobAdvertisement/CurrentJobAdvertisement/CurrentJobAdvertisement";
 import LeaveReviewOfferComponent from "../../components/LeaveReviewComponent/LeaveReviewComponent";
 import "./UserLeaveReview.scss";
-import { Spinner } from "react-bootstrap";
+import SpinnerLoader from "../../components/SpinnerLoader/SpinnerLoader";
 
 export default function LeaveReviewComponent() {
   const { jobAdvertisementId } = useParams();
@@ -45,14 +45,17 @@ export default function LeaveReviewComponent() {
     <div className="container-for-leaving-a-review">
       <div className="background-color">
         <div className="row">
+          {isLoading ? (
+            <SpinnerLoader/>
+          ) : (
           <div className="col-4">
             <CurrentJobAdvertisement jobAdvertisement={jobAdvertisement} />
           </div>
+          )}
           <div className="col-8 d-flex justify-content-between gap-2">
             {isLoading ? (
-              <div className="spinner-container">
-              <Spinner className="spinner" animation="border" role="status"/>
-              </div>
+              // <SpinnerLoader/>
+              null
             ) : (
               <LeaveReviewOfferComponent offer={offer} jobAdvertisement={jobAdvertisement} />
             )}

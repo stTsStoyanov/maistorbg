@@ -47,7 +47,6 @@
 import React, { useState, useEffect } from "react";
 import localStorageManager from "../../model/managers/localStorageManager";
 import { delayFunction } from "../../utilFunctions/utilFunctions";
-import { Spinner } from "react-bootstrap";
 import CurrentJobAdvertisement from "../SpecificJobAdvertisement/CurrentJobAdvertisement/CurrentJobAdvertisement";
 import OfferCard from "./OfferCard/OfferCard";
 import CraftsmanCardPresentingComponent from "./craftsmanCardPresentingComponent/craftsmanCardPresentingComponent";
@@ -55,6 +54,7 @@ import CurrentReviewComponentHistory from "./CurrentReviewComponentHistory/Curre
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import "./UserHistoryComponent.scss"
 import CardAdvertisementComponent from "./CardAdvertisementComponent/CardAdvertisementComponent";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
 
 export default function UserHistoryComponent() {
   const [loggedUser, setLoggedUser] = useState(null);
@@ -89,9 +89,7 @@ export default function UserHistoryComponent() {
       <div>История</div>
       <div className="outer-container-history">
         {isLoading ? (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <SpinnerLoader />
         ) : (
           jobAdvertisements.map((jobAdvertisement) => {
             const offer = offers.find((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && offer.isAccepted);
@@ -128,6 +126,7 @@ export default function UserHistoryComponent() {
           })
         )}
       </div>
+      <hr />
     </div>
   );
   // return (

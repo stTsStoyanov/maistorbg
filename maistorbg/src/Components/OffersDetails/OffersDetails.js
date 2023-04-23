@@ -121,7 +121,9 @@ function OffersDetails() {
         {loggedUser && !isClient ? (
           <div>
             {offer.isOfferTaken ? (
+              <div>
               <Card.Text>Обявата е вече взета от друг майстор!</Card.Text>
+              </div>
             ) : (
               <div>
                 <Button
