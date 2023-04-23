@@ -1,17 +1,11 @@
 .container-for-leaving-a-review {
+  margin-top: 180px;
   div {
     font-size: 22px;
   }
   overflow-x: hidden;
     .row {
-     
-    // .col-4 {
-      //   // First column
-      // }
-      
       .col-8 {
-
-      // Second and third columns merged
       display: flex;
       justify-content: space-between;
       gap: 5vw;
@@ -23,15 +17,11 @@
   }
 }
 
-// .background-color {
-//   background-image: linear-gradient(to right top, #dee2e6, #d5d9de, #cbd1d6, #c2c8cf, #b9c0c7, #acb3bb, #9fa7ae, #939aa2, #80878f, #6d747b, #5b6269, #495057);
-// }
-
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* set the height of the container */
+  height: 100%; 
 }
 
 .spinner {
