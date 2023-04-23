@@ -14,7 +14,7 @@ class UserManager {
             localStorageManager.setItem("loggedUser", existingUser);
             resolve(existingUser);
           } else {
-            reject(new Error("There is no such user or wrong password!"));
+            reject(new Error("Грешно потребителско име и/или парола"));
           }
         })
         .catch(error => {
@@ -62,16 +62,6 @@ class UserManager {
         return data;
       });
   }
-
-  // getAllUsers() {
-  //  JSON.parse(localStorage.getItem("users"))
-  // }
-
-  // setUserId = () => {
-  //     const x =this.getAllUsers()
-  //     return generateRandomId(x);
-  // }
-
 
 
 }
