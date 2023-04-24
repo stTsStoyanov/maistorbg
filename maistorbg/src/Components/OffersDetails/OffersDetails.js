@@ -165,7 +165,7 @@ function OffersDetails() {
   Кандидаствай
 </Button>
                 ) : (
-                  <div>you do not have the needed skill</div>
+                  <Card.Text>Нямате нужните умения за тази обява.</Card.Text>
                 )}
                 {showOfferForm ? offerForm : null}
               </div>

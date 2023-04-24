@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CurrentJobAdvertisement from '../SpecificJobAdvertisement/CurrentJobAdvertisement/CurrentJobAdvertisement';
 import "./UserMyProfileOffersComponents.scss";
 import NotificationComponent from './NotificationComponent';
+import { NavLink } from 'react-bootstrap';
 
 const UserMyProfileOffersComponents = () => {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
@@ -26,14 +27,16 @@ const UserMyProfileOffersComponents = () => {
             const unseenOffers = allOffers.filter(offer => offer.jobAdvertisementId === job.jobAdvertisementId && offer.hasBeenSeen === false);
             const notificationCount = unseenOffers.length;
             return (
-              <Link
+              <NavLink
                 to={`/home/myprofile/user/currentoffers/${job.jobAdvertisementId}`}
                 style={{ textDecoration: 'none', position: 'relative' }}
-                key={job.id}
+                key={job.jobAdvertisementId}
+                // id="RouterNavLink"
+                as="li"
               >
                 <CurrentJobAdvertisement jobAdvertisement={job} />
                 {notificationCount > 0 && <NotificationComponent number={notificationCount} />}
-              </Link>
+              </NavLink>
             );
           })}
         </div>
