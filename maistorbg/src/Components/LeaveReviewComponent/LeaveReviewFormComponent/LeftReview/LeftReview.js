@@ -28,6 +28,14 @@ export default function LeftReview({ craftsman, client, offer, jobAdvertisement 
     const craftsmanName = craftsman?.name;
     const creationDate = review?.creationDate;
 
+    const userReview = () => {
+      let stars = "";
+      for(let i = 0; i < rating; i++) {
+        stars += "✭";
+      }
+      return stars;
+    }
+
     const starReview = () => {
         const points = Math.round(averageRating);
         let stars = "";
@@ -44,6 +52,7 @@ export default function LeftReview({ craftsman, client, offer, jobAdvertisement 
                     <SpinnerLoader/>
                 ) : (
                     <>
+                    <div><strong>Вашето Ревю</strong></div>
                     <div className="row">
                       <div className="col"><span className="bolded-span">Резюме:</span> {reviewSummary}</div>
                     </div>
@@ -52,7 +61,7 @@ export default function LeftReview({ craftsman, client, offer, jobAdvertisement 
                     </div>
                     <div className="row">
                       <div className="col">
-                        <span className="bolded-span">Вашата оценка:</span> {Math.round(Number(rating))} / 5
+                        <span className="bolded-span">Вашата оценка:</span> <span className="star-symbol">{userReview()}</span>
                       </div>
                     </div>
                     <div className="row">
@@ -75,18 +84,3 @@ export default function LeftReview({ craftsman, client, offer, jobAdvertisement 
 
     )
 }
-
-
-// export default function LeftReview({craftsman, client, offer, jobAdvertisement}) {
-
-//     const [review, setReview] = useState(null);
-
-//     const fetchData = async () => {
-//         await delayFunction(localStorageManager.getItem, ["allReviews"])
-//         .then(allReviews => {
-//             setReview(allReviews.find(review => review.jobAdvertisementId === offer.jobAdvertisementId))
-//         })
-//     }
-
-//     return <div>alabaa</div>
-// }
