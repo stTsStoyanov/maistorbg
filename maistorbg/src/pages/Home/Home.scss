@@ -3,3 +3,20 @@
     flex-direction: column;
     background-image: linear-gradient(to right top, #dee2e6, #d5d9de, #cbd1d6, #c2c8cf, #b9c0c7, #acb3bb, #9fa7ae, #939aa2, #80878f, #6d747b, #5b6269, #495057);
 }
+
+.toast-container {
+    position: fixed;
+    top: 53px;
+    right: 0;
+    width: 320px;
+    z-index: 9999;
+}
+
+.font-color-toast {
+    color: black;
+}
+
+.font-size-toast {
+    font-size: 22px;
+
+}

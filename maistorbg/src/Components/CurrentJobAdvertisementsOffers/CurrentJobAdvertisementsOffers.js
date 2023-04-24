@@ -13,23 +13,7 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
   const [loading, setLoading] = useState(true);
   const [allUsers, setAllUsers] = useState(null)
   const [acceptedOfferId, setAcceptedOfferId] = useState(null);
-  // const [updatedAdvertisement, setUpdatedAdvertisement] = useState(null);
-  // const [updatedAdvertisemntsList, setUpdatedAdvertisementsList] = useState(null)
   const [users, setUsers] = useState(null)
-
-  //  useEffect (() => {
-  //    delayFunction(localStorageManager.getItem, ["allOffers"]).then((allOffers) => {
-  //     const jobOffers = allOffers.filter(
-  //       (offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId
-  //     );
-  //     setOffers(jobOffers);
-  //     delayFunction(localStorageManager.getItem, ["users"]).then((users) => {
-  //       setAllUsers(users)
-  //       console.log(allUsers)
-  //     })
-  //     setLoading(false);
-  //   });
-  // }, [jobAdvertisement.jobAdvertisementId]);
 
   const fetchData = async () => {
     try {
@@ -50,24 +34,6 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
     fetchData()
   }, [jobAdvertisement.jobAdvertisementId])
 
-  // useEffect(async () => {
-  //   try {
-  //     const allOffers = await delayFunction(localStorageManager.getItem, ["allOffers"]);
-  //     const jobOffers = allOffers.filter((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId);
-  //     setOffers(jobOffers);
-
-  //     const users = await delayFunction(localStorageManager.getItem, ["users"]);
-  //     setAllUsers(users);
-
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-
-  //   // return undefined;
-  // }, [jobAdvertisement.jobAdvertisementId]);
-
-
   const acceptOffer = (offerId) => {
     setAcceptedOfferId(offerId);
     delayFunction(localStorageManager.getItem, ["allOffers"])
@@ -76,6 +42,7 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
           if (jobOffer.offerId === offerId) {
             return {
               ...jobOffer,
+              hasBeenSeen: true,
               isAccepted: true,
               isReviewLeft: false,
               dateOfAcceptance: new Date().toLocaleString(),
@@ -84,17 +51,12 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
             return {
               ...jobOffer,
               isAccepted: false,
+              hasBeenSeen: true,
               dateOfRejection: new Date().toLocaleString(),
             };
           }
           return jobOffer;
         });
-        // const acceptedOfferIndex = updatedOffers.findIndex(offer => offer.isAccepted);
-        // if (acceptedOfferIndex >= 0) {
-        //   const acceptedOffer = updatedOffers[acceptedOfferIndex];
-        //   updatedOffers.splice(acceptedOfferIndex, 1);
-        //   updatedOffers.unshift(acceptedOffer);
-        // }
 
         localStorageManager.setItem("allOffers", updatedOffers);
         setOffers(updatedOffers.filter((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId));
@@ -110,8 +72,6 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
           return advertisement;
         });
         localStorageManager.setItem("allJobAdvertisements", updatedAdvertisementsList);
-        // setUpdatedAdvertisement(updatedAdvertisement);
-        // setUpdatedAdvertisementsList(updatedAdvertisementsList);
       });
   };
 
