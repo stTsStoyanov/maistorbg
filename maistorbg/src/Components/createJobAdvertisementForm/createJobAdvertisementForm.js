@@ -226,11 +226,11 @@ const CreateJobAdvertisementForm = () => {
       <h1 className="text-center">Създайте оферта</h1>
         <Form.Group controlId="formJobTitle">
           <Form.Label>
-            Заглавие на офертата<span className="text-danger">*</span>
+            Заглавие на обявата<span className="text-danger">*</span>
           </Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Job Title"
+            placeholder="Въведете заглавие на обявата"
             value={jobAdvertisementTitle}
             onChange={(e) => setJobAdvertisementTitle(e.target.value)}
           />
@@ -242,7 +242,7 @@ const CreateJobAdvertisementForm = () => {
           <Form.Control
             as="textarea"
             rows={3}
-            placeholder="Enter Job Text"
+            placeholder="Въведете описание на обявата"
             value={jobAdvertisementText}
             onChange={(e) => setJobAdvertisementText(e.target.value)}
           />
@@ -251,7 +251,7 @@ const CreateJobAdvertisementForm = () => {
   <Form.Label>Снимки на офертата</Form.Label>
   <Form.Control
     id="custom-file"
-    label="Choose Images"
+    label="Избери снимки"
     type="file"
     multiple
     onChange={handleImageUpload}
@@ -300,7 +300,7 @@ const CreateJobAdvertisementForm = () => {
               </Form.Control>
                 {showAlert && <Alert variant={alertVariant}>{alertText}</Alert>}
                 <Button variant="primary" type="submit" disabled={disableSubmitButton}>
-  Създайте офертата
+  Създайте обявата
 </Button>
             </Form>
         </div>

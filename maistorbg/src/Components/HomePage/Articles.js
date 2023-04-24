@@ -42,7 +42,7 @@ const Articles = () => {
             <Container  className="mx-md-5 my-5">
                 <h2 className="text-center">Идеи за вашия дом.</h2>
                 <Row style={{ padding: "20px" }}>
-                    {data.slice(0, 3).map((item, index) => (
+                        {data.slice(0, 3).map((item, index) => (
                         <Col sm={12} md={6} lg={4} key={index}>
                             <Card className="mb-3">
                                 <Card.Body>{renderCardContent(item.name, item)}</Card.Body>
