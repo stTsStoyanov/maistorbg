@@ -81,7 +81,7 @@ function App() {
         <Route path="/home/myprofile/craftsmen/myinformation" element={<MyProfileCraftmenInformation />}></Route>
         <Route path="/home/myprofile/craftsmen/addskills" element={<MyProfileCrafstmanCategories />}></Route>
         <Route path="/home/myprofile/craftsmen/myinformation/changepass" element={<CraftmenChangePass />}></Route>
-        <Route path={"*"} element={<div>PAGE NOT FOUND 404</div>}></Route>
+        <Route path={"/*"} element={<h1 style={{textAlign: "center", marginTop: "400px", fontSize :"50px"}}>Страницата, която търсите не беше намерена!</h1>}></Route>
       </Routes>
       </div>
       <div className="footer-maistorBG">
