@@ -6,8 +6,8 @@
     top: 20px;
 }
 
-.carousel-image , .current-job-ad-single-image {
-    height: 400px; 
+.carousel-image {
+    height: 400px; /* adjust this to your desired height */
     width: auto;
     object-fit: contain;
     max-width: 100%;
