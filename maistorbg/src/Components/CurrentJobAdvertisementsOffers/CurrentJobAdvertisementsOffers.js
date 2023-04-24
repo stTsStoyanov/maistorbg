@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState } from "react";
 import { delayFunction } from "../../utilFunctions/utilFunctions";
 import localStorageManager from "../../model/managers/localStorageManager";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./CurrentJobAdvertisementsOffers.scss";
 import CurrentOfferAuthorComponent from "./CurrentOfferAuthorComponent/CurrentOfferAuthorComponent";
@@ -136,9 +137,9 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
                   {!offer.isAccepted ? (
                     <div className="button-left-align"><strong>Отказана оферта</strong></div>
                   ) : (
-                    <Link className="button-left-align" to={`/home/myprofile/user/currentoffers/review/${jobAdvertisement.jobAdvertisementId}`}>
+                    <NavLink className="button-left-align" to={`/home/myprofile/user/currentoffers/review/${jobAdvertisement.jobAdvertisementId}`}>
                       <Button>{offer.isAccepted ? "Виж детайли" : "Остави ревю"}</Button>
-                    </Link>
+                    </NavLink>
                   )}
                 </div>
               )}

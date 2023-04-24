@@ -32,7 +32,6 @@ const RegistrationForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value.trim() }));
-    console.log(name)
     if (name === 'email') {
       const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       if (!isValidEmail) {
@@ -96,7 +95,6 @@ const RegistrationForm = () => {
           setRegisterError('Потребителското име и/или имейл адреса е зает')
         }
       })
-    console.log(formData);
 
 
   };

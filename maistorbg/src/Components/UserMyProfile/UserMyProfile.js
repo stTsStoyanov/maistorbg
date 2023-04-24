@@ -115,21 +115,21 @@ const UserMyProfile = () => {
               to="/home/myprofile/user/history"
               className="btn btn-secondary btn-lg mx-3"
             >
-              <span className="btn-text">Твоята история</span>
+              <span className="btn-text">Моята история</span>
               <span className="btn-icon"></span>
             </Link>
             <Link
               to="/home/myprofile/user/currentoffers"
               className="btn btn-secondary btn-lg mx-3"
             >
-              <span className="btn-text">Твоите обяви</span>
+              <span className="btn-text">Моите обяви</span>
               <span className="btn-icon"></span>
             </Link>
             <Link
               to="/home/myprofile/user/myinformation"
               className="btn btn-secondary btn-lg mx-3"
             >
-              <span className="btn-text">Твоята информация</span>
+              <span className="btn-text">Моята информация</span>
               <span className="btn-icon"></span>
             </Link>
             <Link
