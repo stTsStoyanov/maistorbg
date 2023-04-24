@@ -13,5 +13,6 @@ export default class Offer {
         } else {
           this.offerId = 0;
         }
+        this.hasBeenSeen = false;
     }
 }

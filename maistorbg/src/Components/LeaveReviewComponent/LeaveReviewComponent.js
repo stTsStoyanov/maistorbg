@@ -9,7 +9,6 @@ import localStorageManager from "../../model/managers/localStorageManager";
 import userManager from "../../model/managers/userManager";
 import LeaveReviewFormComponent from "./LeaveReviewFormComponent/LeaveReviewFormComponent";
 import LeftReview from "./LeaveReviewFormComponent/LeftReview/LeftReview";
-// import "./styles.scss";
 
 export default function LeaveReviewOfferComponent({ offer, jobAdvertisement }) {
     const [offerAuthor, setOfferAuthor] = useState(null);
@@ -54,13 +53,11 @@ export default function LeaveReviewOfferComponent({ offer, jobAdvertisement }) {
                     <div className="offer-card-info">
                         <Card.Text><strong>Описание: </strong>{offer.offerText}</Card.Text>
                         <div>
-                            <strong>Сума: </strong> {offer.offeredSum} | <strong>Период: </strong> {offer.offeredTerm} дни
+                            <strong>Сума: </strong> {offer.offeredSum}лв | <strong>Период: </strong> {offer.offeredTerm} дни
                         </div>
                         <Card.Text>
-                            {/* <small className="text-muted"> */}
                             <strong>Дата на създаване:</strong>{" "}
                             {new Date(offer.creationDate).toLocaleDateString()}
-                            {/* </small> */}
                         </Card.Text>
                         <Card.Text>
                             <strong>Офертата е била приета на:</strong> {offer.dateOfAcceptance}

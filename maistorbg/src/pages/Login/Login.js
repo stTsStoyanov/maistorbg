@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import userManager from "../../model/managers/userManager"
@@ -65,7 +65,7 @@ const LoginForm = () => {
                 className="mb-3"
               />
             </Form.Group>
-
+            <Link to={'/register'}><h4 className="text-center mb-4">Все още нямате регистрация?</h4></Link>
             <div className="text-center">
               <Button variant="primary" type="submit" className="btn btn-primary mb-3">
                 Вход
@@ -88,6 +88,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-
-

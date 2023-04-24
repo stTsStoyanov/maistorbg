@@ -4,7 +4,7 @@
     justify-content: space-between;
     height: 500px;
     width: 320px;
-    margin: 0 60 0 30;
+    margin: 0px 60px 0px 30px;
     border-radius: 10px;
     border: 1px solid gray;
     
@@ -17,7 +17,6 @@
       padding: 20px;
       box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
       overflow: scroll;
-      background-image: linear-gradient(to left bottom, #dee2e6, #d5d9de, #cbd1d6, #c2c8cf, #b9c0c7, #acb3bb, #9fa7ae, #939aa2, #80878f, #6d747b, #5b6269, #495057);
       
       .card-title {
         font-size: 1.2rem;
@@ -39,6 +38,10 @@
 
     .card::-webkit-scrollbar{
       display: none;
+      gap: 10px;
     }
   }
   
+  .card-body-review-component{
+    flex: 1 1 auto;
+  }

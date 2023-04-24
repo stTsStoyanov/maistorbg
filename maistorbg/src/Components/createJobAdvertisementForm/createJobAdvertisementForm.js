@@ -135,6 +135,7 @@ const CreateJobAdvertisementForm = () => {
   const [alertText, setAlertText] = useState("");
   const navigate = useNavigate();
   const [disableSubmitButton, setDisableSubmitButton] = useState(false);
+  const defaultImageUrl = "https://www.hercjobs.org/wp-content/uploads/2020/07/Is-now-a-good-time-to-look-for-a-job-HERC.jpg";
 
   let categories = JSON.parse(localStorage.getItem("craftsmenCategories")).map(
     (item) => item.category
@@ -158,10 +159,11 @@ const CreateJobAdvertisementForm = () => {
     }
     userManager.getLoggedUser().then((user) => {
       const authorId = user.id;
+      const imagesToUse = jobAdvertisementImages.length === 0 ? [defaultImageUrl] : jobAdvertisementImages;
       const newJobAdvertisement = new jobAdvertisement(
         jobAdvertisementTitle,
         jobAdvertisementText,
-        jobAdvertisementImages,
+        imagesToUse,
         authorId,
         category
       );

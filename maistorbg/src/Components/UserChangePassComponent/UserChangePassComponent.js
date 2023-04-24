@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import "./UserChangePassComponent.scss";
 import userManager from "../../model/managers/userManager";
+import localStorageManager from "../../model/managers/localStorageManager";
 
 function UserChangePassComponent() {
   const [newPassword, setNewPassword] = useState("");
@@ -15,17 +16,18 @@ function UserChangePassComponent() {
     userManager.logout();
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const users = JSON.parse(localStorage.getItem("users"));
-    const user = JSON.parse(localStorage.getItem("loggedUser"));
+
+    // Use the getItem function to get the users and loggedUser data from localStorage
+    const users = await localStorageManager.getItem("users");
+    const user = await localStorageManager.getItem("loggedUser");
 
     if (user.password !== oldPassword) {
       setErrorMessage("Грешна стара парола! Моля опитайте отново!");
       return;
     }
     if (newPassword === oldPassword) {
-      // added check for new password being the same as old one
       setErrorMessage(
         "Новата парола не може да бъде същата като старата! Моля опитайте отново!"
       );
@@ -46,18 +48,19 @@ function UserChangePassComponent() {
         return u;
       }
     });
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    localStorage.setItem(
-      "loggedUser",
-      JSON.stringify({
-        ...user,
-        password: newPassword,
-      })
-    );
+
+    // Use the setItem function to update the users and loggedUser data in localStorage
+     localStorageManager.setItem("users", updatedUsers);
+     localStorageManager.setItem("loggedUser", {
+      ...user,
+      password: newPassword,
+    });
+
     setNewPassword("");
     setConfirmNewPassword("");
     setErrorMessage("");
     setShowSuccessAlert(true);
+
     setTimeout(() => {
       setShowSuccessAlert(false);
       userManager.logout();
