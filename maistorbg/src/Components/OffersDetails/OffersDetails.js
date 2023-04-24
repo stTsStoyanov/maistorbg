@@ -5,6 +5,8 @@ import "./OffersDetails.scss";
 import Offer from "../../model/classes/offer";
 import { useNavigate } from "react-router-dom";
 import localStorageManager from "../../model/managers/localStorageManager";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
+import { Link } from "react-router-dom";
 
 function OffersDetails() {
   const { state } = useLocation();
@@ -14,13 +16,23 @@ function OffersDetails() {
   const navigate = useNavigate();
   const [showOfferForm, setShowOfferForm] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    localStorageManager.getItem("loggedUser").then((user) => {
-      setLoggedUser(user);
-      setIsClient(user ? user.isClient : false);
-    });
+    const fetchData = async () => {
+      try {
+        const user = await localStorageManager.getItem("loggedUser");
+        setLoggedUser(user);
+        setIsClient(user ? user.isClient : false);
+        console.log(loggedUser)
+        setIsLoading(false)
+      } catch (error) {
+        console.log("Error fetching data from local storage:", error);
+      }
+    };
+    fetchData();
   }, []);
+
 
   const handleOfferSubmit = async (event, authorId, jobAdvertisementId) => {
     event.preventDefault();
@@ -38,12 +50,12 @@ function OffersDetails() {
     console.log("New offer:", newOffer);
     const offers = (await localStorageManager.getItem("allOffers")) || [];
     offers.push(newOffer);
-    await localStorageManager.setItem("allOffers", offers);
+    localStorageManager.setItem("allOffers", offers);
     setShowAlert(true);
 
     setTimeout(() => {
-      navigate("/home/offers"); // use navigate from react-router-dom instead of window.location.href
-    }, 800); // wait for 2 seconds before navigating to the other page
+      navigate("/home/offers");
+    }, 800);
   };
 
   const offerForm = (
@@ -98,9 +110,13 @@ function OffersDetails() {
     </Form>
   );
 
+  
   return (
-    <Card className="job-cardd">
-      {/* <Card.Img variant="top" src={offer.jobAdvertisementImage[0]} alt="Job Advertisement" /> */}
+    <div>
+      {isLoading ? (
+        <SpinnerLoader/>
+        ) : (
+          <Card className="job-cardd">
       <Carousel>
         {offer.jobAdvertisementImage.map((image, index) => (
           <Carousel.Item key={index}>
@@ -122,24 +138,41 @@ function OffersDetails() {
           <div>
             {offer.isOfferTaken ? (
               <div>
-              <Card.Text>Обявата е вече взета от друг майстор!</Card.Text>
+                <Card.Text>Обявата е вече взета от друг майстор!</Card.Text>
               </div>
             ) : (
               <div>
-                <Button
-                  variant="secondary"
-                  onClick={() => setShowOfferForm(true)}
-                >
-                  Кандидаствай
-                </Button>
+                {loggedUser.skills === null ? (
+                  <>
+                  <Card.Text>Все още не сте избрали категория на експертиза</Card.Text>
+                  <Link to={"/home/myprofile/craftsmen/addskills"}>
+                  <Button variant="secondary">
+                    Изберете умения
+                  </Button>
+                  </Link>
+                  </>
+                ) : loggedUser.skills.includes(offer.category) ? (
+                  <Button
+                    variant="secondary"
+                    onClick={() => setShowOfferForm(true)}
+                  >
+                    Кандидаствай
+                  </Button>
+                ) : (
+                  <div>you do not have the needed skill</div>
+                )}
                 {showOfferForm ? offerForm : null}
               </div>
             )}
           </div>
         ) : null}
       </Card.Body>
+
     </Card>
+          )}
+    </div>
   );
+
 }
 
 export default OffersDetails;

@@ -51,13 +51,14 @@ export default function LeaveReviewOfferComponent({ offer, jobAdvertisement }) {
             <Card className="offer-card">
                 <Card.Body>
                     <div className="offer-card-info">
+                        <Card.Text className="offer-card-header-text"><strong>Оферта</strong></Card.Text>
                         <Card.Text><strong>Описание: </strong>{offer.offerText}</Card.Text>
                         <div>
                             <strong>Сума: </strong> {offer.offeredSum}лв | <strong>Период: </strong> {offer.offeredTerm} дни
                         </div>
                         <Card.Text>
                             <strong>Дата на създаване:</strong>{" "}
-                            {new Date(offer.creationDate).toLocaleDateString()}
+                            {offer.creationDate}
                         </Card.Text>
                         <Card.Text>
                             <strong>Офертата е била приета на:</strong> {offer.dateOfAcceptance}
@@ -105,118 +106,3 @@ export default function LeaveReviewOfferComponent({ offer, jobAdvertisement }) {
 
 
 }
-
-    // return (
-    //     <div>
-    //         <Card className="leave-review-form">
-    //             <Card.Body>
-    //                 <Card.Title>{offer.offerText}</Card.Title>
-    //                 <Card.Subtitle className="mb-2 text-muted">
-    //                     Сума: {offer.offeredSum} | Период: {offer.offeredTerm} дни
-    //                 </Card.Subtitle>
-    //                 <Card.Text>
-    //                     <small className="text-muted">
-    //                         Дата на създаване:{" "}
-    //                         {new Date(offer.creationDate).toLocaleDateString()}
-    //                     </small>
-    //                 </Card.Text>
-    //                 <Card.Text>
-    //                     Офертата е била приета на {offer.dateOfAcceptance}
-    //                 </Card.Text>
-    //                 <Card.Text>
-    //                     <h5>Обявата беше извършена от:</h5>
-    //                 </Card.Text>
-    //                 {offerAuthor && (
-    //                     <Card className="author-card">
-    //                         <Card.Body className="d-flex align-items-center">
-    //                             <img
-    //                                 className="mr-3"
-    //                                 src={offerAuthor.photo}
-    //                                 alt={offerAuthor.name}
-    //                                 width="80"
-    //                                 height="80"
-    //                             />
-    //                             <div>
-    //                                 <h6>{offerAuthor.name}</h6>
-    //                                 <p> {offerAuthor.skills.join(", ")}</p>
-    //                             </div>
-    //                         </Card.Body>
-    //                     </Card>
-    //                 )}
-    //             </Card.Body>
-    //         </Card>
-    //         {isReviewLeft ? (
-    //            <LeftReview
-    //            craftsman={offerAuthor}
-    //            client={client}
-    //            offer={offer}
-    //            jobAdvertisement={jobAdvertisement}
-    //            ></LeftReview>
-    //         ) : (
-    //             <LeaveReviewFormComponent
-    //                 craftsman={offerAuthor}
-    //                 client={client}
-    //                 offer={offer}
-    //                 jobAdvertisement={jobAdvertisement}
-    //             />
-    //         )}
-    //     </div>
-    // );
-
-
-    // return (
-    //   <div className="offer-card-container">
-    //     <Card className="offer-card">
-    //       <Card.Body>
-    //         <div className="offer-header">
-    //           <Card.Title className="offer-title">{offer.offerText}</Card.Title>
-    //           <Card.Subtitle className="offer-subtitle">
-    //             Сума: {offer.offeredSum} | Период: {offer.offeredTerm} дни
-    //           </Card.Subtitle>
-    //         </div>
-    //         <Card.Text>
-    //           <small className="offer-date">
-    //             Дата на създаване:{" "}
-    //             {new Date(offer.creationDate).toLocaleDateString()}
-    //           </small>
-    //         </Card.Text>
-    //         <Card.Text>Офертата е била приета на {offer.dateOfAcceptance}</Card.Text>
-    //         <Card.Text>
-    //           <h5 className="offer-author-title">Обявата беше извършена от:</h5>
-    //         </Card.Text>
-    //         {offerAuthor && (
-    //           <Card className="author-card">
-    //             <Card.Body className="author-card-body">
-    //               <img
-    //                 className="author-photo"
-    //                 src={offerAuthor.photo}
-    //                 alt={offerAuthor.name}
-    //                 width="80"
-    //                 height="80"
-    //               />
-    //               <div>
-    //                 <h6 className="author-name">{offerAuthor.name}</h6>
-    //                 <p className="author-skills">{offerAuthor.skills.join(", ")}</p>
-    //               </div>
-    //             </Card.Body>
-    //           </Card>
-    //         )}
-    //       </Card.Body>
-    //     </Card>
-    //     {isReviewLeft ? (
-    //       <LeftReview
-    //         craftsman={offerAuthor}
-    //         client={client}
-    //         offer={offer}
-    //         jobAdvertisement={jobAdvertisement}
-    //       />
-    //     ) : (
-    //       <LeaveReviewFormComponent
-    //         craftsman={offerAuthor}
-    //         client={client}
-    //         offer={offer}
-    //         jobAdvertisement={jobAdvertisement}
-    //       />
-    //     )}
-    //   </div>
-    // );

@@ -14,6 +14,7 @@ export default function CurrentReviewComponentHistory({ currentReview, craftsman
         <div className="CurrentReviewComponentHistory">
             <Card className="current-review-history-component">
                 <Card.Body className="card-body-review-component">
+                    <Card.Text className="review-history-component-header"><strong>Вашето Ревю</strong></Card.Text>
                     <Card.Text><strong>Резюме: </strong>{reviewSummary}</Card.Text>
                     <Card.Text><strong>Ревю: </strong>{review}</Card.Text>
                     <Card.Text><strong>Ревю за: </strong>{craftsmanName}</Card.Text>

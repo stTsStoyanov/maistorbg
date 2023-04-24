@@ -1,47 +1,55 @@
 .CurrentReviewComponentHistory {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  width: 320px;
+  margin: 0px 60px 0px 30px;
+  border-radius: 10px;
+  border: 1px solid gray;
+
+
+  .card {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 500px;
-    width: 320px;
-    margin: 0px 60px 0px 30px;
-    border-radius: 10px;
-    border: 1px solid gray;
-    
-    
-    .card {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-      overflow: scroll;
-      
-      .card-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-      
-      .card-subtitle {
-        font-size: 1rem;
-        color: #666;
-        margin-bottom: 10px;
-      }
-      
-      .card-text {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
+    padding: 20px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    overflow: scroll;
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
-    .card::-webkit-scrollbar{
-      display: none;
-      gap: 10px;
+    .card-subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      flex-grow: 1;
     }
   }
-  
-  .card-body-review-component{
-    flex: 1 1 auto;
+
+  .card::-webkit-scrollbar {
+    display: none;
+    gap: 10px;
   }
+}
+
+.card-body-review-component {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-history-component-header {
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+}

@@ -8,6 +8,10 @@ import localStorageManager from '../../model/managers/localStorageManager';
 import { delayFunction } from '../../utilFunctions/utilFunctions';
 import { Button, Toast } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import houseBanner from "../../images/house-banner.png"
+import secondBanner from "../../images/banner2.jpg"
+import thirdBanner from "../../images/banner3.jpg"
+
 
 export default function Home() {
   const [loggedUser, setLoggedUser] = useState(null);
@@ -50,6 +54,11 @@ export default function Home() {
   return (
     <div className='home'>
       <TopCraftsmen />
+      <div>
+      <img src={thirdBanner} 
+      style={{ width: '100%', maxHeight: '100%' }}
+      />
+      </div>
       <Review />
       <Advertisement />
       <Articles />
