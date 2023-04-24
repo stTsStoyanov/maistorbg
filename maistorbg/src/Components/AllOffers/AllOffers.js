@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, ListGroup, Form, Button, Pagination } from "react-bootstrap";
 import debounce from "lodash/debounce";
@@ -7,20 +7,32 @@ import localStorageManager from "../../model/managers/localStorageManager";
 
 const OFFERS_PER_PAGE = 8;
 function AllOffers() {
-  const allJobAdvertisements = JSON.parse(
-    localStorage.getItem("allJobAdvertisements")
-  ).reverse();
-  const [offers, setOffers] = useState(allJobAdvertisements);
+  const [allJobAdvertisements, setAllJobAdvertisements] = useState([]);
+  const [offers, setOffers] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
   const [selectedOffer, setSelectedOffer] = useState(null);
-  const craftsmenCategories = JSON.parse(
-    localStorage.getItem("craftsmenCategories")
-  );
-  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+  const [craftsmenCategories, setCraftsmenCategories] = useState([]);
+  const [loggedUser, setLoggedUser] = useState(null);
   const navigate = useNavigate();
   const offerCardsContainerRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    localStorageManager.getItem("allJobAdvertisements").then((data) => {
+      const reversedData = data.reverse();
+      setAllJobAdvertisements(reversedData);
+      setOffers(reversedData);
+    });
+
+    localStorageManager.getItem("craftsmenCategories").then((data) => {
+      setCraftsmenCategories(data);
+    });
+
+    localStorageManager.getItem("loggedUser").then((data) => {
+      setLoggedUser(data);
+    });
+  }, []);
 
   const handleSearchInputChange = debounce((event) => {
     const searchValue = event.target.value.toLowerCase();
@@ -40,7 +52,7 @@ function AllOffers() {
     );
     setOffers(filteredOffers);
     setIsFiltered(true);
-    setCurrentPage(1); // Reset to first page when filtering by category
+    setCurrentPage(1); 
     offerCardsContainerRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -50,7 +62,7 @@ function AllOffers() {
     setOffers(allJobAdvertisements);
     setSelectedCategory(null);
     setIsFiltered(false);
-    setCurrentPage(1); // Reset to first page when clearing filters
+    setCurrentPage(1); 
     if (searchInputRef.current) {
       searchInputRef.current.value = "";
     }
