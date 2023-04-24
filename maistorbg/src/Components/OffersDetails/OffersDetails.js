@@ -17,6 +17,7 @@ function OffersDetails() {
   const [showOfferForm, setShowOfferForm] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
+  const [hideButton, setHideButton] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +33,10 @@ function OffersDetails() {
     };
     fetchData();
   }, []);
+  const showOfferForms = () => {
+    setShowOfferForm(true);
+    setHideButton(true); // Add this line to hide the button
+  };
 
 
   const handleOfferSubmit = async (event, authorId, jobAdvertisementId) => {
@@ -153,11 +158,12 @@ function OffersDetails() {
                   </>
                 ) : loggedUser.skills.includes(offer.category) ? (
                   <Button
-                    variant="secondary"
-                    onClick={() => setShowOfferForm(true)}
-                  >
-                    Кандидаствай
-                  </Button>
+  variant="secondary"
+  onClick={showOfferForms} 
+  style={{ display: hideButton ? "none" : "block" }} 
+>
+  Кандидаствай
+</Button>
                 ) : (
                   <div>you do not have the needed skill</div>
                 )}
