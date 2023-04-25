@@ -3,13 +3,8 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import "./TopCraftsmen.scss"
 
 const TopCraftsmen = () => {
-  // Retrieve the array of users and craftsmen from local storage
   const usersAndCraftsmen = JSON.parse(localStorage.getItem("users")) || [];
-
-  // Filter the array to get only the craftsmen
   const craftsmen = usersAndCraftsmen.filter((person) => !person.isClient);
-
-  // Sort the array in descending order by average rating and slice the top 5
   const topCraftsmen = craftsmen
     .sort((a, b) => b.averageRating - a.averageRating)
     .slice(0, 6);
@@ -20,7 +15,7 @@ const TopCraftsmen = () => {
         <h2 className="text-center">Топ 6 майстора!</h2>
         <Row style={{ padding: "20px" }}>
           {topCraftsmen.map((craftsman, index) => (
-            <Col sm={12} md={6} lg={4} key={index}>
+            <Col sm={1} md={6} lg={4} key={index}>
               <Card className="craftsman-card mb-3">
               <div className="craftsman-image-container">
                 <Card.Img variant="top" src={craftsman.photo} className="craftsman-image" />

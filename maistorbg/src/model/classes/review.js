@@ -8,8 +8,6 @@ export default class Review {
         this.jobAdvertisementId = jobAdvertisementId;
         this.rating = rating;
         this.creationDate =  new Date().toLocaleString();
-        // this.clientName = JSON.parse(localStorage.getItem("users")).find(user => user.id === this.clientId).name;
-        // this.craftsmanName = JSON.parse(localStorage.getItem("users")).find(user => user.id === this.craftsmanId).name;
     }
 }
 

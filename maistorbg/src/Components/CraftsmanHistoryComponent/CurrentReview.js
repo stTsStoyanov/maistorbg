@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { Card, Carousel } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import "./CurrentJobAdvertisement.scss"
 
 export default function CurrentReview({ jobAdvertisement }) {
@@ -11,12 +11,8 @@ export default function CurrentReview({ jobAdvertisement }) {
     useEffect(() => {
         const allReview = JSON.parse(localStorage.getItem('allReviews'));
         const theReview = allReview.find(el => el.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && el.craftsmanId === loggedUser.id);
-        console.log(theReview)
         setReview(theReview);
     }, [])
-
-
-    // console.log(jobAdvertisement)
 
     return (
 
@@ -28,7 +24,6 @@ export default function CurrentReview({ jobAdvertisement }) {
                         <div className="grid-container">
                             <div className="grid-item">
                                 <strong>Клиент: </strong> {review.clientName}<br />
-                                {/* {jobAdvertisement.jobAdvertisementTittle} */}
                             </div>
                             <div className="grid-item">
 

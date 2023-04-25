@@ -14,7 +14,7 @@ function NotificationComponent({ number }) {
     fontWeight: 'bold',
     position: 'absolute',
     top: '0px',
-    right: '15%'
+    right: '9%'
   }), []);
 
   return (

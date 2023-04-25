@@ -30,7 +30,6 @@ export default function CurrentOffer({ jobAdvertisement }) {
                     <div className="grid-container">
                         <div className="grid-item">
                             <strong>Заглавие: </strong> {jobAdvertisement.jobAdvertisementTittle}<br/>
-                            {/* {jobAdvertisement.jobAdvertisementTittle} */}
                         </div>
                         <div className="grid-item">
                             

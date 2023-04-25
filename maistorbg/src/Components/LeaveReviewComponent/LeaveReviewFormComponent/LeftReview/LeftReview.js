@@ -1,6 +1,6 @@
 import { delayFunction } from "../../../../utilFunctions/utilFunctions";
 import localStorageManager from "../../../../model/managers/localStorageManager";
-import { Card, Spinner } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import "./LeftReview.scss"
 import SpinnerLoader from "../../../SpinnerLoader/SpinnerLoader";

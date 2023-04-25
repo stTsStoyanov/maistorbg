@@ -27,7 +27,6 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
 
       setLoading(false);
     } catch (error) {
-      console.error(error);
     }
   };
 
@@ -85,18 +84,6 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
     }
   }
 
-  useEffect(() => {
-    console.log(jobAdvertisement)
-  }, [])
-
-  const renderDate = (offer) => {
-    if (offer.isAccepted === null) {
-      return null
-    } else {
-      return <div className="offer-details">Статус: {offer.isAccepted ? `Офертата е приета на ${offer.dateOfAcceptance}` : `Офертата е отказана на ${offer.dateOfRejection}`}</div>
-    }
-  }
-
   if (loading) {
     return <SpinnerLoader />;
   }
@@ -137,9 +124,12 @@ export default function CurrentJobAdvertisementsOffers({ jobAdvertisement }) {
                   {!offer.isAccepted ? (
                     <div className="button-left-align"><strong>Отказана оферта</strong></div>
                   ) : (
-                    <NavLink className="button-left-align" to={`/home/myprofile/user/currentoffers/review/${jobAdvertisement.jobAdvertisementId}`}>
+                    <Link 
+                    className="button-left-align" 
+                    to={`/home/myprofile/user/currentoffers/review/${jobAdvertisement.jobAdvertisementId}`}
+                    as="li">
                       <Button>{offer.isAccepted ? "Виж детайли" : "Остави ревю"}</Button>
-                    </NavLink>
+                    </Link>
                   )}
                 </div>
               )}

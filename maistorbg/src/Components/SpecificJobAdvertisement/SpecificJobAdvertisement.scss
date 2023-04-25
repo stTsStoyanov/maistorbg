@@ -10,9 +10,9 @@
 
     .inner-container {
         display: flex;
-        align-items: center;
         .inner-container2 {
             margin: 0px 90px 0 0;
+            position: sticky;
         }
     }
 
@@ -48,4 +48,8 @@
             }
         }
     }
+}
+
+.position-sticky{
+    position: sticky;
 }

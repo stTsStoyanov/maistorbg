@@ -28,7 +28,6 @@ export default function CardAdvertisementComponent({ jobAdvertisement }) {
                     <div className="grid-container-history">
                         <div className="grid-item-history">
                             <strong>Заглавие:</strong> {jobAdvertisement.jobAdvertisementTittle}<br/>
-                            {/* {jobAdvertisement.jobAdvertisementTittle} */}
                         </div>
                         <div className="grid-item-history">
                             

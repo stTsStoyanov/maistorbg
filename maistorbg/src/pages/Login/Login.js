@@ -23,16 +23,13 @@ const LoginForm = () => {
     event.preventDefault();
     userManager.login(formData)
       .then(response => {
-        console.log("here is the reponse: ", response)
         setLoginError('')
         history('/home');
       })
       .catch(error => {
         setLoginError('Грешно потребителско име и/или парола')
-
       })
 
-    console.log(formData);
 
   };
 

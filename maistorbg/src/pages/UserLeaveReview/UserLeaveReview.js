@@ -54,7 +54,6 @@ export default function LeaveReviewComponent() {
           )}
           <div className="col-8 d-flex justify-content-between gap-2">
             {isLoading ? (
-              // <SpinnerLoader/>
               null
             ) : (
               <LeaveReviewOfferComponent offer={offer} jobAdvertisement={jobAdvertisement} />

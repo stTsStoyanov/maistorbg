@@ -47,9 +47,7 @@ export default function UserHistoryComponent() {
           jobAdvertisements.map((jobAdvertisement) => {
             const offer = offers.find((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && offer.isAccepted);
             const craftsman = offer ? users.find(user => user.id === offer.authorId) : null;
-            console.log(craftsman)
             const currentReview = offer ? allReviews.find(review => review.jobAdvertisementId === offer.jobAdvertisementId) : null
-            console.log(currentReview)
             return (
               <div className="card-container-history-user" key={jobAdvertisement.id}>
                 <div className="outer-card">

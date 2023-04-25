@@ -41,7 +41,7 @@ function AllOffers() {
     );
     setOffers(filteredOffers);
     setIsFiltered(true);
-    setCurrentPage(1); // Reset to first page when searching
+    setCurrentPage(1);
     offerCardsContainerRef.current.scrollIntoView({ behavior: "smooth" });
   }, 500);
 

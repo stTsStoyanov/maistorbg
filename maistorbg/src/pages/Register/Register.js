@@ -107,7 +107,6 @@ const RegistrationForm = () => {
   };
 
   return (
-    // <div className="background-linear-gradient">border p-4
     <div style={{ position: "relative", height: "100%" }}>
       <Container className="my-5">
         <Row className="justify-content-md-center">
@@ -127,24 +126,11 @@ const RegistrationForm = () => {
                   title="Моля въведете валиден имйел адрес."
                 />
               </Form.Group>
-              {/* {emailError && (
-              <Alert variant="danger" className="mt-4">
-                {emailError}
-              </Alert>
-            )} */}
-              {/* {emailError && (
-              <div style={{  top: "bottom", display:"block"}}>
-                <Alert variant="danger">{emailError}</Alert>
-              </div>
-            )} */}
               {emailError && (
                 <div style={{ position: "absolute", bottom: "11", left: "75%", transform: "translateX(-50%)" }}>
                   <Alert variant="danger">{emailError}</Alert>
                 </div>
               )}
-
-
-
               <Form.Group controlId="formUsername">
                 <Form.Label>Потребителско име</Form.Label>
                 <Form.Control
@@ -219,7 +205,6 @@ const RegistrationForm = () => {
                   <option value='false'>Майстор</option>
 
                 </Form.Select>
-                {/* Form.Controll */}
               </Form.Group>
 
               <Link to={'/login'}><h5 className="text-center mb-4">Вече имате профил?</h5></Link>
@@ -230,11 +215,6 @@ const RegistrationForm = () => {
                 </Button>
               </div>
             </Form>
-            {/* {isFormValid ? (
-            <Alert variant="success" className="mt-4">
-              Формата е попълнена успешно.
-            </Alert>
-          ) : null} */}
             {registerSuccess ?
               <Alert variant="success" className="mt-4">
                 {registerSuccess}

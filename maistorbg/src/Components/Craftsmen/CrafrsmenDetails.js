@@ -6,8 +6,6 @@ import "./CrafrsmenDetails.scss"
 
 function CraftsmenDetails() {
     const { id } = useParams();
-    // id is the selected craftsman's ID from the URL parameter
-
     const craftsmen = JSON.parse(localStorage.getItem('users'));
     const selectedCraftsmen = craftsmen.find((c) => c.id === parseInt(id));
 
@@ -51,9 +49,6 @@ function CraftsmenDetails() {
                                                     <p>Ревю: {r.review}</p>
                                                 </div>
                                             ))}
-                                            {/* {selectedCraftsmenReviews.length < 3 && (
-                                                <p>This craftsman has less than 3 reviews</p>
-                                            )} */}
                                         </div>
                                     ) : (
                                         <p>This craftsman does not have any reviews yet</p>
@@ -69,62 +64,3 @@ function CraftsmenDetails() {
 }
 
 export default CraftsmenDetails;
-
-
-
-
-
-
-// import { useParams } from 'react-router-dom';
-// import React, { useEffect } from "react";
-
-// function CraftsmenDetails() {
-//     const { id } = useParams();
-//     // id is the selected craftsman's ID from the URL parameter
-
-
-//     const craftsmen = JSON.parse(localStorage.getItem('users'));
-//     const selectedCraftsmen = craftsmen.find((c) => c.id === parseInt(id));
-//     // console.log(craftsmen)
-
-//     useEffect(() => {
-  
-//     },[]);
-
-//     if (!selectedCraftsmen) {
-//         return <div>No craftsmen found with the selected ID</div>;
-//     }
-
-//     const allReviews = JSON.parse(localStorage.getItem('allReviews'));
-//     const selectedCraftsmenReviews = allReviews.filter((r) => r.craftsmanId === parseInt(id));
-
-//     return (
-//         <div>
-            
-//             <img src={selectedCraftsmen.photo} alt={selectedCraftsmen.name} />
-//             <h2>{selectedCraftsmen.name}</h2>
-//             <p>Email: {selectedCraftsmen.email}</p>
-//             <p>Phone Number: {selectedCraftsmen.phoneNumber}</p>
-
-//             {selectedCraftsmenReviews.length > 0 ? (
-//                 <div>
-//                     <h3>Reviews:</h3>
-//                     {selectedCraftsmenReviews.slice(0, 3).map((r) => (
-//                         <div key={r.id}>
-//                             <p>Rating: {r.rating}</p>
-//                             <p>Review: {r.review}</p>
-//                         </div>
-//                     ))}
-//                     {/* {selectedCraftsmenReviews.length < 3 && (
-//                         <p>This craftsman has less than 3 reviews</p>
-//                     )} */}
-//                 </div>
-//             ) : (
-//                 <p>This craftsman does not have any reviews yet</p>
-//             )}
-//         </div>
-//     );
-// }
-
-
-// export default CraftsmenDetails;

@@ -13,7 +13,7 @@ export default function CraftsmanPresentingCard({craftsman}) {
                     width="100"
                     height="100"
                 />
-                <div>
+                <div style={{marginLeft: "15px"}}>
                     <strong>{craftsman.name}</strong>
                     <p><strong>{craftsman.skills.join(", ")}</strong></p>
                 </div>

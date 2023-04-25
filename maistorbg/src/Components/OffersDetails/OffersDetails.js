@@ -21,21 +21,16 @@ function OffersDetails() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const user = await localStorageManager.getItem("loggedUser");
-        setLoggedUser(user);
-        setIsClient(user ? user.isClient : false);
-        console.log(loggedUser)
-        setIsLoading(false)
-      } catch (error) {
-        console.log("Error fetching data from local storage:", error);
-      }
+      const user = await localStorageManager.getItem("loggedUser");
+      setLoggedUser(user);
+      setIsClient(user ? user.isClient : false);
+      setIsLoading(false)
     };
     fetchData();
   }, []);
   const showOfferForms = () => {
     setShowOfferForm(true);
-    setHideButton(true); // Add this line to hide the button
+    setHideButton(true);
   };
 
 
@@ -51,8 +46,6 @@ function OffersDetails() {
       offeredSum,
       offeredTerm
     );
-
-    console.log("New offer:", newOffer);
     const offers = (await localStorageManager.getItem("allOffers")) || [];
     offers.push(newOffer);
     localStorageManager.setItem("allOffers", offers);
@@ -115,67 +108,67 @@ function OffersDetails() {
     </Form>
   );
 
-  
+
   return (
     <div>
       {isLoading ? (
-        <SpinnerLoader/>
-        ) : (
-          <Card className="job-cardd">
-      <Carousel>
-        {offer.jobAdvertisementImage.map((image, index) => (
-          <Carousel.Item key={index}>
-            <img
-              className="d-block w-100 carousel-image"
-              src={image}
-              alt={`Job Advertisement ${index}`}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel>
-      <Card.Body>
-        <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
-        <Card.Text>{offer.jobAdvertisementText}</Card.Text>
-        <Card.Text>Категория: {offer.category}</Card.Text>
-        <Card.Text>Дата на създаване: {offer.creationDate}</Card.Text>
+        <SpinnerLoader />
+      ) : (
+        <Card className="job-cardd">
+          <Carousel>
+            {offer.jobAdvertisementImage.map((image, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100 carousel-image"
+                  src={image}
+                  alt={`Job Advertisement ${index}`}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+          <Card.Body>
+            <Card.Title>{offer.jobAdvertisementTittle}</Card.Title>
+            <Card.Text>{offer.jobAdvertisementText}</Card.Text>
+            <Card.Text>Категория: {offer.category}</Card.Text>
+            <Card.Text>Дата на създаване: {offer.creationDate}</Card.Text>
 
-        {loggedUser && !isClient ? (
-          <div>
-            {offer.isOfferTaken ? (
+            {loggedUser && !isClient ? (
               <div>
-                <Card.Text>Обявата е вече взета от друг майстор!</Card.Text>
-              </div>
-            ) : (
-              <div>
-                {loggedUser.skills === null ? (
-                  <>
-                  <Card.Text>Все още не сте избрали категория на експертиза</Card.Text>
-                  <Link to={"/home/myprofile/craftsmen/addskills"}>
-                  <Button variant="secondary">
-                    Изберете умения
-                  </Button>
-                  </Link>
-                  </>
-                ) : loggedUser.skills.includes(offer.category) ? (
-                  <Button
-  variant="secondary"
-  onClick={showOfferForms} 
-  style={{ display: hideButton ? "none" : "block" }} 
->
-  Кандидаствай
-</Button>
+                {offer.isOfferTaken ? (
+                  <div>
+                    <Card.Text>Обявата е вече взета от друг майстор!</Card.Text>
+                  </div>
                 ) : (
-                  <Card.Text>Нямате нужните умения за тази обява.</Card.Text>
+                  <div>
+                    {loggedUser.skills === null ? (
+                      <>
+                        <Card.Text>Все още не сте избрали категория на експертиза</Card.Text>
+                        <Link to={"/home/myprofile/craftsmen/addskills"}>
+                          <Button variant="secondary">
+                            Изберете умения
+                          </Button>
+                        </Link>
+                      </>
+                    ) : loggedUser.skills.includes(offer.category) ? (
+                      <Button
+                        variant="secondary"
+                        onClick={showOfferForms}
+                        style={{ display: hideButton ? "none" : "block" }}
+                      >
+                        Кандидаствай
+                      </Button>
+                    ) : (
+                      <Card.Text>Нямате нужните умения за тази обява.</Card.Text>
+                    )}
+                    {showOfferForm ? offerForm : null}
+                  </div>
                 )}
-                {showOfferForm ? offerForm : null}
               </div>
-            )}
-          </div>
-        ) : null}
-      </Card.Body>
+            ) : null}
+          </Card.Body>
 
-    </Card>
-          )}
+        </Card>
+      )}
     </div>
   );
 

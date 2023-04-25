@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "./TopCraftsmen.scss";
 import "./RegistrationPrompt.scss"
@@ -41,40 +40,3 @@ const RegistrationPrompt = () => {
 };
 
 export default RegistrationPrompt;
-
-
-// import React from 'react';
-// import Button from 'react-bootstrap/Button';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import "./TopCraftsmen.scss";
-// import { Container } from 'react-bootstrap';
-
-// const RegistrationPrompt = () => {
-//     return (
-//         <Container style={{ border: "1px solid black", padding: "20px" }} className="mx-md-5 my-5">
-//             <Row>
-//                 <Col xs={12} md={6}>
-//                     <p>
-//                         If you do not have an account, you can create one by clicking the button:
-//                     </p>
-//                 </Col>
-//                 <Col xs={12} md={6}>
-//                     <Button href="/register" block>Register</Button>
-//                 </Col>
-//             </Row>
-//             <Row>
-//                 <Col xs={12} md={6}>
-//                     <p>
-//                         If you have an account, login by clicking the button:
-//                     </p>
-//                 </Col>
-//                 <Col xs={12} md={6}>
-//                     <Button href="/login" block>Login</Button>
-//                 </Col>
-//             </Row>
-//         </Container>
-//     );
-// };
-
-// export default RegistrationPrompt;
