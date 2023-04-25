@@ -10,6 +10,8 @@ export default function CurrentReviewComponentHistory({ currentReview, craftsman
         creationDate,
     } = currentReview;
 
+    const parsedRating = parseInt(rating);
+
     return (
         <div className="CurrentReviewComponentHistory">
             <Card className="current-review-history-component">
@@ -17,11 +19,18 @@ export default function CurrentReviewComponentHistory({ currentReview, craftsman
                     <Card.Text className="review-history-component-header"><strong>Вашето Ревю</strong></Card.Text>
                     <Card.Text><strong>Резюме: </strong>{reviewSummary}</Card.Text>
                     <Card.Text><strong>Ревю: </strong>{review}</Card.Text>
-                    <Card.Text><strong>Ревю за: </strong>{craftsmanName}</Card.Text>
-                    <Card.Text><strong>Вашата оценка: </strong>{rating}</Card.Text>
+                    {craftsmanName ? (
+                        <Card.Text><strong>Ревю за: </strong>{craftsmanName}</Card.Text>
+                    ) : null}
+                    <Card.Text><strong>Вашата оценка: </strong>
+                        {[...Array(parsedRating)].map((_, i) => (
+                            <span key={i} style={{ color: "#c0c00a", fontSize: "26px" }}>&#9733;</span>
+                        ))}
+                    </Card.Text>
                     <Card.Text><strong>Дата на създаване: </strong>{creationDate}</Card.Text>
                 </Card.Body>
             </Card>
         </div>
     );
 }
+

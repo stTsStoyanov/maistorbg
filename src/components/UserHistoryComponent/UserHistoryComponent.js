@@ -39,45 +39,55 @@ export default function UserHistoryComponent() {
 
   return (
     <div>
-      <div className="history-header-text"><strong>Вашата История</strong></div>
-      <div className="outer-container-history">
-        {isLoading ? (
-          <SpinnerLoader />
-        ) : (
-          jobAdvertisements.map((jobAdvertisement) => {
-            const offer = offers.find((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && offer.isAccepted);
-            const craftsman = offer ? users.find(user => user.id === offer.authorId) : null;
-            const currentReview = offer ? allReviews.find(review => review.jobAdvertisementId === offer.jobAdvertisementId) : null
-            return (
-              <div className="card-container-history-user" key={jobAdvertisement.id}>
-                <div className="outer-card">
-                  <Card.Body className="history-card-body">
-                    <div className="advertisement-card-history">
-                      <CardAdvertisementComponent jobAdvertisement={jobAdvertisement} />
-                    </div>
-                    <div>
-                      <div>
-                        {offer ? (
-                          <OfferCard offer={offer} jobAdvertisementId={jobAdvertisement.jobAdvertisementId} />
-                        ) : (
-                          null
-                        )}
+      {jobAdvertisements.length === 0 ? (
+        <div>No job advertisements to display</div>
+      ) : (
+        <>
+          <div className="history-header-text"><strong>Вашата История</strong></div>
+          <div className="outer-container-history">
+            {isLoading ? (
+              <SpinnerLoader />
+            ) : (
+              jobAdvertisements.map((jobAdvertisement, index) => {
+                const offer = offers.find((offer) => offer.jobAdvertisementId === jobAdvertisement.jobAdvertisementId && offer.isAccepted);
+                const craftsman = offer ? users.find(user => user.id === offer.authorId) : null;
+                const currentReview = offer ? allReviews.find(review => review.jobAdvertisementId === offer.jobAdvertisementId) : null
+                return (
+                  <div key={index}>
+                    <div className="job-add-number">{`Обява №:${index + 1}`}</div>
+                    <div className="card-container-history-user" key={jobAdvertisement.id}>
+                      <div className="outer-card">
+                        <Card.Body className="history-card-body">
+                          <div className="advertisement-card-history">
+                            <CardAdvertisementComponent jobAdvertisement={jobAdvertisement} />
+                          </div>
+                          <div>
+                            <div>
+                              {offer ? (
+                                <OfferCard offer={offer} jobAdvertisementId={jobAdvertisement.jobAdvertisementId} />
+                              ) : (
+                                null
+                              )}
+                            </div>
+                            <div>
+                              {craftsman && <CraftsmanCardPresentingComponent craftsman={craftsman} />}
+                            </div>
+                          </div>
+                          <div>
+                            {currentReview && <CurrentReviewComponentHistory currentReview={currentReview} craftsmanName={craftsman.name} />}
+                          </div>
+                        </Card.Body>
                       </div>
-                      <div>
-                        {craftsman && <CraftsmanCardPresentingComponent craftsman={craftsman} />}
-                      </div>
                     </div>
-                    <div>
-                      {currentReview && <CurrentReviewComponentHistory currentReview={currentReview} craftsmanName={craftsman.name} />}
-                    </div>
-                  </Card.Body>
-                </div>
-              </div>
-            );
-          })
-        )}
-      </div>
-      <hr />
+                  </div>
+                );
+              })
+            )}
+          </div>
+          <hr />
+        </>
+      )}
     </div>
-);
+  );
+  
 }

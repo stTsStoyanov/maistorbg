@@ -1,61 +1,87 @@
-.reviews-containerr{
-    margin-left: 5%;
-    margin-right: 5%;
-    display: flex;
-    flex-wrap: wrap;
+.reviews-containerr {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .column-custom-style-reviews {
     justify-content: center;
+    display: flex;
+  }
+
+  .craftsman-card {
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .reviews-container-specific-style {
+    width: 70vw;
+  }
+
+  .craftsman-image {
+    height: 550px;
+    width: 100%;
+    object-fit: cover;
+  }
 
 
-    .reviews-container {
-        padding: 50px 0;
-        background-color: #f7f7f7;
-      }
-      
-      .craftsman-card {
-        margin-bottom: 30px;
-        border: none;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease-in-out;
-      }
-      
-      .craftsman-card:hover {
-        transform: translateY(-10px);
-      }
-      
-      .craftsman-image-container {
-        width: 350px;
-        height: 450px;
-        overflow: hidden;
-      }
-      
-      .craftsman-image {
-        height: 100%;
-        object-fit: cover;
-      }
-      
-      .craftsman-name {
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 15px;
-        margin-bottom: 10px;
-      }
-      
-      .craftsman-reviewer {
-        font-size: 16px;
-        font-weight: 500;
-        color: #808080;
-      }
-      
-      .craftsman-review-summary {
-        font-size: 16px;
-        font-weight: 500;
-        margin-top: 10px;
-        color: #808080;
-      }
-      
+  .reviews-container {
+    padding: 50px 0;
+    background-color: #f7f7f7;
+  }
+
+
+
+  .craftsman-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .craftsman-image-container {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+  }
+
+
+
+  .craftsman-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .craftsman-reviewer {
+    font-size: 16px;
+    font-weight: 500;
+    color: #808080;
+  }
+
+  .craftsman-review-summary {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #808080;
+  }
+
+  .text-center{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 36px;
+  }
+
 
 }
+specific-style-for-reviews-container {
+  row-gap: 50px;
 
-
-
-  
+  .column-custom-style-reviews {
+    justify-content: center;
+    display: flex;
+  }
+}

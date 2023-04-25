@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import './Review.scss';
 
 const Reviews = () => {
@@ -15,18 +15,18 @@ const Reviews = () => {
 
   return (
     <div className="reviews-containerr">
-      <Container >
-      <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
-        <Row style={{ padding: "20px" }}>
+      <div className='reviews-container-specific-style'>
+        <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
+        <Row className='specific-style-for-reviews-container'>
           {topCraftsmen.map((craftsman) => (
-            <Col key={craftsman.id} sm={12} md={6} lg={4}>
-              <Card className="craftsman-card" style={{ width: "350px"}}>
+            <Col key={craftsman.id} sm={12} md={6} lg={4} className='column-custom-style-reviews'>
+              <Card className="craftsman-card" style={{ width: "450px"}}>
                 <div className="craftsman-image-container">
                   <Card.Img
                     variant="top"
                     src={craftsman.photo}
                     className="craftsman-image"
-                    style={{ width: "350px", height: "450px" }}
+                    style={{ width: "450px", height: "550px" }}
                   />
                 </div>
                 <Card.Body>
@@ -39,6 +39,19 @@ const Reviews = () => {
                       (review) => review.craftsmanId === craftsman.id
                     )?.clientName}
                   </Card.Subtitle>
+                  <Card.Text className="craftsman-rating">
+                    {allReviews.find(
+                      (review) => review.craftsmanId === craftsman.id
+                    )?.rating && (
+                      <span style={{ color: "#c0c00a", fontSize: "26px" }}>
+                        {Array.from(Array(parseInt(allReviews.find(
+                          (review) => review.craftsmanId === craftsman.id
+                        )?.rating)).keys()).map((i) => (
+                          <span key={i}>✭</span>
+                        ))}
+                      </span>
+                    )}
+                  </Card.Text>
                   <Card.Text className="craftsman-review-summary">
                     {allReviews.find(
                       (review) => review.craftsmanId === craftsman.id
@@ -49,9 +62,10 @@ const Reviews = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      </div>
     </div>
   );
+  
 };
 
 export default Reviews;
