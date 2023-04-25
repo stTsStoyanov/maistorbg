@@ -39,7 +39,7 @@ const AdvertisementAllOffers = () => {
         <Carousel.Item>
           <img
             className="carousel-image"
-            src="https://profitshare.bg/files_shared/advertiser-page/61bc4f58e6905.jpg"
+            src="https://i.pinimg.com/750x/49/7b/df/497bdf487743c3ceea66134aca725d8d.jpg"
             alt="Third slide"
             style={{ height: "400px", width: "700px" }}
           />
