@@ -25,7 +25,7 @@ const AdvertisementAllOffers = () => {
             className="carousel-image"
             src="https://www.promooferti.com/wp-content/uploads/2021/12/bricolage-700x366.jpg"
             alt="First slide"
-            style={{ height: "400px", width: "700px" }}
+            style={{ height: "400px", width: "700px", marginBottom: "40px" }}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -33,7 +33,7 @@ const AdvertisementAllOffers = () => {
             className="carousel-image"
             src="https://www.unicreditbulbank.bg/media/filer_public/24/da/24dae29c-7ef5-45d5-9911-e91be67e6f58/ucf-news-ikea-feb2022-2.jpg"
             alt="Second slide"
-            style={{ height: "400px", width: "700px" }}
+            style={{ height: "400px", width: "700px", marginBottom: "40px" }}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -41,7 +41,7 @@ const AdvertisementAllOffers = () => {
             className="carousel-image"
             src="https://i.pinimg.com/750x/49/7b/df/497bdf487743c3ceea66134aca725d8d.jpg"
             alt="Third slide"
-            style={{ height: "400px", width: "700px" }}
+            style={{ height: "400px", width: "700px", marginBottom: "40px" }}
           />
         </Carousel.Item>
       </Carousel>

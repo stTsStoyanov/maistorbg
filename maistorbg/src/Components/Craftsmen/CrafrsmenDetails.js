@@ -15,7 +15,7 @@ function CraftsmenDetails() {
     }, []);
 
     if (!selectedCraftsmen) {
-        return <div>No craftsmen found with the selected ID</div>;
+        return <div>Не беше намерен майстор със съответното ID.</div>;
     }
 
     const allReviews = JSON.parse(localStorage.getItem('allReviews'));
@@ -57,7 +57,7 @@ function CraftsmenDetails() {
                                             ))}
                                         </div>
                                     ) : (
-                                        <p>This craftsman does not have any reviews yet</p>
+                                        <p>Този майстор все още няма ревюта!</p>
                                     )}
                                 </Col>
                             </Row>

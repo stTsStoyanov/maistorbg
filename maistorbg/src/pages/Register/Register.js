@@ -107,7 +107,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div style={{ position: "relative", height: "100%" }}>
+    <div style={{ position: "relative", height: "100%" }} className='registerDivContainer'>
       <Container className="my-5">
         <Row className="justify-content-md-center">
           <Col md="6">
