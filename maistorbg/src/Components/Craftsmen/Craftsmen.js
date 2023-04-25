@@ -100,15 +100,17 @@ const Craftsman = () => {
             </Row>
             <Row className="mt-3">
 
-                {craftsmenCategories.map((category, index) => (
-                    <Col key={index} md={4} className="mb-3">
-                        <Button variant="light" onClick={() => handleCategoryClick(category)}>
-                            <Image src={category.picture} thumbnail fluid style={{ width: "250px", height: "250px", borderRadius: "10%" }} />
-                            <h4 className="mt-3">{category.category}</h4>
-                            <p className="">{category.information} </p>
-                        </Button>
-                    </Col>
-                ))}
+            {craftsmenCategories.map((category, index) => (
+  <Col key={index} md={4} className="mb-3">
+    <Button variant="light" onClick={() => handleCategoryClick(category)} style={{ width: "400px", height: "550px", objectFit: "cover", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <Image src={category.picture} thumbnail fluid style={{ width: "100%", height: "70%", objectFit: "cover", borderRadius: "10%" }} />
+      <div style={{ padding: "1rem", textAlign: "center" }}>
+        <h4 style={{ fontSize: "1.2rem", lineHeight: "1.2", margin: "0 0 0.5rem 0" }}>{category.category}</h4>
+        <p style={{ fontSize: "1rem", lineHeight: "1.2", margin: 0 }}>{category.information}</p>
+      </div>
+    </Button>
+  </Col>
+))}
 
             </Row>
             <Row className="mt-3" ref={categoryRef}>
@@ -121,7 +123,7 @@ const Craftsman = () => {
                                 <Col key={index} md={4} className="mb-3">
                                     <Link to={`/home/craftsmen/${user.id}`}>
                                         <Card className="card-img">
-                                            <Card.Img variant="top" src={user.photo} style={{ width: "250px", height: "285px" }} />
+                                            <Card.Img variant="top" src={user.photo} style={{ width: "330px", height: "300px" }} />
                                             <Card.Body>
                                                 <Card.Title>{user.name}</Card.Title>
                                                 {loggedUser && (

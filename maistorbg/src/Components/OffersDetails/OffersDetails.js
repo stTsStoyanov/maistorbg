@@ -133,7 +133,7 @@ const isFormValid = () => {
  
         />
            {showTextLengthAlert ? (
-          <Alert variant="danger">
+          <Alert variant="danger" className="offer-details-alerts">
             Въведете минимум 25 символа.
           </Alert>
         ) : null}
