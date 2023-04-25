@@ -20,7 +20,6 @@ const CreateJobAdvertisementForm = () => {
   let categories = JSON.parse(localStorage.getItem("craftsmenCategories")).map(
     (item) => item.category
   );
-  categories.push("друго");
   const allCategories = categories;
 
   const handleSubmit = (e) => {
@@ -69,7 +68,7 @@ const CreateJobAdvertisementForm = () => {
   };
 
   const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files);
+    let files = Array.from(e.target.files);
     const allFilesAreImages = files.every((file) =>
       file.type.startsWith("image/")
     );

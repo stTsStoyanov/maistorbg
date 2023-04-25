@@ -41,8 +41,9 @@ export default function Home() {
       let hasUnseenOffer = false;
       jobAdvertisements.forEach((job) => {
         allOffers.forEach((offer) => {
-          if (offer.jobAdvertisemntId === job.jobAdvertisemntId && !offer.hasBeenSeen) {
+          if (offer.jobAdvertisemntId === job.jobAdvertisemntId && !offer.hasBeenSeen && job.authorId === loggedUser.id) {
             hasUnseenOffer = true;
+            console.log(offer)
           }
         });
       });
