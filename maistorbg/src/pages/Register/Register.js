@@ -121,16 +121,19 @@ const RegistrationForm = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="mb-3"
+                  className="custom-input"
                   required
                   title="Моля въведете валиден имйел адрес."
                 />
               </Form.Group>
-              {emailError && (
-                <div style={{ position: "absolute", bottom: "11", left: "75%", transform: "translateX(-50%)" }}>
-                  <Alert variant="danger">{emailError}</Alert>
-                </div>
-              )}
+              <div className='alerts'>
+                {emailError && (
+                  // <div style={{ position: "absolute", bottom: "11", left: "75%", transform: "translateX(-50%)" }}> </div>
+                  <Alert variant="danger" className='alertCustom'>
+                    <div className="inner-alert">{emailError}</div>
+                  </Alert>
+                )}
+              </div>
               <Form.Group controlId="formUsername">
                 <Form.Label>Потребителско име</Form.Label>
                 <Form.Control
@@ -139,17 +142,21 @@ const RegistrationForm = () => {
                   name="username"
                   value={formData.username}
                   onChange={handleInputChange}
-                  className="mb-3"
+                  className="custom-input"
                   required
                   pattern="^[^\s]*$"
                   title="Потребителското име не може да съдържа интервали."
                 />
               </Form.Group>
-              {usernameError && (
-                <div style={{ position: "absolute", bottom: "11", left: "75%", transform: "translateX(-50%)" }}>
-                  <Alert variant="danger">{usernameError}</Alert>
-                </div>
-              )}
+              <div className='alerts'>
+                {usernameError && (
+
+                  <Alert variant="danger" className='alertCustom'>
+                    <div className="inner-alert">{usernameError}</div>
+                  </Alert>
+
+                )}
+              </div>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Парола</Form.Label>
@@ -159,18 +166,23 @@ const RegistrationForm = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="mb-3"
+                  className=".custom-input"
                   required
                   minLength={6}
                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
                   title="Паролата трябва да съдържа поне 6 символа, включващи главна и малка буква, цифра и специален символ."
                 />
               </Form.Group>
-              {passwordError && (
-                <div style={{ position: "absolute", bottom: "11", left: "75%", transform: "translateX(-50%)" }}>
-                  <Alert variant="danger">{passwordError}</Alert>
-                </div>
-              )}
+
+              <div className='alerts' >
+                {passwordError && (
+
+                  <Alert variant="danger" className='alertCustom'>
+                    <div className="inner-alert">{passwordError}</div>
+                  </Alert>
+
+                )}
+              </div>
 
               <Form.Group controlId="formConfirmPassword">
                 <Form.Label>Потвърдете паролата</Form.Label>
@@ -180,16 +192,22 @@ const RegistrationForm = () => {
                   name="confirmPassword"
                   value={formDataConfirm.confirmPassword}
                   onChange={handlePasswordConfirm}
-                  className="mb-3"
+                  className=".custom-input"
                   required
                   title="Паролата трябва да съдържа поне 6 символа, включващи главна и малка буква, цифра и специален символ."
                 />
               </Form.Group>
-              {confirmPasswordError && (
-                <div style={{ position: "absolute", bottom: "11", left: "75%", transform: "translateX(-50%)" }}>
-                  <Alert variant="danger">{confirmPasswordError}</Alert>
-                </div>
-              )}
+
+
+              <div className='alerts'>
+                {confirmPasswordError && (
+
+                  <Alert variant="danger" className='alertCustom'>
+                    <div className="inner-alert">{confirmPasswordError}</div>
+                  </Alert>
+
+                )}
+              </div>
 
               <Form.Group controlId="formBasicisClient">
                 <Form.Label>Моля изберете вид потребител</Form.Label>
@@ -232,6 +250,127 @@ const RegistrationForm = () => {
     </div>
   );
 };
+
+
+
+// return
+// (
+//   <Container className="my-5">
+//     <Row className="justify-content-md-center">
+//       <Col md="6">
+//         <h1 className="text-center mb-4">Регистрация</h1>
+//         <Form className="" onSubmit={handleSubmit}>
+//           <div className="mb-3">
+//             <Form.Label>Email адрес</Form.Label>
+//             <Form.Control
+//               type="text"
+//               placeholder="Въведете, вашият email адрес"
+//               name="email"
+//               value={formData.email}
+//               onChange={handleInputChange}
+//               required
+//               title="Моля въведете валиден имейл адрес."
+//             />
+//             {emailError && (
+//               <div className="mt-2">
+//                 <Alert variant="danger">{emailError}</Alert>
+//               </div>
+//             )}
+//           </div>
+//           <div className="mb-3">
+//             <Form.Label>Потребителско име</Form.Label>
+//             <Form.Control
+//               type="text"
+//               placeholder="Въведете потребителско име"
+//               name="username"
+//               value={formData.username}
+//               onChange={handleInputChange}
+//               required
+//               title="Потребителското име трябва да бъде поне 4 букви, без специални символи и да е на латиница."
+//             />
+//             {usernameError && (
+//               <div className="mt-2">
+//                 <Alert variant="danger">{usernameError}</Alert>
+//               </div>
+//             )}
+//           </div>
+//           <div className="mb-3">
+//             <Form.Label>Парола</Form.Label>
+//             <Form.Control
+//               type="password"
+//               placeholder="Въведете парола"
+//               name="password"
+//               value={formData.password}
+//               onChange={handleInputChange}
+//               required
+//               title="Паролата трябва да бъде поне 6 знака, трябва да съдържа, главна буква, цифра и специален знак."
+//             />
+//             {passwordError && (
+//               <div className="mt-2">
+//                 <Alert variant="danger">{passwordError}</Alert>
+//               </div>
+//             )}
+//           </div>
+//           <div className="mb-3">
+//             <Form.Label>Повтори парола</Form.Label>
+//             <Form.Control
+//               type="password"
+//               placeholder="Повторете паролата"
+//               name="confirmPassword"
+//               value={formDataConfirm.confirmPassword}
+//               onChange={handlePasswordConfirm}
+//               required
+//               title="Моля повторете паролата."
+//             />
+//             {confirmPasswordError && (
+//               <div className='alerts'>
+//                 <Alert variant="danger">{confirmPasswordError}</Alert>
+//               </div>
+//             )}
+//             {registerError && (
+//               <div className='alerts'>
+//                 <Alert variant="danger">{registerError}</Alert>
+//               </div>
+//             )}
+//             {registerSuccess && (
+//               <div className='alerts'>
+//                 <Alert variant="success">{registerSuccess}</Alert>
+//               </div>
+//             )}
+//           </div >
+//           <Form.Group controlId="formBasicCheckbox">
+//         <Form.Check
+//           type="checkbox"
+//           label="Съм клиент"
+//           name="isClient"
+//           checked={formData.isClient}
+//           onChange={handleisClientChange}
+//         />
+//       </Form.Group>
+//           <Button
+//             variant="primary"
+//             type="submit"
+//             className="mt-3"
+//             disabled={isButtonDisabled}
+//           >
+//             Регистрирай се
+//           </Button>
+//         </Form>
+//         <div className="mt-4">
+//           <p className="text-center">
+//             Вече имаш акаунт?{" "}
+//             <Link to="/login" className="register-link">
+//               Влез в профила си
+//             </Link>
+//           </p>
+//         </div>
+//       </Col>
+//     </Row>
+//   </Container>
+
+
+// );
+//             }
 
 export default RegistrationForm;
 
