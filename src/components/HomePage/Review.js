@@ -39,6 +39,19 @@ const Reviews = () => {
                       (review) => review.craftsmanId === craftsman.id
                     )?.clientName}
                   </Card.Subtitle>
+                  <Card.Text className="craftsman-rating">
+                    {allReviews.find(
+                      (review) => review.craftsmanId === craftsman.id
+                    )?.rating && (
+                      <span style={{ color: "#c0c00a", fontSize: "26px" }}>
+                        {Array.from(Array(parseInt(allReviews.find(
+                          (review) => review.craftsmanId === craftsman.id
+                        )?.rating)).keys()).map((i) => (
+                          <span key={i}>✭</span>
+                        ))}
+                      </span>
+                    )}
+                  </Card.Text>
                   <Card.Text className="craftsman-review-summary">
                     {allReviews.find(
                       (review) => review.craftsmanId === craftsman.id
@@ -52,6 +65,7 @@ const Reviews = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Reviews;
