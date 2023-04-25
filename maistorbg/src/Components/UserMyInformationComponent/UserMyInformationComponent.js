@@ -5,10 +5,18 @@ import "./UserMyInformationComponent.scss";
 import localStorageManager from "../../model/managers/localStorageManager";
 
 function MyProfileCraftmenInformationComponent({ user }) {
-  const [showPassword, setShowPassword] = useState(false);
   const [updatedUser, setUpdatedUser] = useState(user);
   const [isSaved, setIsSaved] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [disableSave, setDisableSave] = useState(true);
+  
+  useEffect(() => {
+    if (updatedUser.name && updatedUser.phoneNumber && dateOfBirth) {
+      setDisableSave(false);
+    } else {
+      setDisableSave(true);
+    }
+  }, [updatedUser, dateOfBirth]);
 
   useEffect(() => {
     localStorageManager.getItem("loggedUser").then((loggedUser) => {
@@ -80,19 +88,22 @@ function MyProfileCraftmenInformationComponent({ user }) {
         <Form.Group controlId="formBasicPhone">
           <Form.Label>Телефонен номер</Form.Label>
           <Form.Control
-            type="tel"
-            name="phoneNumber"
-            value={updatedUser.phoneNumber}
-            pattern="[0-9]*"
-            inputMode="numeric"
-            onKeyPress={(event) => {
-              if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();
-              }
-            }}
-            onChange={handleInputChange}
-            readOnly={isSaved}
-          />
+  type="tel"
+  name="phoneNumber"
+  value={updatedUser.phoneNumber}
+  pattern="[0-9]*"
+  inputMode="numeric"
+  onKeyPress={(event) => {
+    if (!/[0-9]/.test(event.key)) {
+      event.preventDefault();
+    }
+  }}
+  onPaste={(event) => {
+    event.preventDefault();
+  }}
+  onChange={handleInputChange}
+  readOnly={isSaved}
+/>
         </Form.Group>
 
         <Form.Group controlId="formBasicDateOfBirth">
@@ -126,9 +137,14 @@ function MyProfileCraftmenInformationComponent({ user }) {
           <Button variant="secondary">Смени парола</Button>
         </Link>
         {!isSaved && (
-          <Button variant="secondary" onClick={handleSaveClick}>
-            Запази
-          </Button>
+          <Button
+          className="but"
+          variant="secondary"
+          onClick={handleSaveClick}
+          disabled={disableSave}
+        >
+          Запази
+        </Button>
         )}
       </Form>
     </div>

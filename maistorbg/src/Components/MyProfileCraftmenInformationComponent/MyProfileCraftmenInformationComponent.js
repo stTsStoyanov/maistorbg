@@ -10,6 +10,15 @@ function MyProfileCraftmenInformationComponent({ user }) {
   const [updatedUser, setUpdatedUser] = useState(user);
   const [isSaved, setIsSaved] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [disableSave, setDisableSave] = useState(true);
+
+  useEffect(() => {
+    if (updatedUser.name && updatedUser.phoneNumber && dateOfBirth) {
+      setDisableSave(false);
+    } else {
+      setDisableSave(true);
+    }
+  }, [updatedUser, dateOfBirth]);
 
   useEffect(() => {
     localStorageManager
@@ -138,9 +147,14 @@ function MyProfileCraftmenInformationComponent({ user }) {
           </Button>
         </Link>
         {!isSaved && (
-          <Button className="but" variant="secondary" onClick={handleSaveClick}>
-            Запази
-          </Button>
+         <Button
+         className="but"
+         variant="secondary"
+         onClick={handleSaveClick}
+         disabled={disableSave}
+       >
+         Запази
+       </Button>
         )}
       </Form>
     </div>

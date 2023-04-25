@@ -18,6 +18,31 @@ function OffersDetails() {
   const [showAlert, setShowAlert] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
   const [hideButton, setHideButton] = useState(false);
+  const [offerText, setOfferText] = useState("");
+const [offeredSum, setOfferedSum] = useState("");
+const [offeredTerm, setOfferedTerm] = useState("");
+const [showTextLengthAlert, setShowTextLengthAlert] = useState(false);
+const handleOfferTextChange = (event) => {
+  const value = event.target.value;
+  setOfferText(value);
+  setShowTextLengthAlert(value.length > 0 && value.length < 25);
+};
+const handleOfferedSumChange = (event) => {
+  setOfferedSum(event.target.value);
+};
+const handleOfferedTermChange = (event) => {
+  setOfferedTerm(event.target.value);
+};
+
+const isFormValid = () => {
+  return (
+    offerText.length >= 25 &&
+    offeredSum !== "" &&
+    offeredTerm !== "" &&
+    offeredSum > 0 &&
+    offeredTerm > 0
+  );
+};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,6 +87,7 @@ function OffersDetails() {
       onSubmit={(event) =>
         handleOfferSubmit(event, offer.authorId, offer.jobAdvertisementId)
       }
+      
     >
       <Form.Group controlId="offerText">
         <Form.Label>Вашето предложение за офертата</Form.Label>
@@ -70,7 +96,10 @@ function OffersDetails() {
           rows={3}
           placeholder="Въведете текст"
           name="offerText"
+          value={offerText}
+          onChange={handleOfferTextChange}
           required
+          
         />
       </Form.Group>
       <Form.Group controlId="offeredSum">
@@ -79,6 +108,7 @@ function OffersDetails() {
           type="number"
           placeholder="Въведете сума"
           name="offeredSum"
+          onChange={handleOfferedSumChange}
           min="1"
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value) || 0);
@@ -92,17 +122,26 @@ function OffersDetails() {
           type="number"
           placeholder="Въведете време в дни"
           name="offeredTerm"
+          value={offeredTerm}
+          onChange={handleOfferedTermChange}
           min="1"
+
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value) || 0);
           }}
           required
+ 
         />
+           {showTextLengthAlert ? (
+          <Alert variant="danger">
+            Въведете минимум 25 символа.
+          </Alert>
+        ) : null}
         {showAlert ? (
           <Alert variant="success">Предложението е изпратено!</Alert>
         ) : null}
       </Form.Group>
-      <Button variant="secondary" type="submit">
+      <Button variant="secondary" type="submit" disabled={!isFormValid()}>
         Изпрати
       </Button>
     </Form>

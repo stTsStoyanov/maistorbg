@@ -90,7 +90,7 @@ const Craftsman = () => {
 
 
     return (
-        <Container>
+        <Container className="craftmenContainerPage">
             <Row className="mt-3">
                 <Col>
                     <InputGroup>
@@ -114,8 +114,8 @@ const Craftsman = () => {
             <Row className="mt-3" ref={categoryRef}>
                 {selectedCategory && (
                     <Col>
-                        <Button variant="secondary" onClick={handleClearFilters}>Clear Filters</Button>
-                        <h3 className="mt-3">Craftsmen for {selectedCategory.category}:</h3>
+                        <Button variant="secondary" onClick={handleClearFilters}>Изчистване на филтъра</Button>
+                        <h3 className="mt-3"> {selectedCategory.category}:</h3>
                         <Row>
                             {filteredUsers.map((user, index) => (
                                 <Col key={index} md={4} className="mb-3">
@@ -151,7 +151,7 @@ const Craftsman = () => {
                 {selectedInput && (
                     <Col>
                         <Button variant="secondary" onClick={handleClearFilters}>
-                            Clear Filters
+                            Изчистване на филтъра
                         </Button>
                         <h3 className="mt-3">Search Results:</h3>
                         {filteredUsers.length > 0 ? (
@@ -182,7 +182,7 @@ const Craftsman = () => {
                                 ))}
                             </Row>
                         ) : (
-                            <p>No results found.</p>
+                            <p>Не бяха намерени резултати.</p>
                         )}
                     </Col>
                 )}
