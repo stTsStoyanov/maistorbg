@@ -8,6 +8,7 @@ function CraftsmenDetails() {
     const { id } = useParams();
     const craftsmen = JSON.parse(localStorage.getItem('users'));
     const selectedCraftsmen = craftsmen.find((c) => c.id === parseInt(id));
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser')) || false;
 
     useEffect(() => {
 
@@ -25,21 +26,26 @@ function CraftsmenDetails() {
             <Row>
                 <Col md={12}>
                     <Card>
-                        
+
                         <Card.Body>
                             <Row>
                                 <Col md={4}>
-                                    <Card.Img variant="top" src={selectedCraftsmen.photo} alt={selectedCraftsmen.name}  style={{ width: "300px", height: "350px" }}/>
+                                    <Card.Img variant="top" src={selectedCraftsmen.photo} alt={selectedCraftsmen.name} style={{ width: "300px", height: "350px" }} />
                                 </Col>
                                 <Col md={8}>
                                     <br></br>
                                     <Card.Title>{selectedCraftsmen.name}</Card.Title>
-                                    <Card.Text>
-                                        Имайл адрес: {selectedCraftsmen.email}
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Телефонен номер: {selectedCraftsmen.phoneNumber}
-                                    </Card.Text>
+                                    {loggedUser && (
+                                        <Card.Text>
+                                            Имайл адрес: {selectedCraftsmen.email}
+
+                                        </Card.Text>
+                                    )}
+                                    {loggedUser && (
+                                        <Card.Text>
+                                            Телефонен номер: {selectedCraftsmen.phoneNumber}
+                                        </Card.Text>
+                                    )}
                                     {selectedCraftsmenReviews.length > 0 ? (
                                         <div>
                                             <h3>Ревюта:</h3>
