@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import './Review.scss';
 
 const Reviews = () => {
@@ -15,18 +15,18 @@ const Reviews = () => {
 
   return (
     <div className="reviews-containerr">
-      <Container >
+      <div className='reviews-container-specific-style'>
       <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
-        <Row style={{ padding: "20px" }}>
+        <Row className='specific-style-for-reviews-container'>
           {topCraftsmen.map((craftsman) => (
-            <Col key={craftsman.id} sm={12} md={6} lg={4}>
-              <Card className="craftsman-card" style={{ width: "350px"}}>
+            <Col key={craftsman.id} sm={12} md={6} lg={4} className='column-custom-style-reviews'>
+              <Card className="craftsman-card" style={{ width: "450px"}}>
                 <div className="craftsman-image-container">
                   <Card.Img
                     variant="top"
                     src={craftsman.photo}
                     className="craftsman-image"
-                    style={{ width: "350px", height: "450px" }}
+                    style={{ width: "450px", height: "550px" }}
                   />
                 </div>
                 <Card.Body>
@@ -49,7 +49,7 @@ const Reviews = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      </div>
     </div>
   );
 };
