@@ -6,3 +6,32 @@
     padding: 5%;
     background-image: none;
 }
+.custom-input {
+    margin: 2px 0;
+}
+.alerts{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    height: 30px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+
+
+    .alert {
+        padding: 0px;
+    }
+
+    .alertCustom{
+        height: 45px;
+        margin: 5px 0px 15px 0px;
+        .inner-alert {
+            height: 40px;
+            padding: 0px 10px 0px 10px;
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+        }
+    }
+}
