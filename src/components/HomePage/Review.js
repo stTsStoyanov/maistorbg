@@ -16,7 +16,7 @@ const Reviews = () => {
   return (
     <div className="reviews-containerr">
       <div className='reviews-container-specific-style'>
-        <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
+      <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
         <Row className='specific-style-for-reviews-container'>
           {topCraftsmen.map((craftsman) => (
             <Col key={craftsman.id} sm={12} md={6} lg={4} className='column-custom-style-reviews'>
