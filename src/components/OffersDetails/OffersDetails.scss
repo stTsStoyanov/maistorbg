@@ -1,0 +1,74 @@
+.job-cardd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 80px;
+  max-width: 800px;
+  padding: 2rem;
+  margin-top: 80px;
+
+  width: 1000px;
+
+  .card-img-top {
+    width: 450px;
+    height: 400px;
+  }
+
+  .card-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-text:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .formOffe {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      margin-top: 2rem;
+    }
+  }
+
+}
+
+.carousel-image {
+  height: 400px;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+}
