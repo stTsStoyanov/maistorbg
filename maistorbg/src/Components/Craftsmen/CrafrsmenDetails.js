@@ -49,8 +49,8 @@ function CraftsmenDetails() {
                                     {selectedCraftsmenReviews.length > 0 ? (
                                         <div>
                                             <h3>Ревюта:</h3>
-                                            {selectedCraftsmenReviews.slice(0, 3).map((r) => (
-                                                <div key={r.id}>
+                                            {selectedCraftsmenReviews.slice(0, 3).map((r, index) => (
+                                                <div key={index}>
                                                     <p>Рейтинг: {r.rating}</p>
                                                     <p>Ревю: {r.review}</p>
                                                 </div>
