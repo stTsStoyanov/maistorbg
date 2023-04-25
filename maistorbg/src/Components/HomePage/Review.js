@@ -14,7 +14,7 @@ const Reviews = () => {
   const topCraftsmen = users.filter((user) => topCraftsmenIds.includes(user.id));
 
   return (
-    <div className="reviews-container">
+    <div className="reviews-containerr">
       <Container >
       <h2 className="text-center">Ревюта на най-добирте майстори:</h2>
         <Row style={{ padding: "20px" }}>
