@@ -19,7 +19,6 @@ function UserChangePassComponent() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Use the getItem function to get the users and loggedUser data from localStorage
     const users = await localStorageManager.getItem("users");
     const user = await localStorageManager.getItem("loggedUser");
 
@@ -49,7 +48,6 @@ function UserChangePassComponent() {
       }
     });
 
-    // Use the setItem function to update the users and loggedUser data in localStorage
      localStorageManager.setItem("users", updatedUsers);
      localStorageManager.setItem("loggedUser", {
       ...user,

@@ -220,17 +220,3 @@ export default [
     offers: []
   }
 ]
-
-// let newArray = array.map(object => {
-//    object.isOfferTaken = false;
-//    object.offers = [];
-//    return object;
-// })
-
-// for (let i = 0; i < array.length; i++) {
-//   array[i].jobAdvertisement = i;
-// }
-
-// console.log(array);
-
-// console.log(new Date().toLocaleString())

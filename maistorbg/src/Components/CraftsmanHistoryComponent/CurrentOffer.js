@@ -5,20 +5,9 @@ import "./CurrentJobAdvertisement.scss"
 import CurrentReview from "./CurrentReview";
 
 export default function CurrentOffer({ jobAdvertisement }) {
-
-    // const [images, setImages] = useState([])
-
-    // useEffect(() => {
-    //     if (jobAdvertisement && jobAdvertisement.jobAdvertisementImage) {
-    //         setImages(jobAdvertisement.jobAdvertisementImage)
-
-    //     }
-    // }, [jobAdvertisement])
     const isNull = jobAdvertisement.isAccepted === null;
     const isFalse = jobAdvertisement.isAccepted === false && jobAdvertisement.isAccepted !== null;
     const isTrue = jobAdvertisement.isAccepted === true;
-
-    // console.log(jobAdvertisement)
 
     return (
         <div className="card-container job-advertisement-card">
@@ -30,7 +19,6 @@ export default function CurrentOffer({ jobAdvertisement }) {
                         <div className="grid-container">
                             <div className="grid-item">
                                 <strong>Заглавие: </strong> {jobAdvertisement.offerText}<br />
-                                {/* {jobAdvertisement.jobAdvertisementTittle} */}
                             </div>
                             <div className="grid-item">
 
@@ -69,7 +57,7 @@ export default function CurrentOffer({ jobAdvertisement }) {
 
 
             <>
-                <CurrentReview jobAdvertisement={jobAdvertisement}/>
+                <CurrentReview jobAdvertisement={jobAdvertisement} />
             </>
         </div>
     );

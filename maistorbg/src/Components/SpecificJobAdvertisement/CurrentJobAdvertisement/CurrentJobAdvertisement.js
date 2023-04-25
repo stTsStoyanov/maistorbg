@@ -14,7 +14,7 @@ export default function CurrentJobAdvertisement({ jobAdvertisement }) {
     }, [jobAdvertisement])
 
 return (
-    <div className="card-container job-advertisement-card">
+    <div className="card-container job-advertisement-card position-sticky">
       <Card>
         {images && images.length === 1 ? (
           <Card.Img variant="top" src={images[0]} className="current-job-ad-single-image" />
@@ -31,7 +31,6 @@ return (
           <div className="grid-container">
             <div className="grid-item">
               <strong>Заглавие: </strong> {jobAdvertisement.jobAdvertisementTittle}<br/>
-              {/* {jobAdvertisement.jobAdvertisementTittle} */}
             </div>
             <div className="grid-item">
               <strong>Обява: </strong>{jobAdvertisement.jobAdvertisementText}

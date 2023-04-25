@@ -16,8 +16,6 @@ const UploadImage = ({ setImageUrl }) => {
 
     reader.onload = () => {
       setImageUrl(reader.result);
-
-      // Using getItem and setItem functions to update the user data in local storage
       localStorageManager.getItem("users").then((users) => {
         const user = JSON.parse(localStorage.getItem("loggedUser"));
         const updatedUsers = users.map((u) => {

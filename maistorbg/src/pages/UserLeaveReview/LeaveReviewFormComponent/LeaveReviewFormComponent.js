@@ -10,7 +10,6 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newReview = new Review(craftsman.id, client.id, offer.offerId, reviewSummary, review, rating);
-    console.log(newReview); // you can replace this with your actual code to save the review
   };
 
   return (

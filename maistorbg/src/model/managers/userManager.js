@@ -39,11 +39,8 @@ class UserManager {
       newUser.id = users.length;
       users.push(newUser);
       localStorageManager.setItem("users", users);
-
-      console.log(newUser);
       return users;
     } catch (error) {
-      console.error(error);
       return null;
     }
   }

@@ -14,7 +14,7 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer, han
     const [showSummaryAlert, setShowSummaryAlert] = useState(false);
     const [showReviewAlert, setShowReviewAlert] = useState(false);
     const [showRatingAlert, setShowRatingAlert] = useState(false);
-    const [formTouched, setFormTouched] = useState(false); // Add new state variable
+    const [formTouched, setFormTouched] = useState(false);
     const [showSuccessToast, setShowSuccessToast] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -76,7 +76,6 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer, han
             user.id === craftsman.id ? updatedUser : user
         );
         localStorageManager.setItem("users", updatedUsersList);
-        console.log("success")
         setIsReviewLeft(true);
         setShowSuccessToast(true);
     };
@@ -103,7 +102,6 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer, han
                                     as="textarea"
                                     rows={2}
                                     defaultValue={reviewSummary}
-                                    // onChange={(event) => setReviewSummary(event.target.value)}
                                     onChange={(event) => {
                                         setReviewSummary(event.target.value);
                                         setShowSummaryAlert(formTouched && event.target.value.trim().split(/\s+/).length < 3);
@@ -122,7 +120,6 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer, han
                                     as="textarea"
                                     rows={4}
                                     value={review}
-                                    // onChange={(event) => setReview(event.target.value)}
                                     onChange={(event) => {
                                         setReview(event.target.value);
                                         setShowReviewAlert(formTouched && event.target.value.trim().length < 30);
@@ -131,7 +128,6 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer, han
                                 <Alert
                                     variant="danger"
                                     className={reviewAlertClasses}
-                                // style={{ display: review.length >= 30 || review.length === 0 ? 'none' : 'block' }}
                                 >
                                     Ревюто трябва да бъде поне 30 символа.
                                 </Alert>
@@ -145,7 +141,7 @@ export default function LeaveReviewFormComponent({ craftsman, client, offer, han
                                     value={rating}
                                     onChange={(event) => {
                                         setRating(event.target.value);
-                                        setShowRatingAlert(false); // hide alert when input is changed
+                                        setShowRatingAlert(false);
                                     }}
                                     isInvalid={rating < 1 || rating > 5}
                                     className={rating < 1 || rating > 5 ? "is-invalid" : ""}

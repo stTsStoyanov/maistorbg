@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import userManager from "../../model/managers/userManager";
 import localStorageManager from "../../model/managers/localStorageManager";
@@ -22,7 +22,7 @@ const UploadImage = ({ setImageUrl }) => {
       return;
     }
 
-    const sizeLimit = 1024 * 1024; // 1MB
+    const sizeLimit = 1024 * 1024; 
     if (image.size > sizeLimit) {
       setError("Изображението е твърде голямо.");
       return;

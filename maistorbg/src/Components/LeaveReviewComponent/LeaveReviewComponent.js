@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import "./LeaveReviewFormComponent/LeaveReviewFormComponent.scss";
 import { delayFunction } from "../../utilFunctions/utilFunctions";
 import localStorageManager from "../../model/managers/localStorageManager";
@@ -26,9 +25,6 @@ export default function LeaveReviewOfferComponent({ offer, jobAdvertisement }) {
                 setOfferAuthor(user);
                 setOfferAuthorId(user.id);
             })
-            .catch((error) => {
-                console.error("Failed to retrieve user from localStorage:", error);
-            });
         userManager
             .getLoggedUser()
             .then((user) => {
@@ -39,12 +35,6 @@ export default function LeaveReviewOfferComponent({ offer, jobAdvertisement }) {
     useEffect(() => {
         setIsReviewLeft(offer.isReviewLeft);
     }, [offer.isReviewLeft]);
-
-    const handleReviewLeft = () => {
-        console.log(reviewLeft)
-        setReviewLeft(true);
-        console.log(reviewLeft)
-    };
 
     return (
         <div className="offer-card-container">

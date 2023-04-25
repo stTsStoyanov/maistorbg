@@ -1,42 +1,9 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-// import "./TopCraftsmen.scss";
 import "./Articles.scss"
 
 const Articles = () => {
-    // Retrieve the array of objects from local storage
     const data = JSON.parse(localStorage.getItem("articles")) || [];
-
-    // const renderCardContent = (name, content) => {
-    //     const paragraphs = Object.keys(content)
-    //         .filter((key) => key.startsWith("paragraph"))
-    //         .sort((a, b) => Number(a.slice(9)) - Number(b.slice(9)))
-    //         .map((key, index) => <Card.Text key={index}>{content[key]}</Card.Text>);
-
-    //     const images = Object.keys(content)
-    //         .filter((key) => key.startsWith("image"))
-    //         .map((key, index) => (
-    //             <Card.Img variant="bottom" src={content[key]} key={index} className="mt-3" />
-    //         ));
-
-    //     const contentElements = [];
-    //     for (let i = 0; i < paragraphs.length || i < images.length; i++) {
-    //         if (i < paragraphs.length) {
-    //             contentElements.push(paragraphs[i]);
-    //         }
-    //         if (i < images.length) {
-    //             contentElements.push(images[i]);
-    //         }
-    //     }
-
-    //     return (
-    //         <>
-    //             <Card.Title>{name}</Card.Title>
-    //             {contentElements}
-    //         </>
-    //     );
-    // };
-
     const renderCardContent = (name, content) => {
         const paragraphs = Object.keys(content)
           .filter((key) => key.startsWith("paragraph"))

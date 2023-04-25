@@ -23,7 +23,6 @@ function MyProfileCraftmenInformationComponent({ user }) {
         }
       })
       .catch((error) => {
-        console.error(error);
       });
   }, []);
 

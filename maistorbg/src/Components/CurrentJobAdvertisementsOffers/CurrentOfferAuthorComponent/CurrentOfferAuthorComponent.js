@@ -1,23 +1,3 @@
-// import { useEffect, useState } from "react";
-// import { delayFunction } from "../../../utilFunctions/utilFunctions";
-// import localStorageManager from "../../../model/managers/localStorageManager";
-
-// export default function CurrentOfferAuthorComponent ({offer}) {
-//     const [offerAuthor, setOfferAuthor] = useState(null)
-
-//     useEffect(() => {
-//         delayFunction(localStorageManager.getItem("users"))
-//         .then(users => {
-//             const currentUser = users.find(user => user.id === offer.authorId);
-//             setOfferAuthor(currentUser);
-//         })
-//     },[])
-
-//     return (
-
-//     )
-// }
-
 import { useEffect, useState } from "react";
 import { delayFunction } from "../../../utilFunctions/utilFunctions";
 import localStorageManager from "../../../model/managers/localStorageManager";

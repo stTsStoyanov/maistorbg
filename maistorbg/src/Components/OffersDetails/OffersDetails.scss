@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto 80px;
   max-width: 800px;
   padding: 2rem;
   margin-top: 80px;
@@ -16,7 +16,7 @@
   }
 
   .card-title {
-    font-size: 3rem;  /* increase the font size */
+    font-size: 3rem; 
     margin-bottom: 1rem;
   }
 
@@ -65,7 +65,7 @@
 }
 
 .carousel-image {
-  height: 400px; /* adjust this to your desired height */
+  height: 400px;
   width: auto;
   object-fit: contain;
   max-width: 100%;

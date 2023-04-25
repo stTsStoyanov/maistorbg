@@ -27,16 +27,15 @@ const UserMyProfileOffersComponents = () => {
             const unseenOffers = allOffers.filter(offer => offer.jobAdvertisementId === job.jobAdvertisementId && offer.hasBeenSeen === false);
             const notificationCount = unseenOffers.length;
             return (
-              <NavLink
+              <Link
                 to={`/home/myprofile/user/currentoffers/${job.jobAdvertisementId}`}
                 style={{ textDecoration: 'none', position: 'relative' }}
                 key={job.jobAdvertisementId}
-                // id="RouterNavLink"
                 as="li"
               >
                 <CurrentJobAdvertisement jobAdvertisement={job} />
                 {notificationCount > 0 && <NotificationComponent number={notificationCount} />}
-              </NavLink>
+              </Link>
             );
           })}
         </div>

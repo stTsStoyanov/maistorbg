@@ -33,11 +33,6 @@ function NavBar() {
                     Майстори
                 </Nav.Link>
             </Nav.Item>
-            {/* <Nav.Item>
-                <Nav.Link eventKey="disabled" disabled>
-                    Disabled
-                </Nav.Link>
-            </Nav.Item> */}
         </Nav>
     );
 }
