@@ -27,7 +27,7 @@ export default function UserHistoryComponent() {
         delayFunction(localStorageManager.getItem, ["allReviews"])
       ]);
       setLoggedUser(user);
-      setJobAdvertisements(allJobAdvertisements.filter(job => job.authorId === user.id));
+      setJobAdvertisements(allJobAdvertisements.filter(job => job.authorId === user.id).reverse());
       setOffers(allOffers);
       setUsers(userList)
       setAllReviews(reviews);
