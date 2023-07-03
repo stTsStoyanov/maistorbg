@@ -27,6 +27,7 @@ import OffersDetails from "./components/OffersDetails/OffersDetails";
 import SpecificJobAdvertisement from "./components/SpecificJobAdvertisement/SpecificJobAdvertisement";
 import LeaveReviewComponent from "./pages/UserLeaveReview/UserLeaveReview";
 import CraftsmenDetails from "./components/Craftsmen/CrafrsmenDetails";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
       {user ? <NavBarLogged /> : <NavBar />}
 
       <div className="container-maistorBG" >
+        <ScrollToTop />
         <Routes>
           <Route index element={<Navigate to={"/home"} />}></Route>
           <Route path="/home" element={<HomePage />}></Route>
